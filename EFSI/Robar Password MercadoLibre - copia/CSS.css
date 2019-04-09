@@ -1,0 +1,48 @@
+body{
+	background-color: #E5E5E5;
+}
+.Search{
+	
+	height: 40%;
+	width: 15%;
+	margin-top:1.8%;
+	display: inline-block;
+}
+.logo{
+	width: 6%;
+	display: inline-block;
+}
+.Encabezado{
+	background-color: yellow;
+	height: 13%;
+	display: inline-block;
+	width: 100%;
+	justify-content: center !important ;
+}
+.InputClass{
+	font-family: verdana;
+	color: red;
+}
+h1{
+	margin-top: 20px;
+	margin: auto;
+	width: 50%;
+	font-family: "Verdana";
+	text-align: center;
+	padding: 100px,0,;
+}
+
+h3{
+	margin: auto;
+	width: 70%;
+	font-family: "Verdana";
+	text-align: center;
+	padding: 10px;
+}
+#Femenino{
+	background-color : cyan;
+}
+input[type="radio"]{
+	width:10% !important;
+}
+
