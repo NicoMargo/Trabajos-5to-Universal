@@ -1,0 +1,291 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>5° Info A</title>
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-dark bg-dark">
+
+		<a class="col-md-5 navbar-brand" href="">5° Info A</a>
+		<ul class="col-md-7 navbar nav navbar-dark">
+			<li class="nav-item active"><a class="nav-link text-white" href="">Home</a></li>
+			<li class="nav-item active"><a class="nav-link text-white" href="#Materias">Materias</a></li>
+			<li class="nav-item active"><a class="nav-link text-white" href="#Contacto">Contacto</a></li>
+			<li class="nav-item active">
+				<div class="user-area dropdown float-right">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img class="user-avatar rounded-circle" src="img/User.png" alt="User Avatar"  style="width: 10%;" class="rounded-circle float-right">
+					</a>
+
+					<div class="user-menu dropdown-menu">
+						<a class="nav-link" href="./Login.html"><i class="fa fa-user"></i>Iniciar Sesión</a>
+						<a class="nav-link" href="#"><i class="fa fa-user"></i> Register <span class="count"></span></a>
+					</div>
+				</div>
+			</li>
+		</ul>
+
+    </nav>
+    
+    <header class="bg-primary text-white">
+        <section class=" jumbotron bg-primary text-center">
+            <div class="container ">
+                <h1 class="pt-5 jumbotron-heading">Bienvenidos a la página de 5° Info A!</h1>
+                <p class="lead ">Acá podrán ver todos los datos de cada materia que tenemos. Los profesores, las aulas, los horarios y la cantidad de faltas que podemos tener por año.</p>
+            </div>
+        </section>
+    </header>
+
+    <main role="main">
+        <section id="Materias">
+            <div class="row" >
+                <div class="card-deck col-md-11 float-left" style="margin-left: 4%; margin-bottom: 4%;">
+                    <div class="card col-md-3 float-left" >
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Desarrollo de Aplicaciones con Android</h5>
+                            <p class="card-text text-center">Bueno, la verdad que no se que se hace aca, quiza desarrollemos aplicaciones, con android!</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prog">Información</button>                                      
+                        </div>
+                    </div>
+                  
+                    <div class="card col-md-3 float-left">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">EFSI</h5>
+                            <p class="card-text">Analizamos estructuras funcionales de sistemas informáticos, ¿qué singnifica eso? yo nose, por ahora vemos front end xd</p>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#efsi">Informácion</button>
+                        </div>
+                    </div>
+                    <div class="card col-md-3 float-left">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Proyecto de Producción</h5>
+                            <p class="card-text">¿No se llamaba proyecto final? Producimos proyectos</p>
+                        </div>
+                        <div class="card-footer">
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proyecto">Information</button>
+                        </div>
+                    </div>
+                    <div class="card col-md-3 float-left">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Tecnologías Exponenciales de la Información</h5>
+                            <p class="card-text">Vemos tecnologías del futuro</p>
+                            
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#historia">Information</button>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+        </section>
+    </main>
+    <aside>
+		<section id="Contacto">
+			<form class="offset-md-2 col-md-8">
+				<h2>Contacto</h2>
+				<p class="form-text text-muted">Tenés alguna consulta dealguna materia en especial? Podemos ayudarte!!</p>  
+				<div class="form-group">
+				<label for="name">Nombre</label>
+				<input type="text" class="form-control" id="name" placeholder="Ingrese su nombre">
+				</div>            
+				<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" class="form-control"  id="email" aria-describedby="emailHelp" placeholder="Ingrese su email">
+				</div>
+				<div class="form-group">
+				<label for="ConsultarMateria">Sobre que materia tenés una consulta?</label>
+				<select id="inputState" class="form-control">
+						<option selected>Programación</option>
+						<option>EFSI</option>
+						<option>Proyecto Final</option>
+						<option>TI</option>
+				</select>
+				<div class="form-group">
+				<label for="Consulta">Consulta</label>
+				<textarea class="form-control" id="Consulta" rows="3"></textarea>
+				</div>
+				</div>
+				<div class="form-check">
+				<input type="checkbox" class="form-check-input" id="exampleCheck1">
+				<label class="form-check-label" for="exampleCheck1">Check me out</label>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</section>
+    </aside>
+
+
+
+
+    <!-- Modals -->
+        <!-- Programacion -->
+        <div class="modal fade" id="prog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Proyecto de Producción</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-unstyled">
+                            <li style="padding-bottom: 5%">
+                                <span>Bloques <span class="btn-primary float-right">3</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Faltas <span class="btn-primary float-right">21</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Dias <span class="btn-primary float-right">Lunes, Martes y Miercoles</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Profesor <span class="btn-primary float-right">Pablo Ulman</span></span>
+                            </li>      
+                            <li style="padding-bottom: 5%">
+                                <span>Foto</span></span>
+                                <img src="img/Polshu.jpg" alt="Cristal" style="width: 10%;" class="rounded-circle float-right">
+                            </li>                           
+                        </ul>                    
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <!-- EFSI -->
+        <div class="modal fade" id="efsi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">EFSI</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-unstyled">
+                            <li style="padding-bottom: 5%">
+                                <span>Bloques <span class="btn-primary float-right">3</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Faltas <span class="btn-primary float-right">22</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Dias <span class="btn-primary float-right">Miércoles y Jueves</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Profesor <span class="btn-primary float-right">Federico "Flecha" Snieg</span></span>
+                            </li>      
+                            <li style="padding-bottom: 5%">
+                                <span>Foto</span></span>
+                                <img src="img/Flecha.png" alt="Flecha" style="width: 10%;" class="rounded-circle float-right">
+                            </li>                           
+                        </ul>                    
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- proyecto -->
+        <div class="modal fade" id="proyecto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Proyecto de Producción</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-unstyled">
+                            <li style="padding-bottom: 5%">
+                                <span>Bloques <span class="btn-primary float-right">3</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Faltas <span class="btn-primary float-right">3</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Dias <span class="btn-primary float-right">3</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Profesor <span class="btn-primary float-right">3</span></span>
+                            </li>      
+                            <li style="padding-bottom: 5%">
+                                <span>Foto</span></span>
+                                <img src="img/Cristal.jpg" alt="Pablo Ulman" style="width: 10%;" class="rounded-circle float-right">
+                            </li>                           
+                        </ul>                    
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- TI -->
+        <div class="modal fade" id="historia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tecnologías Exponenciales de la Información</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+					<div class="modal-body">
+                        <ul class="list-unstyled">
+                            <li style="padding-bottom: 5%">
+                                <span>Bloques <span class="btn-primary float-right">1</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Faltas <span class="btn-primary float-right">7</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Dias <span class="btn-primary float-right">Lunes</span></span>
+                            </li>
+                            <li style="padding-bottom: 5%">
+                                <span>Profesor <span class="btn-primary float-right">Sebastián Palatnik</span></span>
+                            </li>      
+                            <li style="padding-bottom: 5%">
+                                <span>Foto</span></span>
+                                <img src="img/Palanca.gif" alt="Cristal" style="width: 10%;" class="rounded-circle float-right">
+                            </li>                           
+                        </ul>                                    
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </body>
+</html>
