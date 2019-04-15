@@ -17,7 +17,15 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/btn2"
+                android:id="@+id/btn00"
+                android:layout_width="122dp"
+                android:layout_height="208dp"
+                android:text="Button"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <Button
+                android:id="@+id/btn01"
                 android:layout_width="122dp"
                 android:layout_height="208dp"
                 android:text="Button"
@@ -32,8 +40,30 @@
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="98dp" />
 
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
             <Button
-                android:id="@+id/btn01"
+                android:id="@+id/btn03"
+                android:layout_width="122dp"
+                android:layout_height="208dp"
+                android:text="Button"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <Button
+                android:id="@+id/btn04"
+                android:layout_width="122dp"
+                android:layout_height="208dp"
+                android:text="Button"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <Button
+                android:id="@+id/btn05"
                 android:layout_width="122dp"
                 android:layout_height="208dp"
                 android:text="Button"
@@ -43,11 +73,32 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            <Button
+                android:id="@+id/btn06"
+                android:layout_width="122dp"
+                android:layout_height="208dp"
+                android:text="Button"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <Button
+                android:id="@+id/btn07"
+                android:layout_width="122dp"
+                android:layout_height="208dp"
+                android:text="Button"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <Button
+                android:id="@+id/btn08"
+                android:layout_width="122dp"
+                android:layout_height="208dp"
+                android:text="Button"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+        </TableRow>
 
     </TableLayout>
 
