@@ -15,7 +15,7 @@ public class Boton{
     public boolean getActivo(){
         return this.bActivo;
     }
-    public void setActivo(){
+    public void changeActivo(){
         this.bActivo = !this.bActivo;
         if(this.bActivo){
             this.btnButton.setBackgroundResource(R.drawable.fusible_rojo);
