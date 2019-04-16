@@ -1,5 +1,6 @@
 package com.example.tp2juegodefusibles;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,10 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        Intent elIntent = getIntent();
+        Bundle datos = elIntent.getExtras();
+        String Paremeter1 = datos.getString ("PARAMETER1");
+
         final int iCantElementosX = 3;
         final int iCantElementosY = 3;
         Botones = new Boton[iCantElementosX][iCantElementosY];
