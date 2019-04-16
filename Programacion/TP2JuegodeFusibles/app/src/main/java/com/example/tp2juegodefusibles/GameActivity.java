@@ -27,7 +27,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         Intent elIntent = getIntent();
         Bundle datos = elIntent.getExtras();
-        String Paremeter1 = datos.getString ("PARAMETER1");
+        String Paremeter1 = datos.getString (MainActivity.PAREMETER1);
 
         Buttons = new Boton[iCantButtonsX][iCantButtonsY];
 
@@ -61,8 +61,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         int iButtonPos = SearchButtonPos(v.getId());
+        Log.d("xd",iButtonPos + "");
         int iX = iButtonPos / iCantButtonsX;
         int iY = iButtonPos % iCantButtonsX;
+        Log.d("xd",iX+","+ iY);
         Buttons[iX][iY].changeActivo();
         if(iX>0){
             Buttons[iX-1][iY].changeActivo();
@@ -76,7 +78,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if(iY < iCantButtonsY - 1 && iCantButtonsY - 1 != 0){
             Buttons[iX][iY+1].changeActivo();
         }
-
+        Log.d("xd","si");
     }//Fin de la funcion onClickListener
 
     public int SearchButtonPos(int id){
@@ -84,16 +86,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         int j = 0;
         boolean bFound = false;
         while( !bFound && i<iCantButtonsX){
-            i++;
             j = 0;
             while(!bFound && j<iCantButtonsY){
-                j++;
                 if(Buttons[i][j].getButton().getId()==id){
                     bFound= true;
                 }
+                else j++;
             }
+            if(!bFound) i++;
         }
-        int iNmberOfButton = i * iCantButtonsX + j * iCantButtonsY;
+        int iNmberOfButton = i * iCantButtonsX + j;
         return iNmberOfButton;
     }
     private void IniciarSegundaActividad(String msg){

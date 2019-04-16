@@ -20,7 +20,6 @@
                 android:id="@+id/btn00"
                 android:layout_width="122dp"
                 android:layout_height="208dp"
-                android:text="Button"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="98dp" />
 
@@ -28,7 +27,6 @@
                 android:id="@+id/btn01"
                 android:layout_width="122dp"
                 android:layout_height="208dp"
-                android:text="Button"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="98dp" />
 
@@ -36,7 +34,6 @@
                 android:id="@+id/btn02"
                 android:layout_width="122dp"
                 android:layout_height="208dp"
-                android:text="Button"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="98dp" />
 
@@ -50,7 +47,6 @@
                 android:id="@+id/btn03"
                 android:layout_width="122dp"
                 android:layout_height="208dp"
-                android:text="Button"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="98dp" />
 
@@ -58,7 +54,6 @@
                 android:id="@+id/btn04"
                 android:layout_width="122dp"
                 android:layout_height="208dp"
-                android:text="Button"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="98dp" />
 
@@ -66,7 +61,6 @@
                 android:id="@+id/btn05"
                 android:layout_width="122dp"
                 android:layout_height="208dp"
-                android:text="Button"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="98dp" />
         </TableRow>
@@ -79,7 +73,6 @@
                 android:id="@+id/btn06"
                 android:layout_width="122dp"
                 android:layout_height="208dp"
-                android:text="Button"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="98dp" />
 
@@ -87,7 +80,6 @@
                 android:id="@+id/btn07"
                 android:layout_width="122dp"
                 android:layout_height="208dp"
-                android:text="Button"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="98dp" />
 
@@ -95,7 +87,6 @@
                 android:id="@+id/btn08"
                 android:layout_width="122dp"
                 android:layout_height="208dp"
-                android:text="Button"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="98dp" />
         </TableRow>
