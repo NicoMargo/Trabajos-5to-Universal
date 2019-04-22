@@ -11,21 +11,30 @@
   </head>
   <body>
     <nav class="navbar fixed-top bg-dark ">
-		<a class="text-light navbar navbar-brand">5° Info A</a>
-		<ul class="navbar nav navbar-dark ">
-			<li class="nav-item "><a class="ml-3 text-decorate-none text-light" href="">Home</a></li>
-			<li class="nav-item "><a class="ml-3 .btn text-light" href="#Materias">Materias</a></li>
-            <li class="nav-item "><a class="ml-3 .btn text-light" href="#Contacto">Contacto</a></li>
-            <li class="nav-item "><a class="ml-3 .btn text-light" href="#contacto">Admin</a></li>
-            
-        </ul>        
+        <div class="container">
+            <div class="row col-md-12">
+                <div class="offset-md-2">
+                    <a class="text-light  navbar navbar-brand">5° Info A</a>
+                </div>
+                <div class="col-md-4 offset-md-4">
+                    <ul class="navbar nav navbar-dark ">
+                            <li class="nav-item "><a class="ml-3 text-light" href="">Home</a></li>
+                            <li class="nav-item "><a class="ml-3 text-light" href="#Materias">Materias</a></li>
+                            <li class="nav-item "><a class="ml-3 text-light" href="#Contacto">Contacto</a></li>
+                            <li class="nav-item "><a class="ml-3 text-light" href="#contacto">Admin</a></li> 
+                        </ul> 
+                </div>
+                
+                  
+            </div>            
+        </div>		     
     </nav>
     
     <header class="bg-primary text-white">
         <section class=" jumbotron bg-primary text-center">
             <div class="container ">
-                <h1 class="pt-5 jumbotron-heading">Bienvenidos a la página de 5° Info A!</h1>
-                <p class="lead ">Acá podrán ver todos los datos de cada materia que tenemos. Los profesores, las aulas, los horarios y la cantidad de faltas que podemos tener por año.</p>
+                <h3 class="pt-5 jumbotron-heading">Bienvenidos a la página de 5° Info A!</h3>
+                <p class="text-light col-md-8 offset-md-2">Acá podrán ver todos los datos de cada materia que tenemos. Los profesores, las aulas, los horarios y la cantidad de faltas que podemos tener por año.</p>
             </div>
         </section>
     </header>
@@ -34,8 +43,8 @@
         <div style="height: 70px;"></div>
         <section id="Materias">
             <div class="row" >
-                <div class="card-deck col-md-11 float-left" style="margin-left: 4%; margin-bottom: 4%;">
-                    <div class="card col-md-3 float-left" >
+                <div class="card-deck col-md-12 float-left" style="margin-left: 4%; margin-bottom: 4%;">
+                    <div class="card col-md-2 float-left" >
                         <rect  class="h-100 w-100 bg-dark" ></rect>
                         <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Programación</text>
                         <div class="card-body">
@@ -45,11 +54,9 @@
                         <div class="card-footer text-center">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prog">Información</button>                                      
                         </div>
-                    </div>
-
-                    
+                    </div>                    
                   
-                    <div class="card col-md-3 float-left">
+                    <div class="card col-md-2 float-left">
                         <img class="card-img-top h-25" src="./img/Flecha.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">EFSI</h5>
@@ -59,7 +66,7 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#efsi">Informácion</button>
                         </div>
                     </div>
-                    <div class="card col-md-3 float-left">
+                    <div class="card col-md-2 float-left">
                         <img class="card-img-top h-25" src="./img/Palanca.gif" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">TI</h5>
@@ -69,7 +76,7 @@
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proyecto">Information</button>
                         </div>
                     </div>
-                    <div class="card col-md-3 float-left">
+                    <div class="card col-md-2 float-left">
                         <img class="card-img-top" src="..." alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Tecnologías Exponenciales de la Información</h5>
