@@ -3,12 +3,16 @@ package com.example.tp2juegodefusibles;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
 
+import java.security.KeyStore;
 import java.util.Random;
 import java.io.Console;
 import java.util.logging.ConsoleHandler;
@@ -56,7 +60,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private void SetearListeners() {
         for(int i = 0; i<iCantButtonsX;i++){
             for(int j = 0; j<iCantButtonsY;j++){
-                Buttons[i][j].getButton().setOnClickListener(this);
+                Button btnButton = Buttons[i][j].getButton();
+                btnButton.setOnClickListener(this);
+                TableLayout tblyTable =(TableLayout)findViewById(R.id.tblyTable);
+                btnButton.getLayoutParams().width =  tblyTable.getLayoutParams().width/iCantButtonsX;
+                btnButton.getLayoutParams().height =  btnButton.getLayoutParams().width;
             }
         }
     }
@@ -64,25 +72,27 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        int iButtonPos = SearchButtonPos(v.getId());
-        Log.d("xd",iButtonPos + "");
-        int iX = iButtonPos / iCantButtonsX;
-        int iY = iButtonPos % iCantButtonsX;
-        Log.d("xd",iX+","+ iY);
-        Buttons[iX][iY].changeActivo();
-        if(iX>0){
-            Buttons[iX-1][iY].changeActivo();
+        if(WinGame()){
+            IniciarSegundaActividad("ganeste");
         }
-        if(iY>0){
-            Buttons[iX][iY-1].changeActivo();
+        else {
+            int iButtonPos = SearchButtonPos(v.getId());
+            int iX = iButtonPos / iCantButtonsX;
+            int iY = iButtonPos % iCantButtonsX;
+            Buttons[iX][iY].changeActivo();
+            if (iX > 0) {
+                Buttons[iX - 1][iY].changeActivo();
+            }
+            if (iY > 0) {
+                Buttons[iX][iY - 1].changeActivo();
+            }
+            if (iX < iCantButtonsX - 1 && iCantButtonsX - 1 != 0) {
+                Buttons[iX + 1][iY].changeActivo();
+            }
+            if (iY < iCantButtonsY - 1 && iCantButtonsY - 1 != 0) {
+                Buttons[iX][iY + 1].changeActivo();
+            }
         }
-        if(iX < iCantButtonsX - 1 && iCantButtonsX - 1 != 0){
-            Buttons[iX+1][iY].changeActivo();
-        }
-        if(iY < iCantButtonsY - 1 && iCantButtonsY - 1 != 0){
-            Buttons[iX][iY+1].changeActivo();
-        }
-        Log.d("xd","si");
     }//Fin de la funcion onClickListener
 
     public int SearchButtonPos(int id){
@@ -109,4 +119,22 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         nuevaActividad.putExtras(datos);
         startActivity(nuevaActividad);
     }
+
+    private boolean WinGame(){
+        boolean bWin = true;
+        int i = 0;
+        int j;
+        while( bWin && i<iCantButtonsX){
+            j = 0;
+            while(bWin && j<iCantButtonsY){
+                if(!Buttons[i][j].getActivo()){
+                    bWin= false;
+                }
+                else j++;
+            }
+            if(bWin) i++;
+        }
+        return bWin;
+    }
+
 }
