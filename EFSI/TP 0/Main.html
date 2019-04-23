@@ -7,59 +7,57 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
     <title>5° Info A</title>
   </head>
   <body>
-    <nav class="navbar fixed-top navbar-dark bg-dark">
-
-		<a class="col-md-5 navbar-brand" href="">5° Info A</a>
-		<ul class="col-md-7 navbar nav navbar-dark">
-			<li class="nav-item active"><a class="nav-link text-white" href="">Home</a></li>
-			<li class="nav-item active"><a class="nav-link text-white" href="#Materias">Materias</a></li>
-			<li class="nav-item active"><a class="nav-link text-white" href="#Contacto">Contacto</a></li>
-			<li class="nav-item active">
-				<div class="user-area dropdown float-right">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<img class="user-avatar rounded-circle" src="img/User.png" alt="User Avatar"  style="width: 10%;" class="rounded-circle float-right">
-					</a>
-
-					<div class="user-menu dropdown-menu">
-						<a class="nav-link" href="./Login.html"><i class="fa fa-user"></i>Iniciar Sesión</a>
-						<a class="nav-link" href="#"><i class="fa fa-user"></i> Register <span class="count"></span></a>
-					</div>
-				</div>
-			</li>
-		</ul>
-
+    <nav class="navbar fixed-top bg-dark ">
+        <div class="container">
+            <div class="row col-md-12">
+                <div class="offset-md-2">
+                    <a class="text-light  navbar navbar-brand">5° Info A</a>
+                </div>
+                <div class="col-md-4 offset-md-4">
+                    <ul class="navbar nav navbar-dark ">
+                            <li class="nav-item "><a class="ml-3 text-light" href="">Home</a></li>
+                            <li class="nav-item "><a class="ml-3 text-light" href="#Materias">Materias</a></li>
+                            <li class="nav-item "><a class="ml-3 text-light" href="#Contacto">Contacto</a></li>
+                            <li class="nav-item "><a class="ml-3 text-light" href="./Login.html">Admin</a></li> 
+                        </ul> 
+                </div>
+                
+                  
+            </div>            
+        </div>		     
     </nav>
     
     <header class="bg-primary text-white">
         <section class=" jumbotron bg-primary text-center">
             <div class="container ">
-                <h1 class="pt-5 jumbotron-heading">Bienvenidos a la página de 5° Info A!</h1>
-                <p class="lead ">Acá podrán ver todos los datos de cada materia que tenemos. Los profesores, las aulas, los horarios y la cantidad de faltas que podemos tener por año.</p>
+                <h3 class="pt-5 jumbotron-heading">Bienvenidos a la página de 5° Info A!</h3>
+                <p class="text-light col-md-8 offset-md-2">Acá podrán ver todos los datos de cada materia que tenemos. Los profesores, las aulas, los horarios y la cantidad de faltas que podemos tener por año.</p>
             </div>
         </section>
     </header>
 
-    <main role="main">
+    <main class="bg-light" role="main">
+        <div style="height: 70px;"></div>
         <section id="Materias">
             <div class="row" >
-                <div class="card-deck col-md-11 float-left" style="margin-left: 4%; margin-bottom: 4%;">
-                    <div class="card col-md-3 float-left" >
-                        <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-deck col-md-12 float-left" style="margin-left: 4%; margin-bottom: 4%;">
+                    <div class="card col-md-2 float-left" >
+                        <rect  class="h-100 w-100 bg-dark" ></rect>
+                        <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Programación</text>
                         <div class="card-body">
-                            <h5 class="card-title text-center">Desarrollo de Aplicaciones con Android</h5>
-                            <p class="card-text text-center">Bueno, la verdad que no se que se hace aca, quiza desarrollemos aplicaciones, con android!</p>
+                            <h5 class="card-title text-center">Programación</h5>
+                            <p class="card-text text-center">Los Lunes, Martes y Miércoles en el primer bloque con Ploshu. Es en el laboratorio . Podemos tener 25 faltas</p>
                         </div>
                         <div class="card-footer text-center">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#prog">Información</button>                                      
                         </div>
-                    </div>
+                    </div>                    
                   
-                    <div class="card col-md-3 float-left">
-                        <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card col-md-2 float-left">
+                        <img class="card-img-top h-25" src="./img/Flecha.png" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">EFSI</h5>
                             <p class="card-text">Analizamos estructuras funcionales de sistemas informáticos, ¿qué singnifica eso? yo nose, por ahora vemos front end xd</p>
@@ -68,17 +66,17 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#efsi">Informácion</button>
                         </div>
                     </div>
-                    <div class="card col-md-3 float-left">
-                        <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card col-md-2 float-left">
+                        <img class="card-img-top h-25" src="./img/Palanca.gif" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Proyecto de Producción</h5>
+                            <h5 class="card-title">TI</h5>
                             <p class="card-text">¿No se llamaba proyecto final? Producimos proyectos</p>
                         </div>
                         <div class="card-footer">
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#proyecto">Information</button>
                         </div>
                     </div>
-                    <div class="card col-md-3 float-left">
+                    <div class="card col-md-2 float-left">
                         <img class="card-img-top" src="..." alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Tecnologías Exponenciales de la Información</h5>
@@ -93,9 +91,10 @@
             </div>           
         </section>
     </main>
-    <aside>
-		<section id="Contacto">
-			<form class="offset-md-2 col-md-8">
+    <aside class="">
+		<section class="mt-5" id="Contacto">
+            <div style="height: 70px;"></div>
+			<form class="offset-md-4 col-md-5">
 				<h2>Contacto</h2>
 				<p class="form-text text-muted">Tenés alguna consulta dealguna materia en especial? Podemos ayudarte!!</p>  
 				<div class="form-group">
@@ -118,15 +117,30 @@
 				<label for="Consulta">Consulta</label>
 				<textarea class="form-control" id="Consulta" rows="3"></textarea>
 				</div>
-				</div>
+                </div>
+                <label>Sos alumno de ort?</label>
 				<div class="form-check">
-				<input type="checkbox" class="form-check-input" id="exampleCheck1">
-				<label class="form-check-label" for="exampleCheck1">Check me out</label>
-				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                         si
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                          no
+                        </label>
+                      </div>
+				<button type="submit" class="btn btn-primary mt-3">Enviar</button>
 			</form>
 		</section>
     </aside>
+
+    <footer class="page-footer bg-dark mt-5">
+        <div class="footer-copyright text-center py-4 text-light"><span>Copyright © EFSI 2019</span></div> 
+      
+      </footer>
+
 
 
 
