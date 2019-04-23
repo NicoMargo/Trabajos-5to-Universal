@@ -18,9 +18,9 @@
             android:id="@+id/txtUser"
             android:layout_width="match_parent"
             android:layout_height="37dp"
-            android:text="User Name"
+            android:text="Bienvenido al Juego de Fusibles de Club Penguin"
             android:textAlignment="center"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <EditText
@@ -30,6 +30,19 @@
             android:ems="10"
             android:hint="User Name"
             android:inputType="textNoSuggestions|textPersonName" />
+
+        <TextView
+            android:id="@+id/txtCaptcha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/edtCaptcha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Resultado"
+            android:inputType="number" />
 
         <Button
             android:id="@+id/btnStart"

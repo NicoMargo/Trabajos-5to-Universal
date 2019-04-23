@@ -8,7 +8,14 @@ public class Boton{
     public Boton (Button unBoton, boolean Activo){
         this.btnButton = unBoton;
         this.bActivo = Activo;
+        if(Activo){
+            this.btnButton.setBackgroundResource(R.drawable.fusible_verde);
+        }
+        else{
+            this.btnButton.setBackgroundResource(R.drawable.fusible_rojo);
+        }
     }
+
     public Button getButton(){
         return this.btnButton;
     }
@@ -18,10 +25,20 @@ public class Boton{
     public void changeActivo(){
         this.bActivo = !this.bActivo;
         if(this.bActivo){
-            this.btnButton.setBackgroundResource(R.drawable.fusible_rojo);
+            this.btnButton.setBackgroundResource(R.drawable.fusible_verde);
         }
         else{
             this.btnButton.setBackgroundResource(R.drawable.fusible_rojo);
         }
     }
+    public void setActivo(boolean Activo){
+        bActivo = Activo;
+        if(Activo){
+            this.btnButton.setBackgroundResource(R.drawable.fusible_verde);
+        }
+        else{
+            this.btnButton.setBackgroundResource(R.drawable.fusible_rojo);
+        }
+    }
+
 }
