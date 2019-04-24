@@ -26,6 +26,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
     private final int iCantButtonsX = 3;
     private final int iCantButtonsY = 3;
+    private Button btnBot;
+    private Button btnRandom;
+    private Button btnMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Buttons[2][2] = new Boton((Button)findViewById(R.id.btn08),false);
         Random GeneradorRandom = new Random();
         Buttons[GeneradorRandom.nextInt(iCantButtonsX-0)][GeneradorRandom.nextInt(iCantButtonsY-0)].setActivo(true);
+        btnBot = (Button)findViewById(R.id.btnBot);
+        btnRandom = (Button)findViewById(R.id.btnRandom);;
+        btnMenu = (Button)findViewById(R.id.btnMenu);;
     }
 
     private void SetearListeners() {
@@ -67,34 +73,36 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 btnButton.getLayoutParams().height =  btnButton.getLayoutParams().width;
             }
         }
-    }
+        btnBot.setOnClickListener(btnBot_Click);
+        btnRandom.setOnClickListener(btnRandom_Click);
+        btnMenu.setOnClickListener(btnMenu_Click);
 
+    }
 
     @Override
     public void onClick(View v) {
-        if(WinGame()){
-            IniciarSegundaActividad("ganeste");
+
+        int iButtonPos = SearchButtonPos(v.getId());
+        int iX = iButtonPos / iCantButtonsX;
+        int iY = iButtonPos % iCantButtonsX;
+        Buttons[iX][iY].changeActivo();
+        if (iX > 0) {
+            Buttons[iX - 1][iY].changeActivo();
         }
-        else {
-            int iButtonPos = SearchButtonPos(v.getId());
-            int iX = iButtonPos / iCantButtonsX;
-            int iY = iButtonPos % iCantButtonsX;
-            Buttons[iX][iY].changeActivo();
-            if (iX > 0) {
-                Buttons[iX - 1][iY].changeActivo();
-            }
-            if (iY > 0) {
-                Buttons[iX][iY - 1].changeActivo();
-            }
-            if (iX < iCantButtonsX - 1 && iCantButtonsX - 1 != 0) {
-                Buttons[iX + 1][iY].changeActivo();
-            }
-            if (iY < iCantButtonsY - 1 && iCantButtonsY - 1 != 0) {
-                Buttons[iX][iY + 1].changeActivo();
-            }
+        if (iY > 0) {
+            Buttons[iX][iY - 1].changeActivo();
+        }
+        if (iX < iCantButtonsX - 1 && iCantButtonsX - 1 != 0) {
+            Buttons[iX + 1][iY].changeActivo();
+        }
+        if (iY < iCantButtonsY - 1 && iCantButtonsY - 1 != 0) {
+            Buttons[iX][iY + 1].changeActivo();
+        }
+        if(WinGame()){
+            IniciarSegundaActividad(true);
         }
     }//Fin de la funcion onClickListener
-
+    //Funcion que devuelve que boton se toco dada una id
     public int SearchButtonPos(int id){
         int i = 0;
         int j = 0;
@@ -112,14 +120,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         int iNmberOfButton = i * iCantButtonsX + j;
         return iNmberOfButton;
     }
-    private void IniciarSegundaActividad(String msg){
+    //Fucion una mandar a una nueva activity
+    private void IniciarSegundaActividad(boolean bVictoria){
         Intent nuevaActividad = new Intent(GameActivity.this, ResultActivity.class);
         //Pasar parametros xd
         Bundle datos = new Bundle();
+        if(bVictoria){
+
+        }
+        else{
+
+        }
         nuevaActividad.putExtras(datos);
         startActivity(nuevaActividad);
     }
-
+    //Funcion que devuelve un bool, true si el jugador gano(tiene todos los botones verdes), o false si no gano
     private boolean WinGame(){
         boolean bWin = true;
         int i = 0;
@@ -137,4 +152,24 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         return bWin;
     }
 
+    private View.OnClickListener btnBot_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };//Fin de la funcion onClickListener
+
+    private View.OnClickListener btnRandom_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };//Fin de la funcion onClickListener
+
+    private View.OnClickListener btnMenu_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            IniciarSegundaActividad(false);
+        }
+    };//Fin de la funcion onClickListener
 }

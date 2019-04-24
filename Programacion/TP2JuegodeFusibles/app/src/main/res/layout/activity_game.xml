@@ -99,6 +99,50 @@
                 android:background="@drawable/fusible_rojo"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="98dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                app:srcCompat="@color/colorAccent"
+                tools:layout_editor_absoluteX="9dp"
+                tools:layout_editor_absoluteY="501dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnRandom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="0dp"
+                android:text="Random" />
+
+            <Button
+                android:id="@+id/btnMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Menu" />
+
+            <Button
+                android:id="@+id/btnBot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@android:string/autofill" />
         </TableRow>
 
     </TableLayout>
