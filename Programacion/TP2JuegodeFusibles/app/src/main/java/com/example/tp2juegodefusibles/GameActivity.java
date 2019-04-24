@@ -13,12 +13,17 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 
 import java.security.KeyStore;
+import java.util.ArrayList;
 import java.util.Random;
 import java.io.Console;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.ConsoleHandler;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static Timer timer = new Timer();
+    private static int iSeconds = 0;
     private Boton Buttons[][];
     private int iCantMoves = 0;
     public int getCantMoves(){
@@ -29,6 +34,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnBot;
     private Button btnRandom;
     private Button btnMenu;
+    private ArrayList<Integer> HistoryMoves = new ArrayList<Integer>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +47,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Buttons = new Boton[iCantButtonsX][iCantButtonsY];
 
         Log.d("xd","xd");
-        getReferences();
-        SetearListeners();
+        GetReferences();
+        SetListeners();
 
     }
 
-    private void getReferences(){
+    //Funcion que obtiene las referencias de los elementos del design
+    private void GetReferences(){
         Buttons[0][0] = new Boton((Button)findViewById(R.id.btn00),false);
         Buttons[0][1] = new Boton((Button)findViewById(R.id.btn01),false);
         Buttons[0][2] = new Boton((Button)findViewById(R.id.btn02),false);
@@ -63,7 +70,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         btnMenu = (Button)findViewById(R.id.btnMenu);;
     }
 
-    private void SetearListeners() {
+    private void SetListeners() {
         for(int i = 0; i<iCantButtonsX;i++){
             for(int j = 0; j<iCantButtonsY;j++){
                 Button btnButton = Buttons[i][j].getButton();
@@ -77,12 +84,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         btnRandom.setOnClickListener(btnRandom_Click);
         btnMenu.setOnClickListener(btnMenu_Click);
 
-    }
+    }//Fin de funcionSetListeners
 
     @Override
     public void onClick(View v) {
 
         int iButtonPos = SearchButtonPos(v.getId());
+        ToggleButton(iButtonPos);
+    }//Fin de la funcion onClickListener
+
+    public void ToggleButton(int iButtonPos){//Funcion que se llama cuando se hace la accion de interactuar con un boton
+        HistoryMoves.add(iButtonPos);
         int iX = iButtonPos / iCantButtonsX;
         int iY = iButtonPos % iCantButtonsX;
         Buttons[iX][iY].changeActivo();
@@ -101,7 +113,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if(WinGame()){
             IniciarSegundaActividad(true);
         }
-    }//Fin de la funcion onClickListener
+    }//Fin de funcion ToggleButton
+
     //Funcion que devuelve que boton se toco dada una id
     public int SearchButtonPos(int id){
         int i = 0;
@@ -119,7 +132,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
         int iNmberOfButton = i * iCantButtonsX + j;
         return iNmberOfButton;
-    }
+    }//Fin de funcion SearchButtonPos
+
     //Fucion una mandar a una nueva activity
     private void IniciarSegundaActividad(boolean bVictoria){
         Intent nuevaActividad = new Intent(GameActivity.this, ResultActivity.class);
@@ -133,7 +147,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
         nuevaActividad.putExtras(datos);
         startActivity(nuevaActividad);
-    }
+    }//Fin de Funcon IniciarSegundaActividad
+
     //Funcion que devuelve un bool, true si el jugador gano(tiene todos los botones verdes), o false si no gano
     private boolean WinGame(){
         boolean bWin = true;
@@ -150,26 +165,45 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             if(bWin) i++;
         }
         return bWin;
-    }
+    }//Fin de funcion WinGame
 
     private View.OnClickListener btnBot_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            MyTimer();
         }
-    };//Fin de la funcion onClickListener
+    };//Fin de la funcion onClickListener de btnBOt
+
+    public static void MyTimer() {
+
+        TimerTask task;
+
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                Log.d("xd","Seconds = " + iSeconds);
+                iSeconds++;
+                 if(false) {
+                    // stop the timer
+                    cancel();
+                }
+            }
+
+        };
+        timer.schedule(task, 0, 4);
+    }
 
     private View.OnClickListener btnRandom_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
         }
-    };//Fin de la funcion onClickListener
+    };//Fin de la funcion onClickListener de btnRandom
 
     private View.OnClickListener btnMenu_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             IniciarSegundaActividad(false);
         }
-    };//Fin de la funcion onClickListener
+    };//Fin de la funcion onClickListener de BtnMenu
 }
