@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.ApiException;
@@ -17,66 +18,53 @@ import com.google.android.gms.safetynet.SafetyNetApi;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import java.security.PublicKey;
+import java.util.Random;
 import java.util.concurrent.Executor;
 
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String PAREMETER1 = "com.example.tp2juegodefusibles.PARAMETRO1";
-    private static final String SITE_KEY_CAPTCHA = "6LeHRp4UAAAAACz1xdU6fay3zBWCq-IHlGjEo6nR";
-    private static final String SECRET_KEY_CAPTCHA = "6LeHRp4UAAAAAM8oAU9gMdbcH2ThsImfAnraIe7G";
+    Random RandomNum = new Random();
+    public int iNum1 = RandomNum.nextInt(9);
+    public int iNum2 = RandomNum.nextInt(9);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Random();
         Button btnStart = (Button) findViewById(R.id.btnStart);
         btnStart.setOnClickListener(btnStart_Click);
     }
 
     private View.OnClickListener btnStart_Click = new View.OnClickListener() {
+
         public void onClick(View v) {
             EditText edtUser = (EditText) findViewById(R.id.edtUser);
+            EditText edtCaptcha = (EditText) findViewById(R.id.edtCaptcha);
             String sUsername = edtUser.getText().toString();
-
-            if (sUsername.matches("")){
-                Toast.makeText(getApplicationContext(), "Ingrese un Nombre de usuario", Toast.LENGTH_LONG).show();
+            int ValueUser;
+            Log.d("1","1");
+            if (edtCaptcha.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(), "Ingrese el resultado de la suma", Toast.LENGTH_LONG).show();
             }else {
-                IniciarGame();
-                /*
-                SafetyNet.getClient(this).verifyWithRecaptcha(SITE_KEY_CAPTCHA)
-                        .addOnSuccessListener((Executor) this,
-                                new OnSuccessListener<SafetyNetApi.RecaptchaTokenResponse>() {
-
-                                    public void onSuccess(SafetyNetApi.RecaptchaTokenResponse response) {
-                                        // Indicates communication with reCAPTCHA service was
-                                        // successful.
-                                        String userResponseToken = response.getTokenResult();
-                                        if (!userResponseToken.isEmpty()) {
-                                            // Validate the user response token using the
-                                            // reCAPTCHA siteverify API.
-                                        }
-                                    }
-                                })
-                        .addOnFailureListener((Executor) this, new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                if (e instanceof ApiException) {
-                                    // An error occurred when communicating with the
-                                    // reCAPTCHA service. Refer to the status code to
-                                    // handle the error appropriately.
-                                    ApiException apiException = (ApiException) e;
-                                    int statusCode = apiException.getStatusCode();
-
-                                } else {
-                                    // A different, unknown type of error occurred.
-
-                                }
-                            }
-                        });*/
+                try {
+                    ValueUser = Integer.parseInt(edtCaptcha.getText().toString());
+                    if (sUsername.matches("")){
+                        Toast.makeText(getApplicationContext(), "Ingrese un Nombre de usuario", Toast.LENGTH_LONG).show();
+                    }else if(ValueUser != (iNum1 + iNum2)){
+                        Toast.makeText(getApplicationContext(), "Suma de verificacion erronea", Toast.LENGTH_LONG).show();
+                    }else{
+                        IniciarGame();
+                    }
+                }
+                catch (NumberFormatException nfe){
+                    Toast.makeText(getApplicationContext(), "Ingrese solamente numeros", Toast.LENGTH_LONG).show();
+                }
             }
-
         }
 
         public void IniciarGame() {
@@ -89,4 +77,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(NewActivity);
         }
     };
+    public void Random(){
+        TextView txtCaptcha = (TextView) findViewById(R.id.txtCaptcha);
+        txtCaptcha.setText("Ingrese la suma de " + iNum1 + " + " + iNum2);
+    }
 }

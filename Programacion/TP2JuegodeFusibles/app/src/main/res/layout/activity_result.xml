@@ -6,4 +6,146 @@
     android:layout_height="match_parent"
     tools:context=".ResultActivity">
 
+    <TableLayout
+        android:id="@+id/tblyTable"
+        android:layout_width="402dp"
+        android:layout_height="716dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <Button
+                android:id="@+id/btn00"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fusible_rojo"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <Button
+                android:id="@+id/btn01"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fusible_rojo"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <Button
+                android:id="@+id/btn02"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fusible_rojo"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn03"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fusible_rojo"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <Button
+                android:id="@+id/btn04"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fusible_rojo"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <Button
+                android:id="@+id/btn05"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fusible_rojo"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <Button
+                android:id="@+id/btn06"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fusible_rojo"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <Button
+                android:id="@+id/btn07"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fusible_rojo"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+            <Button
+                android:id="@+id/btn08"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fusible_rojo"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="98dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                app:srcCompat="@color/colorAccent"
+                tools:layout_editor_absoluteX="9dp"
+                tools:layout_editor_absoluteY="501dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingLeft="0dp"
+                android:text="Back" />
+
+            <Button
+                android:id="@+id/btnGame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Game" />
+
+            <Button
+                android:id="@+id/btnFoward"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@android:string/autofill"
+                tools:text="Foward" />
+        </TableRow>
+
+    </TableLayout>
+
 </android.support.constraint.ConstraintLayout>
