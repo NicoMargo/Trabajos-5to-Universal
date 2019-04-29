@@ -11,6 +11,7 @@ import android.webkit.ConsoleMessage;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.widget.ToggleButton;
 
 import java.security.KeyStore;
 import java.util.ArrayList;
@@ -23,14 +24,15 @@ import java.util.logging.ConsoleHandler;
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static Timer timer = new Timer();
-    private static int iSeconds = 0;
+    private static int iMilisecs = 0;
+    public boolean bAutoModeOn = false;
     private Boton Buttons[][];
     private int iCantMoves = 0;
     public int getCantMoves(){
         return iCantMoves;
     }
-    private final int iCantButtonsX = 3;
-    private final int iCantButtonsY = 3;
+    private static final int iCantButtonsX = 3;
+    private static final int iCantButtonsY = 3;
     private Button btnBot;
     private Button btnRandom;
     private Button btnMenu;
@@ -111,6 +113,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             Buttons[iX][iY + 1].changeActivo();
         }
         if(WinGame()){
+            bAutoModeOn = false;
             IniciarSegundaActividad(true);
         }
     }//Fin de funcion ToggleButton
@@ -170,27 +173,37 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private View.OnClickListener btnBot_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            MyTimer();
+            if(!bAutoModeOn) {
+                MyTimer();
+                bAutoModeOn = true;
+                btnBot.setText("Auto Off");
+            }
+            else{
+                bAutoModeOn = false;
+                btnBot.setText("Auto On");
+            }
         }
     };//Fin de la funcion onClickListener de btnBOt
 
-    public static void MyTimer() {
+    public void MyTimer() {
 
         TimerTask task;
 
         task = new TimerTask() {
             @Override
             public void run() {
-                Log.d("xd","Seconds = " + iSeconds);
-                iSeconds++;
-                 if(false) {
+                if(bAutoModeOn) {
+                    Random GeneradorRandom = new Random();
+                    ToggleButton(GeneradorRandom.nextInt(iCantButtonsX * iCantButtonsY));
+                }
+                else {
                     // stop the timer
                     cancel();
                 }
             }
 
         };
-        timer.schedule(task, 0, 4);
+        timer.schedule(task, 0,500);
     }
 
     private View.OnClickListener btnRandom_Click = new View.OnClickListener() {
