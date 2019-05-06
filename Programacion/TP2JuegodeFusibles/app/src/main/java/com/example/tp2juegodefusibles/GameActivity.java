@@ -11,24 +11,37 @@ import android.webkit.ConsoleMessage;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.widget.ToggleButton;
 
 import java.security.KeyStore;
+import java.util.ArrayList;
 import java.util.Random;
 import java.io.Console;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.ConsoleHandler;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public final String PARAMETERVICTORY = "com.example.tp2juegodefusibles.GameActivity.bVictoria";
+    public final String PARAMETERHISTORIAL = "com.example.tp2juegodefusibles.GameActivity.HistoryMoves";
+    public final String PARAMETERSCREEN = "com.example.tp2juegodefusibles.GameActivity.LastScreen";
+    private static Timer timer = new Timer();
+    private static int iMilisecs = 0;
+    public boolean bAutoModeOn = false;
     private Boton Buttons[][];
     private int iCantMoves = 0;
     public int getCantMoves(){
         return iCantMoves;
     }
-    private final int iCantButtonsX = 3;
-    private final int iCantButtonsY = 3;
+    private static final int iCantButtonsX = 3;
+    private static final int iCantButtonsY = 3;
     private Button btnBot;
     private Button btnRandom;
     private Button btnMenu;
+    private ArrayList<Integer> HistoryMoves = new ArrayList<Integer>();
+    private ArrayList<Integer> LastScreen = new ArrayList<Integer>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +54,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Buttons = new Boton[iCantButtonsX][iCantButtonsY];
 
         Log.d("xd","xd");
-        getReferences();
-        SetearListeners();
+        GetReferences();
+        SetListeners();
 
     }
 
-    private void getReferences(){
+    //Funcion que obtiene las referencias de los elementos del design
+    private void GetReferences(){
         Buttons[0][0] = new Boton((Button)findViewById(R.id.btn00),false);
         Buttons[0][1] = new Boton((Button)findViewById(R.id.btn01),false);
         Buttons[0][2] = new Boton((Button)findViewById(R.id.btn02),false);
@@ -63,7 +77,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         btnMenu = (Button)findViewById(R.id.btnMenu);;
     }
 
-    private void SetearListeners() {
+    private void SetListeners() {
         for(int i = 0; i<iCantButtonsX;i++){
             for(int j = 0; j<iCantButtonsY;j++){
                 Button btnButton = Buttons[i][j].getButton();
@@ -77,12 +91,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         btnRandom.setOnClickListener(btnRandom_Click);
         btnMenu.setOnClickListener(btnMenu_Click);
 
-    }
+    }//Fin de funcionSetListeners
 
     @Override
     public void onClick(View v) {
 
         int iButtonPos = SearchButtonPos(v.getId());
+        ToggleButton(iButtonPos);
+    }//Fin de la funcion onClickListener
+
+    public void ToggleButton(int iButtonPos){//Funcion que se llama cuando se hace la accion de interactuar con un boton
+        HistoryMoves.add(iButtonPos);
         int iX = iButtonPos / iCantButtonsX;
         int iY = iButtonPos % iCantButtonsX;
         Buttons[iX][iY].changeActivo();
@@ -99,9 +118,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             Buttons[iX][iY + 1].changeActivo();
         }
         if(WinGame()){
+            bAutoModeOn = false;
             IniciarSegundaActividad(true);
         }
-    }//Fin de la funcion onClickListener
+    }//Fin de funcion ToggleButton
+
     //Funcion que devuelve que boton se toco dada una id
     public int SearchButtonPos(int id){
         int i = 0;
@@ -119,21 +140,33 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
         int iNmberOfButton = i * iCantButtonsX + j;
         return iNmberOfButton;
-    }
+    }//Fin de funcion SearchButtonPos
+
     //Fucion una mandar a una nueva activity
-    private void IniciarSegundaActividad(boolean bVictoria){
+    private void IniciarSegundaActividad(boolean bVictory){
         Intent nuevaActividad = new Intent(GameActivity.this, ResultActivity.class);
+
+        for(int i = 0; i<iCantButtonsX;i++){
+            for(int j = 0; j<iCantButtonsY;j++){
+                if(Buttons[i][j].getActivo()) {
+                    LastScreen.add(1);
+                }
+                else{
+                    LastScreen.add(0);
+                }
+            }
+        }
         //Pasar parametros xd
         Bundle datos = new Bundle();
-        if(bVictoria){
 
-        }
-        else{
+        datos.putIntegerArrayList(PARAMETERHISTORIAL, HistoryMoves);
+        datos.putBoolean(PARAMETERVICTORY,bVictory);
+        datos.putIntegerArrayList(PARAMETERSCREEN,LastScreen);
 
-        }
         nuevaActividad.putExtras(datos);
         startActivity(nuevaActividad);
-    }
+    }//Fin de Funcon IniciarSegundaActividad
+
     //Funcion que devuelve un bool, true si el jugador gano(tiene todos los botones verdes), o false si no gano
     private boolean WinGame(){
         boolean bWin = true;
@@ -150,26 +183,55 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             if(bWin) i++;
         }
         return bWin;
-    }
+    }//Fin de funcion WinGame
 
     private View.OnClickListener btnBot_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            if(!bAutoModeOn) {
+                MyTimer();
+                bAutoModeOn = true;
+                btnBot.setText("Auto Off");
+            }
+            else{
+                bAutoModeOn = false;
+                btnBot.setText("Auto On");
+            }
         }
-    };//Fin de la funcion onClickListener
+    };//Fin de la funcion onClickListener de btnBOt
+
+    public void MyTimer() {
+
+        TimerTask task;
+
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                if(bAutoModeOn) {
+                    Random GeneradorRandom = new Random();
+                    ToggleButton(GeneradorRandom.nextInt(iCantButtonsX * iCantButtonsY));
+                }
+                else {
+                    // stop the timer
+                    cancel();
+                }
+            }
+
+        };
+        timer.schedule(task, 0,500);
+    }
 
     private View.OnClickListener btnRandom_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
         }
-    };//Fin de la funcion onClickListener
+    };//Fin de la funcion onClickListener de btnRandom
 
     private View.OnClickListener btnMenu_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             IniciarSegundaActividad(false);
         }
-    };//Fin de la funcion onClickListener
+    };//Fin de la funcion onClickListener de BtnMenu
 }
