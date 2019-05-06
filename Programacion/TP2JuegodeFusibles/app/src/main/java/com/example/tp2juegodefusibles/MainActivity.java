@@ -29,25 +29,38 @@ public class MainActivity extends AppCompatActivity {
     Random RandomNum = new Random();
     public int iNum1 = RandomNum.nextInt(9);
     public int iNum2 = RandomNum.nextInt(9);
+    private EditText edtUser;
+    private Button btnStart;
+    private EditText edtCaptcha;
+    private  TextView txtCaptcha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getReferences();
         Random();
-        Button btnStart = (Button) findViewById(R.id.btnStart);
         btnStart.setOnClickListener(btnStart_Click);
+
     }
+    private void getReferences(){
+        btnStart = (Button) findViewById(R.id.btnStart);
+        edtUser = (EditText) findViewById(R.id.edtUser);
+        edtCaptcha = (EditText) findViewById(R.id.edtCaptcha);
+        edtUser = (EditText) findViewById(R.id.edtUser);
+        txtCaptcha = (TextView) findViewById(R.id.txtCaptcha);
+    }
+
+
 
     private View.OnClickListener btnStart_Click = new View.OnClickListener() {
 
         public void onClick(View v) {
-            EditText edtUser = (EditText) findViewById(R.id.edtUser);
-            EditText edtCaptcha = (EditText) findViewById(R.id.edtCaptcha);
+
             String sUsername = edtUser.getText().toString();
             int ValueUser;
-            Log.d("1","1");
+
             if (edtCaptcha.getText().toString().isEmpty()){
                 Toast.makeText(getApplicationContext(), "Ingrese el resultado de la suma", Toast.LENGTH_LONG).show();
             }else {
@@ -69,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         public void IniciarGame() {
 
-            EditText edtUser = (EditText) findViewById(R.id.edtUser);
+
             Intent NewActivity = new Intent(MainActivity.this, GameActivity.class);
             Bundle datos = new Bundle();
             datos.putString(MainActivity.PAREMETER1, edtUser.getText().toString());
@@ -78,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     public void Random(){
-        TextView txtCaptcha = (TextView) findViewById(R.id.txtCaptcha);
+
         txtCaptcha.setText("Ingrese la suma de " + iNum1 + " + " + iNum2);
     }
 }
