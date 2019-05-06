@@ -23,6 +23,9 @@ import java.util.logging.ConsoleHandler;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public final String PARAMETERVICTORY = "com.example.tp2juegodefusibles.GameActivity.bVictoria";
+    public final String PARAMETERHISTORIAL = "com.example.tp2juegodefusibles.GameActivity.HistoryMoves";
+    public final String PARAMETERSCREEN = "com.example.tp2juegodefusibles.GameActivity.LastScreen";
     private static Timer timer = new Timer();
     private static int iMilisecs = 0;
     public boolean bAutoModeOn = false;
@@ -37,6 +40,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnRandom;
     private Button btnMenu;
     private ArrayList<Integer> HistoryMoves = new ArrayList<Integer>();
+    private ArrayList<Integer> LastScreen = new ArrayList<Integer>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,16 +143,26 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }//Fin de funcion SearchButtonPos
 
     //Fucion una mandar a una nueva activity
-    private void IniciarSegundaActividad(boolean bVictoria){
+    private void IniciarSegundaActividad(boolean bVictory){
         Intent nuevaActividad = new Intent(GameActivity.this, ResultActivity.class);
+
+        for(int i = 0; i<iCantButtonsX;i++){
+            for(int j = 0; j<iCantButtonsY;j++){
+                if(Buttons[i][j].getActivo()) {
+                    LastScreen.add(1);
+                }
+                else{
+                    LastScreen.add(0);
+                }
+            }
+        }
         //Pasar parametros xd
         Bundle datos = new Bundle();
-        if(bVictoria){
 
-        }
-        else{
+        datos.putIntegerArrayList(PARAMETERHISTORIAL, HistoryMoves);
+        datos.putBoolean(PARAMETERVICTORY,bVictory);
+        datos.putIntegerArrayList(PARAMETERSCREEN,LastScreen);
 
-        }
         nuevaActividad.putExtras(datos);
         startActivity(nuevaActividad);
     }//Fin de Funcon IniciarSegundaActividad
