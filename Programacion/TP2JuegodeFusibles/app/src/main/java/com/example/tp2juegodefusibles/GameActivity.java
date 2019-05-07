@@ -95,7 +95,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-
+        if(bAutoModeOn){
+            bAutoModeOn = false;
+            btnBot.setText("Auto On");
+        }
         int iButtonPos = SearchButtonPos(v.getId());
         ToggleButton(iButtonPos);
     }//Fin de la funcion onClickListener
@@ -118,7 +121,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             Buttons[iX][iY + 1].changeActivo();
         }
         if(WinGame()){
-            bAutoModeOn = false;
+            if(bAutoModeOn){
+                bAutoModeOn = false;
+                btnBot.setText("Auto On");
+            }
             IniciarSegundaActividad(true);
         }
     }//Fin de funcion ToggleButton
@@ -224,13 +230,28 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private View.OnClickListener btnRandom_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            if(bAutoModeOn){
+                bAutoModeOn = false;
+                btnBot.setText("Auto On");
+            }
+            for(int i = 0; i<iCantButtonsX; i++){
+                for(int j = 0; j<iCantButtonsY; j++){
+                    Buttons[i][j].setActivo(false);
+                }
+            }
+            Random GeneradorRandom = new Random();
+            Buttons[GeneradorRandom.nextInt(iCantButtonsX-0)][GeneradorRandom.nextInt(iCantButtonsY-0)].setActivo(true);
+            HistoryMoves.clear();
         }
     };//Fin de la funcion onClickListener de btnRandom
 
     private View.OnClickListener btnMenu_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if(bAutoModeOn){
+                bAutoModeOn = false;
+                btnBot.setText("Auto On");
+            }
             IniciarSegundaActividad(false);
         }
     };//Fin de la funcion onClickListener de BtnMenu
