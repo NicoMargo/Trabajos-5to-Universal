@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,21 +19,33 @@ public class ResultActivity extends AppCompatActivity {
     private Button btnGame;
     private final int iCantButtonsX = 3;
     private final int iCantButtonsY = 3;
-    private ArrayList<Integer> MOVES;
+    private ArrayList<Integer> Moves;
     private ArrayList<Integer> EstadoActual;
     private int i = 0;
+    private boolean bVictoria;
+    private int Cant = Moves.size();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("xd","hasta aca funca");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
         Intent elIntent = getIntent();
         Bundle datos = elIntent.getExtras();
-        MOVES = datos.getIntegerArrayList (MainActivity.PAREMETER1);
-        EstadoActual = datos.getIntegerArrayList(MainActivity.PAREMETER2);
+
+       /* Moves = datos.getIntegerArrayList (GameActivity.PARAMETERHISTORIAL);
+        bVictoria = datos.getBoolean(GameActivity.PARAMETERVICTORY);
+        EstadoActual = datos.getIntegerArrayList (GameActivity.PARAMETERSCREEN);*/
+
         Buttons = new Boton[iCantButtonsX][iCantButtonsY];
+
         getReferences();
+
         SetearListeners();
+        Log.d("xd","hasta aca tambien");
+       /* if (bVictoria){
+            Toast.makeText(getApplicationContext(), "Muy bien, Ganaste", Toast.LENGTH_LONG).show();
+        }*/
     }
 
     private void getReferences(){
@@ -58,16 +71,14 @@ public class ResultActivity extends AppCompatActivity {
                 btnButton.getLayoutParams().height =  btnButton.getLayoutParams().width;
             }
         }
-
-        for (int y = 0; y <= iCantButtonsY  ; y++){
+        /*for (int y = 0; y <= iCantButtonsY  ; y++){
             for (int x = 0; x <= iCantButtonsX; x++){
-                if (EstadoActual.get(i) == 1){
-                    Buttons[x][y].changeActivo();
+                /*if (EstadoActual.get(i) == 1){
+                    Buttons[x][y].setActivo(true);
                 }
                 i++;
             }
-        }
-
+        }*/
         btnBack.setOnClickListener(btnBack_Click);
         btnFoward.setOnClickListener(btnFoward_Click);
         btnGame.setOnClickListener(btnGame_Click);
@@ -75,14 +86,48 @@ public class ResultActivity extends AppCompatActivity {
     private View.OnClickListener btnBack_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            int Button = Moves.get(Cant);
+            int iX = Button / iCantButtonsX;
+            int iY = Button % iCantButtonsX;
+            Buttons[iX][iY].changeActivo();
+            if (iX > 0) {
+                Buttons[iX - 1][iY].changeActivo();
+            }
+            if (iY > 0) {
+                Buttons[iX][iY - 1].changeActivo();
+            }
+            if (iX < iCantButtonsX - 1 && iCantButtonsX - 1 != 0) {
+                Buttons[iX + 1][iY].changeActivo();
+            }
+            if (iY < iCantButtonsY - 1 && iCantButtonsY - 1 != 0) {
+                Buttons[iX][iY + 1].changeActivo();
+            }
+            Cant--;
         }
     };//Fin de la funcion onClickListener
 
     private View.OnClickListener btnFoward_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            if (Cant != Moves.size()){
+                int Button = Moves.get(Cant);
+                int iX = Button / iCantButtonsX;
+                int iY = Button % iCantButtonsX;
+                Buttons[iX][iY].changeActivo();
+                if (iX > 0) {
+                    Buttons[iX - 1][iY].changeActivo();
+                }
+                if (iY > 0) {
+                    Buttons[iX][iY - 1].changeActivo();
+                }
+                if (iX < iCantButtonsX - 1 && iCantButtonsX - 1 != 0) {
+                    Buttons[iX + 1][iY].changeActivo();
+                }
+                if (iY < iCantButtonsY - 1 && iCantButtonsY - 1 != 0) {
+                    Buttons[iX][iY + 1].changeActivo();
+                }
+                Cant++;
+            }
         }
     };//Fin de la funcion onClickListener
 
