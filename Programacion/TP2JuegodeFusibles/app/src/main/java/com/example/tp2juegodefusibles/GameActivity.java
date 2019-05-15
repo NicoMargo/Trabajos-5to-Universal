@@ -23,9 +23,9 @@ import java.util.logging.ConsoleHandler;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public final String PARAMETERVICTORY = "com.example.tp2juegodefusibles.GameActivity.bVictoria";
-    public final String PARAMETERHISTORIAL = "com.example.tp2juegodefusibles.GameActivity.HistoryMoves";
-    public final String PARAMETERSCREEN = "com.example.tp2juegodefusibles.GameActivity.LastScreen";
+    public static final String PARAMETERVICTORY = "com.example.tp2juegodefusibles.GameActivity.bVictoria";
+    public static final String PARAMETERHISTORIAL = "com.example.tp2juegodefusibles.GameActivity.HistoryMoves";
+    public static final String PARAMETERSCREEN = "com.example.tp2juegodefusibles.GameActivity.LastScreen";
     private static Timer timer = new Timer();
     private static int iMilisecs = 0;
     public boolean bAutoModeOn = false;
