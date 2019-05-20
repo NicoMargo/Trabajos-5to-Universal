@@ -28,12 +28,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public static final String PARAMETERSCREEN = "com.example.tp2juegodefusibles.GameActivity.LastScreen";
     private static Timer timer = new Timer();
     private static int iMilisecs = 0;
-    public boolean bAutoModeOn = false;
+    private boolean bAutoModeOn = false;
     private Boton Buttons[][];
     private int iCantMoves = 0;
-    public int getCantMoves(){
-        return iCantMoves;
-    }
     private static final int iCantButtonsX = 3;
     private static final int iCantButtonsY = 3;
     private Button btnBot;
@@ -53,7 +50,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         Buttons = new Boton[iCantButtonsX][iCantButtonsY];
 
-        Log.d("xd","xd");
         GetReferences();
         SetListeners();
 
@@ -61,6 +57,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     //Funcion que obtiene las referencias de los elementos del design
     private void GetReferences(){
+
         Buttons[0][0] = new Boton((Button)findViewById(R.id.btn00),false);
         Buttons[0][1] = new Boton((Button)findViewById(R.id.btn01),false);
         Buttons[0][2] = new Boton((Button)findViewById(R.id.btn02),false);
@@ -103,7 +100,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         ToggleButton(iButtonPos);
     }//Fin de la funcion onClickListener
 
-    public void ToggleButton(int iButtonPos){//Funcion que se llama cuando se hace la accion de interactuar con un boton
+    private void ToggleButton(int iButtonPos){//Funcion que se llama cuando se hace la accion de interactuar con un boton
         HistoryMoves.add(iButtonPos);
         int iX = iButtonPos / iCantButtonsX;
         int iY = iButtonPos % iCantButtonsX;
@@ -111,6 +108,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if (iX > 0) {
             Buttons[iX - 1][iY].changeActivo();
         }
+        Log.d("xd",""+iButtonPos);
         if (iY > 0) {
             Buttons[iX][iY - 1].changeActivo();
         }
@@ -130,7 +128,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }//Fin de funcion ToggleButton
 
     //Funcion que devuelve que boton se toco dada una id
-    public int SearchButtonPos(int id){
+    private int SearchButtonPos(int id){
         int i = 0;
         int j = 0;
         boolean bFound = false;
@@ -152,6 +150,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private void IniciarSegundaActividad(boolean bVictory){
         Intent nuevaActividad = new Intent(GameActivity.this, ResultActivity.class);
 
+        LastScreen.clear();
         for(int i = 0; i<iCantButtonsX;i++){
             for(int j = 0; j<iCantButtonsY;j++){
                 if(Buttons[i][j].getActivo()) {
@@ -195,8 +194,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onClick(View v) {
             if(!bAutoModeOn) {
-                MyTimer();
                 bAutoModeOn = true;
+                MyTimer();
                 btnBot.setText("Auto Off");
             }
             else{

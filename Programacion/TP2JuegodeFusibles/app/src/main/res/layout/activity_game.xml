@@ -6,145 +6,150 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
-    <TableLayout
-        android:id="@+id/tblyTable"
-        android:layout_width="402dp"
-        android:layout_height="716dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="0dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="100dp">
-
-            <Button
-                android:id="@+id/btn00"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fusible_rojo"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="98dp" />
-
-            <Button
-                android:id="@+id/btn01"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fusible_rojo"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="98dp" />
-
-            <Button
-                android:id="@+id/btn02"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fusible_rojo"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="98dp" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
+        <TableLayout
+            android:id="@+id/tblyTable"
+            android:layout_width="402dp"
             android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btn03"
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fusible_rojo"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="98dp" />
+                android:layout_height="100dp">
 
-            <Button
-                android:id="@+id/btn04"
+                <Button
+                    android:id="@+id/btn00"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/fusible_rojo"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="98dp" />
+
+                <Button
+                    android:id="@+id/btn01"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/fusible_rojo"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="98dp" />
+
+                <Button
+                    android:id="@+id/btn02"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/fusible_rojo"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="98dp" />
+
+            </TableRow>
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fusible_rojo"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="98dp" />
+                android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btn05"
+                <Button
+                    android:id="@+id/btn03"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/fusible_rojo"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="98dp" />
+
+                <Button
+                    android:id="@+id/btn04"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/fusible_rojo"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="98dp" />
+
+                <Button
+                    android:id="@+id/btn05"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/fusible_rojo"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="98dp" />
+            </TableRow>
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fusible_rojo"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="98dp" />
-        </TableRow>
+                android:layout_height="100dp">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="100dp">
+                <Button
+                    android:id="@+id/btn06"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/fusible_rojo"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="98dp" />
 
-            <Button
-                android:id="@+id/btn06"
+                <Button
+                    android:id="@+id/btn07"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/fusible_rojo"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="98dp" />
+
+                <Button
+                    android:id="@+id/btn08"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/fusible_rojo"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="98dp" />
+
+            </TableRow>
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fusible_rojo"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="98dp" />
+                android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btn07"
+            </TableRow>
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fusible_rojo"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="98dp" />
+                android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btn08"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fusible_rojo"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="98dp" />
+                <Button
+                    android:id="@+id/btnRandom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:paddingLeft="0dp"
+                    android:text="Random" />
 
-        </TableRow>
+                <Button
+                    android:id="@+id/btnMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Menu" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/btnBot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:text="Auto On" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="83dp"
-                app:srcCompat="@color/colorAccent"
-                tools:layout_editor_absoluteX="9dp"
-                tools:layout_editor_absoluteY="501dp" />
-        </TableRow>
+            </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        </TableLayout>
 
-            <Button
-                android:id="@+id/btnRandom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:paddingLeft="0dp"
-                android:text="Random" />
-
-            <Button
-                android:id="@+id/btnMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Menu" />
-
-            <Button
-                android:id="@+id/btnBot"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:text="Auto On" />
-        </TableRow>
-
-    </TableLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Debes lograr que todos los botones queden en verde!"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

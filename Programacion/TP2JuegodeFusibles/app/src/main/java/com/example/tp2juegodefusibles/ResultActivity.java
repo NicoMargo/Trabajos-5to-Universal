@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 
@@ -20,32 +21,33 @@ public class ResultActivity extends AppCompatActivity {
     private final int iCantButtonsX = 3;
     private final int iCantButtonsY = 3;
     private ArrayList<Integer> Moves;
-    private ArrayList<Integer> EstadoActual;
-    private int i = 0;
-    private boolean bVictoria;
-    private int Cant = Moves.size();
+    private ArrayList<Integer> LastScreen;
+    private static int iCurrentMove;
+    private boolean bVictory;
+    private int iCantMoves;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("xd","hasta aca funca");
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_result);
 
         Intent elIntent = getIntent();
         Bundle datos = elIntent.getExtras();
 
-       /* Moves = datos.getIntegerArrayList (GameActivity.PARAMETERHISTORIAL);
-        bVictoria = datos.getBoolean(GameActivity.PARAMETERVICTORY);
-        EstadoActual = datos.getIntegerArrayList (GameActivity.PARAMETERSCREEN);*/
-
+        Moves = datos.getIntegerArrayList (GameActivity.PARAMETERHISTORIAL);
+        bVictory = datos.getBoolean(GameActivity.PARAMETERVICTORY);
+        LastScreen = datos.getIntegerArrayList (GameActivity.PARAMETERSCREEN);
+        iCantMoves = Moves.size();
+        iCurrentMove = iCantMoves;
         Buttons = new Boton[iCantButtonsX][iCantButtonsY];
-
         getReferences();
-
         SetearListeners();
-        Log.d("xd","hasta aca tambien");
-       /* if (bVictoria){
+
+        if (bVictory){
             Toast.makeText(getApplicationContext(), "Muy bien, Ganaste", Toast.LENGTH_LONG).show();
-        }*/
+        }
+
     }
 
     private void getReferences(){
@@ -71,62 +73,58 @@ public class ResultActivity extends AppCompatActivity {
                 btnButton.getLayoutParams().height =  btnButton.getLayoutParams().width;
             }
         }
-        /*for (int y = 0; y <= iCantButtonsY  ; y++){
-            for (int x = 0; x <= iCantButtonsX; x++){
-                /*if (EstadoActual.get(i) == 1){
-                    Buttons[x][y].setActivo(true);
+        for (int i = 0; i < iCantButtonsY  ; i++){
+            for (int j = 0; j < iCantButtonsX; j++){
+                if (LastScreen.get(i*iCantButtonsX+j) == 1){
+                    Buttons[i][j].setActivo(true);
                 }
-                i++;
             }
-        }*/
+        }
         btnBack.setOnClickListener(btnBack_Click);
         btnFoward.setOnClickListener(btnFoward_Click);
         btnGame.setOnClickListener(btnGame_Click);
     }
+    void ToggledButton(int iButtonPos){
+        int iX = iButtonPos / iCantButtonsX;
+        int iY = iButtonPos % iCantButtonsX;
+        Buttons[iX][iY].changeActivo();
+        if (iX > 0) {
+            Buttons[iX - 1][iY].changeActivo();
+        }
+        if (iY > 0) {
+            Buttons[iX][iY - 1].changeActivo();
+        }
+        if (iX < iCantButtonsX - 1 && iCantButtonsX - 1 != 0) {
+            Buttons[iX + 1][iY].changeActivo();
+        }
+        if (iY < iCantButtonsY - 1 && iCantButtonsY - 1 != 0) {
+            Buttons[iX][iY + 1].changeActivo();
+        }
+    }
+
     private View.OnClickListener btnBack_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            int Button = Moves.get(Cant);
-            int iX = Button / iCantButtonsX;
-            int iY = Button % iCantButtonsX;
-            Buttons[iX][iY].changeActivo();
-            if (iX > 0) {
-                Buttons[iX - 1][iY].changeActivo();
+            if(iCurrentMove>0) {
+               iCurrentMove--;
+               ToggledButton(Moves.get(iCurrentMove));
             }
-            if (iY > 0) {
-                Buttons[iX][iY - 1].changeActivo();
+            else{
+                Toast.makeText(getApplicationContext(), "Ya llegaste a la primera jugada, no se puede retroceder más", Toast.LENGTH_SHORT).show();
             }
-            if (iX < iCantButtonsX - 1 && iCantButtonsX - 1 != 0) {
-                Buttons[iX + 1][iY].changeActivo();
-            }
-            if (iY < iCantButtonsY - 1 && iCantButtonsY - 1 != 0) {
-                Buttons[iX][iY + 1].changeActivo();
-            }
-            Cant--;
         }
     };//Fin de la funcion onClickListener
 
     private View.OnClickListener btnFoward_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (Cant != Moves.size()){
-                int Button = Moves.get(Cant);
-                int iX = Button / iCantButtonsX;
-                int iY = Button % iCantButtonsX;
-                Buttons[iX][iY].changeActivo();
-                if (iX > 0) {
-                    Buttons[iX - 1][iY].changeActivo();
-                }
-                if (iY > 0) {
-                    Buttons[iX][iY - 1].changeActivo();
-                }
-                if (iX < iCantButtonsX - 1 && iCantButtonsX - 1 != 0) {
-                    Buttons[iX + 1][iY].changeActivo();
-                }
-                if (iY < iCantButtonsY - 1 && iCantButtonsY - 1 != 0) {
-                    Buttons[iX][iY + 1].changeActivo();
-                }
-                Cant++;
+            if (iCurrentMove < Moves.size()){
+                ToggledButton(Moves.get(iCurrentMove));
+                iCurrentMove++;
+                Log.d("xd",iCurrentMove+"");
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "Ya llegaste a la última jugada, no se puede adelantar más", Toast.LENGTH_SHORT).show();
             }
         }
     };//Fin de la funcion onClickListener
