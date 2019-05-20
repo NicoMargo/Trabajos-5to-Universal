@@ -190,6 +190,35 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         return bWin;
     }//Fin de funcion WinGame
 
+    //Funcion que devuelve true cuando todos sus botones estan en el mismo estado. Esta funcion no esta en uso.
+    private boolean WinGameAlternative(){
+        boolean bWin = true;
+        int i = 0;
+        int j = 1;
+        if(Buttons[i][j-1].getActivo()!=Buttons[i][j].getActivo()){ bWin = false;}
+        j++;
+        while( bWin && i<iCantButtonsX){
+            while(bWin && j<iCantButtonsY){
+                if(j > 0 ) {
+                    if (Buttons[i][j-1].getActivo() != Buttons[i][j].getActivo()) {
+                        bWin = false;
+                    } else j++;
+                }
+                else if(j==0){
+                    if (Buttons[i-1][iCantButtonsY-1].getActivo() != Buttons[i][j].getActivo()) {
+                        bWin = false;
+                    } else j++;
+                }
+            }
+            if(bWin){
+                i++;
+                j = 0;
+            }
+
+        }
+        return bWin;
+    }//Fin de funcion WinGame
+
     private View.OnClickListener btnBot_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
