@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         getReferences();
         Random();
         btnStart.setOnClickListener(btnStart_Click);
-
     }
     private void getReferences(){
         btnStart = (Button) findViewById(R.id.btnStart);
@@ -80,16 +79,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        public void IniciarGame() {
-
-
-            Intent NewActivity = new Intent(MainActivity.this, GameActivity.class);
-            Bundle datos = new Bundle();
-            datos.putString(MainActivity.PAREMETER1, edtUser.getText().toString());
-            NewActivity.putExtras(datos);
-            startActivity(NewActivity);
-        }
     };
+	public void IniciarGame() {
+
+
+		Intent NewActivity = new Intent(MainActivity.this, GameActivity.class);
+		Bundle datos = new Bundle();
+		datos.putString(MainActivity.PAREMETER1, edtUser.getText().toString());
+		NewActivity.putExtras(datos);
+		startActivity(NewActivity);
+	}
     public void Random(){
 
         txtCaptcha.setText("Ingrese la suma de " + iNum1 + " + " + iNum2);
