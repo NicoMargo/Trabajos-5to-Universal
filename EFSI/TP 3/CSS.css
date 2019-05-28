@@ -9,20 +9,21 @@ body{
 	display: inline-block;
 }
 .logo{
-
-	width: 6%;
+	width: 5rem;
 	display: inline-block;
 }
 .Encabezado{
 	background-color: yellow;
-	height: 15%;
-	display: inline-block;
+	/*display: inline-block;*/
 	width: 100%;
 	justify-content: center !important ;
 }
 .InputClass{
 	font-family: verdana;
 	color: red;
+}
+.remHotSale{
+	height: 3rem;
 }
 h2{
 	margin-top: 20px;
