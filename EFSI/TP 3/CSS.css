@@ -14,7 +14,7 @@ body{
 }
 .Encabezado{
 	background-color: yellow;
-	/*display: inline-block;*/
+	display: inline-block;
 	width: 100%;
 	justify-content: center !important ;
 }
