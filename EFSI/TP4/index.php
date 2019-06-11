@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -59,18 +59,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
-        function validate(id, len = 1) {
-        var State = false;
-        if ($("#"+id).val().length < len) {
+        function validateNumber(id){    
+          let stateNumber = false;      
+          if(($("#"+id).val() < 0) || ($("#"+id).val().length < 1)){
             $("#"+id).css("border-color", "#FF0000");
             $("#error"+id ).removeClass("text-muted");
             $("#error"+id ).css("color", "red");
+            } else {
+              $("#"+id).css("border-color", "#ced4da");
+              $("#error"+id ).addClass("text-muted");
+              stateNumber = true;
+            }   
+            return stateNumber;     
         }
-        else {
+
+        function validate(id) {
+          let State = false;
+        if ($("#"+id).val().length < 1) {
+            $("#"+id).css("border-color", "#FF0000");
+            $("#error"+id ).removeClass("text-muted");
+            $("#error"+id ).css("color", "red");
+        }else {
             $("#"+id).css("border-color", "#ced4da");
             $("#error"+id ).addClass("text-muted");
             State = true;
-        }
+        }       
         return State;
         }
         $(document).ready(function() {
@@ -78,9 +91,9 @@
                 e.preventDefault();
                 var bool = validate("Name");
                 bool = bool & validate("surname");
-                bool = bool & validate("age");
+                bool = bool & validateNumber("age");
                 bool = bool & validate("school");
-                bool = bool & validate("quant");
+                bool = bool & validateNumber("quant");
                 if(bool){
                 $("#flechaForm").submit();
                 }

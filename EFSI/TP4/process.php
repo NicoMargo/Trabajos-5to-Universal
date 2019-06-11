@@ -11,14 +11,6 @@
     <title>Hello, world!</title>
   </head>
   <body>
-
-
-
-
-
-
-
-  
   <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
