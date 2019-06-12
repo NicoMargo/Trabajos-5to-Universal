@@ -1,0 +1,5 @@
+-La tarjeta tiene que tener 16 o mas digitos
+-Contraseña 8 o mas
+-cod de seguridad 3 o mas
+-La fiesta de colores es pq es succcess
+-Si es error se cancela la fiesta de colores y sale un alert

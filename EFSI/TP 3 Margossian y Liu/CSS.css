@@ -1,0 +1,51 @@
+body{
+	background-color: #E5E5E5;
+}
+.Search{
+	
+	height: 40%;
+	width: 15%;
+	margin-top:1.8%;
+	display: inline-block;
+}
+.logo{
+	width: 27%;
+}
+.Encabezado{
+	background-color: yellow;
+	width: 100%;
+	justify-content: center !important ;
+}
+.InputClass{
+	font-family: verdana;
+	color: red;
+}
+.remHotSale{
+	height: 3rem;
+}
+h2{
+	margin-top: 20px;
+	margin: auto;
+	width: 50%;
+	font-family: "Verdana";
+	text-align: center;
+	padding: 100px,0,;
+}
+
+h3{
+	margin: auto;
+	width: 70%;
+	font-family: "Verdana";
+	text-align: center;
+	padding: 10px;
+}
+#Femenino{
+	background-color : cyan;
+}
+input[type="radio"]{
+	width:10% !important;
+}
+.red{
+	color: red;
+}
+

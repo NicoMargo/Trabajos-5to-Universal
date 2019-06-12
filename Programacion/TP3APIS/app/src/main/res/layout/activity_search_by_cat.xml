@@ -30,6 +30,12 @@
             android:hint="Cantidad de resultados"
             android:inputType="number" />
 
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buscar" />
+
         <ListView
             android:id="@+id/ListCats"
             android:layout_width="match_parent"

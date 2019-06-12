@@ -36,13 +36,13 @@
                 android:id="@+id/btnPrevious"
                 android:layout_width="152dp"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="Previous" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnNext"
                 android:layout_width="152dp"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="Next" />
         </LinearLayout>
     </LinearLayout>
 

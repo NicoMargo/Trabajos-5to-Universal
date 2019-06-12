@@ -1,5 +1,6 @@
 package com.example.tp3apis;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getReferences();
+        setListeners();
     }
 
     void getReferences(){
@@ -31,26 +34,24 @@ public class MainActivity extends AppCompatActivity {
 
     View.OnClickListener btnByCat_Click = new View.OnClickListener(){
         public void onClick(View v){
-
+            StartNewActivity(SearchByCatActivity.class);
         }
     };
 
     View.OnClickListener btnByName_Click = new View.OnClickListener(){
         public void onClick(View v){
-
+           StartNewActivity(SearchByNameActivity.class);
         }
     };
 
     View.OnClickListener btnByGeo_Click = new View.OnClickListener(){
         public void onClick(View v){
-
+            StartNewActivity(SearchByGeoActivity.class);
         }
     };
 
-    void StartNewActivity(AppCompatActivity activity){
-        Intent newIntent = new Intent(MainActivity.this,activity.getClass());
-        Bundle data = new Bundle();
-        newIntent.putExtra(data);
-        StartNewActivity(newIntent);
+    void StartNewActivity( Class activityClass){
+        Intent newIntent = new Intent(MainActivity.this,activityClass);
+        startActivity(newIntent);
     }
 }
