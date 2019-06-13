@@ -65,26 +65,26 @@
             $("#"+id).css("border-color", "#FF0000");
             $("#error"+id ).removeClass("text-muted");
             $("#error"+id ).css("color", "red");
-            } else {
-              $("#"+id).css("border-color", "#ced4da");
-              $("#error"+id ).addClass("text-muted");
-              stateNumber = true;
-            }   
-            return stateNumber;     
+          } else {
+            $("#"+id).css("border-color", "#ced4da");
+            $("#error"+id ).addClass("text-muted");
+            stateNumber = true;
+          }   
+          return stateNumber;     
         }
 
         function validate(id) {
           let State = false;
-        if ($("#"+id).val().length < 1) {
-            $("#"+id).css("border-color", "#FF0000");
-            $("#error"+id ).removeClass("text-muted");
-            $("#error"+id ).css("color", "red");
-        }else {
-            $("#"+id).css("border-color", "#ced4da");
-            $("#error"+id ).addClass("text-muted");
-            State = true;
-        }       
-        return State;
+          if ($("#"+id).val().length < 1) {
+              $("#"+id).css("border-color", "#FF0000");
+              $("#error"+id ).removeClass("text-muted");
+              $("#error"+id ).css("color", "red");
+          }else {
+              $("#"+id).css("border-color", "#ced4da");
+              $("#error"+id ).addClass("text-muted");
+              State = true;
+          }       
+          return State;
         }
         $(document).ready(function() {
             $("#btnSubmit").click(function (e) {
