@@ -20,12 +20,21 @@
         $varDump = "var_dump muestra muestra el contenido de la variable, el tipo de dato y su longitud si es un String";
         $arrayDump = array("ejemplo con un array",true,array("Muestra todo su contenido","Grande Flecha","Sos un Idolo","Maestro de maestros"), "Y realiza var_dump con todos sus elementos");
         $posString;
-        
+      
+        echo '<input type="button" class="btn btn-primary ml-3" id="echo" value="Click echo"> <br>';
+        echo '<div id="0" style="display: none">';         
         echo "echo: Sirve para mostrar texto".$br; 
         echo "echo con variable: mostrar texto con una variable $variable";
+        echo ' </div>';
 
+
+        echo '<input type="button" class="btn btn-primary mt-3 ml-3" id="varDump" value="Var Dump"><br>';
+        echo '<div id="1" style="display: none">'; 
         var_dump($varDump);
-        var_dump($arrayDump);
+        var_dump($arrayDump);        
+        echo '</div>';
+       
+
 
         echo "strlen retorna la longitud de un string (si se ingresa un tipo de dato numerico lo convierte a string). Ejemplo con 'hola' : ".strlen("hola").$br;
 
@@ -61,14 +70,13 @@
         echo ".".ltrim("           ltrim devuelve un string resultado de otro string extrayendole los espacios del inicio (hasta encontrar otro caracter), y su segundo argumento puede indicar que espacios saca           ").".".$br;
         echo ".".rtrim("           rtrim devuelve un string resultado de otro string extrayendole los espacios del final (una vez no haya mas caracteres), y su segundo argumento puede indicar que espacios saca          ").".".$br.$br;
         echo "el header te cambia la pagina, un ejemplo de sintaxis es: header('Location: http://www.example.com/');";
-
-
     ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="MyScript.js"></script>
   </body>
 </html>
