@@ -1,5 +1,6 @@
 package com.example.tp3apis;
 import android.os.AsyncTask;
+import android.util.JsonReader;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -32,6 +33,7 @@ public class AsynchronicTask extends AsyncTask<Void,Void,Void> {
                 Log.d("AccesoApi","OK!");
                 InputStream bodyResponse = myConection.getInputStream();
                 InputStreamReader responseReader = new InputStreamReader(bodyResponse,"UTF-8");
+                ProcessJSON(responseReader);
             }
             else{
                 Log.d("AccesoApi","Alto Fail We xd!");
@@ -49,5 +51,43 @@ public class AsynchronicTask extends AsyncTask<Void,Void,Void> {
     protected void onPostExecute(Void aVoid){
         super.onPostExecute(aVoid);
         _lvList.setAdapter(_myAdapter);
+    }
+
+
+    public void ProcessJSON(InputStreamReader ReadStream){//Read Past Tense :V
+        JsonReader myJsonReader= new JsonReader(ReadStream);
+        try{
+            myJsonReader.beginObject();
+            while(myJsonReader.hasNext()){
+                Log.d("API","Kamisama puede ser muy cruel");
+                String objName = myJsonReader.nextName();
+                if(objName.equals("cantidad_de_categorias")){
+                    int quantCategories = myJsonReader.nextInt();
+                }
+                else{
+                    myJsonReader.beginArray();
+                    while(myJsonReader.hasNext()){
+                        myJsonReader.beginObject();
+                        while(myJsonReader.hasNext()){
+                            objName = myJsonReader.nextName();
+                            if(objName.equals("nombre")){
+                                String CategoryName = myJsonReader.nextString();
+                                Log.d("API","Energia recuperada "+ CategoryName);
+                                SearchByCatActivity.listCat.add(CategoryName);
+                            } else{
+                                myJsonReader.skipValue();
+                            }
+                        }
+                        myJsonReader.endObject();
+                    }
+                    myJsonReader.endArray();
+                }
+            }
+
+        }
+        catch(Exception e){
+
+        }
+
     }
 }

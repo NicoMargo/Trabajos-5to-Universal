@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class SearchByCatActivity extends AppCompatActivity {
 
-    public ArrayList listCat;
+    public static ArrayList listCat;
     public ListView  lvListOfCats;
     public ArrayAdapter myAdapter;
     private Button btnSearch;
@@ -23,8 +23,11 @@ public class SearchByCatActivity extends AppCompatActivity {
         getReferences();
         setListeners();
         listCat = new ArrayList<>();
-        Log.d("API","API comienzo");
         myAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listCat);
+        Log.d("API","API comienzo");
+        AsynchronicTask myTask = new AsynchronicTask();
+        myTask.SetAdapterAndArray(myAdapter,lvListOfCats);
+        myTask.execute();
         Log.d("API Finish","API Finish Ready");
     }
 
