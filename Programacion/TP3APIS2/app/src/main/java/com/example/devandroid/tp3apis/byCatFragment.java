@@ -2,7 +2,7 @@ package com.example.devandroid.tp3apis;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +37,7 @@ public class byCatFragment extends Fragment {
         getReferences();
         setListeners();
         listCat = new ArrayList<>();
-        myAdapter = new ArrayList<>(this,android.R.layout.simple_list_item_1, listCat);
+        myAdapter = new ArrayAdapter<>(this.getContext(), android.R.layout.simple_list_item_1,listCat);
         Log.d("API","API comienzo");
         AsynchronicTask myTask = new AsynchronicTask();
         myTask.SetAdapterAndArray(myAdapter,lvList);
