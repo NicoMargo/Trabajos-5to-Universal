@@ -1,5 +1,4 @@
-
-<html lang="en">
+<html lang="es">
     <?php
         $Subjects = array("Mate","Lengua","Historia","Química","Ed Física","Historia Judía","Cultura Judía","Programación","Proyecto","Redes","EFSI", "TEI","Inglés","Filosofía");
         $SubjAbreviations = array("Math","Lang","Hstr","Chemistry","PE","JH","JCulture","Prog","Proyects","Networks","EFSI", "ETI","Eng","Phylosophy");
@@ -10,22 +9,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>TP 6</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h1>Ingrese notas</h1>
+    <h1 class="form-control">Ingrese notas:</h1>
     <form action="results.php" method="post">
         <div class="form-group">
-            <table>
+            <table class="col-md-8 offset-md-2">
                 <?php
                     for($i = 0; $i < sizeof($Subjects);){
                         echo "<tr>";
                         for($j = 0; $j < $QuantColumns && $i < sizeof($Subjects); $j++,$i++){
                             $thisSubject = $Subjects[$i];
                             $thisSubjAbreviation = $SubjAbreviations[$i];
-                            echo"<td>
-                                <span class='markInput'>
+                            echo"<td >
+                                <span class=' markInput'>
                                     <div>$thisSubject</div>
                                     <input class='form-control' id=$thisSubjAbreviation name='notas[$thisSubjAbreviation]' type='number' min='1' max='10' value='0'/>
                                 </span>
@@ -35,7 +35,7 @@
                     }  
                 ?>
             </table><br>
-        <input type="submit" value="Ingresar"/>
+        <input type="submit" class="form-control col-md-4 offset-md-4 btn btn-success"  value="Ingresar"/>
         </div>
     </form>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
