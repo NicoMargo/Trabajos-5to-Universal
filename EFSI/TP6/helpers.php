@@ -1,5 +1,5 @@
 <?php
-    $Subjects = array("Mate","Lengua","Historia","Química","Ed Física","Historia Judía","Cultura Judía","Programación","Proyecto","Redes","EFSI", "TEI","Inglés","Filosofía");
+    $Subjects = array("Matematica","Lengua","Historia","Química","Ed Física","Historia Judía","Fuentes","Programación","Proyecto","Redes","EFSI", "TI","Inglés","Filosofía");
     $SubjAbreviations = array("Math","Lang","Hstr","Chemistry","PE","JH","JCulture","Prog","Proyects","Networks","EFSI", "ETI","Eng","Phylosophy");
     $QuantColumns = 3;
 
@@ -25,12 +25,14 @@
 
     function promedioAprobadas($notas){
         $total = 0.0;
+        $CantidadAprobadas= 0;
         foreach($notas as $nota){
             if($nota>5){
                 $total += $nota;
+                $CantidadAprobadas++;
             }
         }
-        return $total/count($notas);
+        return $total/$CantidadAprobadas;
     }
 
     function mayorNota($notas){

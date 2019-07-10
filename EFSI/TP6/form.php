@@ -1,6 +1,6 @@
 <html lang="es">
     <?php
-        $Subjects = array("Mate","Lengua","Historia","Química","Ed Física","Historia Judía","Cultura Judía","Programación","Proyecto","Redes","EFSI", "TEI","Inglés","Filosofía");
+        $Subjects = array("Matematica","Lengua","Historia","Química","Ed Física","Historia Judía","Fuentes","Programación","Proyecto","Redes","EFSI", "TI","Inglés","Filosofía");
         $SubjAbreviations = array("Math","Lang","Hstr","Chemistry","PE","JH","JCulture","Prog","Proyects","Networks","EFSI", "ETI","Eng","Phylosophy");
         $QuantColumns = 3;
     ?>
@@ -11,13 +11,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TP 6</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <h1 class="form-control">Ingrese notas:</h1>
     <form action="results.php" method="post">
         <div class="form-group">
-            <table class="col-md-8 offset-md-2">
+            <table class="table table-striped table-bordered col-md-8 offset-md-2">
                 <?php
                     for($i = 0; $i < sizeof($Subjects);){
                         echo "<tr>";
@@ -25,9 +24,9 @@
                             $thisSubject = $Subjects[$i];
                             $thisSubjAbreviation = $SubjAbreviations[$i];
                             echo"<td >
-                                <span class=' markInput'>
+                                <span class='mr-4'>
                                     <div>$thisSubject</div>
-                                    <input class='form-control' id=$thisSubjAbreviation name='notas[$thisSubjAbreviation]' type='number' min='1' max='10' value='0'/>
+                                    <input class='form-control' id=$thisSubjAbreviation name='notas[$thisSubjAbreviation]' type='number' required placeholder='Nota:' min='1' max='10' />
                                 </span>
                             </td>"; 
                         }
