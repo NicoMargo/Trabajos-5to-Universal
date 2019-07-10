@@ -22,6 +22,7 @@ public class byCatFragment extends Fragment {
     Button btnPrevious;
     Button btnNext;
     View rootView;
+    private int ElementPage = 0;
 
     public static ArrayList listCat;
     public ArrayAdapter myAdapter;
@@ -62,14 +63,18 @@ public class byCatFragment extends Fragment {
     private View.OnClickListener btnPrevious_Click= new View.OnClickListener() {
 
         public void onClick(View v) {
-
+            if(ElementPage>0) ElementPage--;
+            _lvList.subList(10*ElementPage,10*(ElementPage+1)).setAdapter(_myAdapter);;
         }
     };
 
     private View.OnClickListener btnNext_Click= new View.OnClickListener() {
 
         public void onClick(View v) {
-
+            if(ElementPage<_lvList.length()/10+1) {
+                ElementPage++;
+            }
+            _lvList.subList(10*ElementPage,10*(ElementPage+1)).setAdapter(_myAdapter);;
         }
     };
 }
