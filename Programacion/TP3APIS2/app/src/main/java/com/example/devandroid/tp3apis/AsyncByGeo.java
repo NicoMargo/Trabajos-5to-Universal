@@ -1,4 +1,4 @@
-package com.example.tp3apis;
+package com.example.devandroid.tp3apis;
 import android.os.AsyncTask;
 import android.util.JsonReader;
 import android.util.Log;

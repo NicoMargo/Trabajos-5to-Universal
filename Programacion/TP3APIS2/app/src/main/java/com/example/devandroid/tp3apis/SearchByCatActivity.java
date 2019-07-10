@@ -1,4 +1,4 @@
-package com.example.tp3apis;
+package com.example.devandroid.tp3apis;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ public class SearchByCatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_by_cat);
+        //setContentView(R.layout.activity_search_by_cat);
         getReferences();
         setListeners();
         listCat = new ArrayList<>();
@@ -32,8 +32,8 @@ public class SearchByCatActivity extends AppCompatActivity {
     }
 
     void getReferences(){
-        lvListOfCats = (ListView) findViewById(R.id.ListCats);
-        btnSearch = (Button) findViewById(R.id.btnSearch);
+       // lvListOfCats = (ListView) findViewById(R.id.ListCats);
+       // btnSearch = (Button) findViewById(R.id.btnSearch);
     }
     void  setListeners(){
         btnSearch.setOnClickListener(btnSearch_Click);
