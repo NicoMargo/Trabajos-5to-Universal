@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 04-07-2019 a las 13:41:33
+-- Tiempo de generación: 11-07-2019 a las 13:47:57
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -26,15 +26,14 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-DROP PROCEDURE IF EXISTS `IniciarSesion`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `IniciarSesion` (IN `Nombre` VARCHAR(20), IN `Clave` VARCHAR(20))  NO SQL
+DROP PROCEDURE IF EXISTS `Loguear`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Loguear` (IN `Nombre` VARCHAR(20), IN `Clave` VARCHAR(20))  NO SQL
 SELECT * from usuarios where Nombre = usuarios.Nombre and md5(Clave) = usuarios.Clave$$
 
 DROP PROCEDURE IF EXISTS `Registrar`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Registrar` (IN `Nombre` VARCHAR(20), IN `Clave` VARCHAR(20), IN `Correo` VARCHAR(30))  NO SQL
 if not EXISTS(SELECT idUsuarios from usuarios where usuarios.Nombre = Nombre)
 THEN
-
 	insert into usuarios(usuarios.Nombre,usuarios.Clave,usuarios.Correo) values(Nombre,MD5(Clave), Correo);
 	select 1;
     
@@ -44,7 +43,7 @@ end if$$
 
 DROP PROCEDURE IF EXISTS `TraerNoticias`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerNoticias` ()  NO SQL
-select * from noticias$$
+select noticias.idNoticias, noticias.Titulo, noticias.Imagen, noticias.fecha from noticias$$
 
 DROP PROCEDURE IF EXISTS `TraerUnaNoticia`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerUnaNoticia` (IN `id` INT(11))  NO SQL
@@ -62,8 +61,10 @@ DROP TABLE IF EXISTS `noticias`;
 CREATE TABLE IF NOT EXISTS `noticias` (
   `idNoticias` int(11) NOT NULL AUTO_INCREMENT,
   `Titulo` varchar(50) DEFAULT NULL,
+  `Copete` varchar(100) NOT NULL,
   `Cuerpo` varchar(300) DEFAULT NULL,
   `Imagen` varchar(50) DEFAULT NULL,
+  `fecha` date NOT NULL,
   PRIMARY KEY (`idNoticias`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
