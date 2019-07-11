@@ -1,22 +1,8 @@
-<!doctype html>
-<html lang="es">
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous">
-    <link rel="stylesheet" href="./Res/CSS/MySite.css">
-
-  <title>Diario Animes</title>
-</head>
-
-<body>
   <?php 
           include('Nav.php');
+          require("helpers.php");
+          $AllNews = Allnews();
       ?>
   <section>
       <div class="bd-example">
@@ -61,78 +47,28 @@
   <main>
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <?php foreach($AllNews as $OneNews) { ?>
+        <div class="col-md-4">        
           <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <div class="card-header"><span class="text-secondary">03/07/2019</span></div>
-            <div class="card-body ">
-              <h5 class="card-title">Anuncian cuarta película de Doraemon</h5>
+            <div class="card-header"><span class="text-secondary"><?php echo $OneNews['date'];?></span></div>
+            <a href="helpers.php?noticiaId=<?php echo 1; ?>" id="">
+            <div class="card-body ">            
+              <h5 class="card-title"><?php echo $OneNews['title'];?></h5>
               <hr size="50" />
-              <img class="card-img-top hoverImg" src="./Res/img/1.jpg" alt="Doraemon">
+              <img class="card-img-top hoverImg" src="./Res/img/1.jpg" alt="Doraemon">              
             </div>
+            </a> 
           </div>
-        </div>    
-        <div class="col-md-4">
-            <div class="card border-white mb-3" style="max-width: 18rem; background-color:#161717;">
-              <div class="card-header"><span class="text-light">03/07/2019</span></div>
-              <div class="card-body ">
-                <h5 class="card-title text-white">Anuncian cuarta película de Doraemon</h5>
-                <hr size="50" />
-                <img class="card-img-top hoverImg" src="./Res/img/1.jpg" alt="Doraemon">
-              </div>
-            </div>
-          </div> 
-          <div class="col-md-4">
-              <div class="card border-dark mb-3" style="max-width: 18rem;">
-                <div class="card-header"><span class="text-secondary">03/07/2019</span></div>
-                <div class="card-body ">
-                  <h5 class="card-title">Anuncian cuarta película de Doraemon</h5>
-                  <hr size="50" />
-                  <img class="card-img-top hoverImg" src="./Res/img/1.jpg" alt="Doraemon">
-                </div>
-              </div>
-            </div>   
-       
-      </div>
-    </div> <br>
-    <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card border-dark mb-3" style="max-width: 18rem;">
-              <div class="card-header"><span class="text-secondary">03/07/2019</span></div>
-              <div class="card-body ">
-                <h5 class="card-title">Anuncian cuarta película de Doraemon</h5>
-                <hr size="50" />
-                <img class="card-img-top hoverImg" src="./Res/img/1.jpg" alt="Doraemon">
-              </div>
-            </div>
-          </div>    
-          <div class="col-md-4">
-              <div class="card border-dark mb-3" style="max-width: 18rem;">
-                <div class="card-header"><span class="text-secondary">03/07/2019</span></div>
-                <div class="card-body ">
-                  <h5 class="card-title">Anuncian cuarta película de Doraemon</h5>
-                  <hr size="50" />
-                  <img class="card-img-top hoverImg" src="./Res/img/1.jpg" alt="Doraemon">
-                </div>
-              </div>
-            </div> 
-            <div class="col-md-4">
-                <div class="card border-dark mb-3" style="max-width: 18rem;">
-                  <div class="card-header"><span class="text-secondary">03/07/2019</span></div>
-                  <div class="card-body ">
-                    <h5 class="card-title">Anuncian cuarta película de Doraemon</h5>
-                    <hr size="50" />
-                    <img class="card-img-top hoverImg" src="./Res/img/1.jpg" alt="Doraemon">
-                  </div>
-                </div>
-              </div>   
-         
-        </div>
-      </div> <br>
-       
+          
+        </div> 
+          
+
+        <?php  } ?>    
   </main>
 
-
+  <?php 
+          include('Footer.php');
+      ?>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -142,6 +78,7 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+    <script src="./Res/JS/Script.js"></script>
 </body>
 
 </html>

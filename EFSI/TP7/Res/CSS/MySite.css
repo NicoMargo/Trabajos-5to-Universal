@@ -18,3 +18,10 @@ text-decoration:none;
 #title:hover{
     color: white;
 }
+.bodysize{
+	font-size: 1.1rem;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.mf{
+	margin-top: 5rem !important;
+  }
