@@ -51,18 +51,15 @@
         <div class="col-md-4">        
           <div class="card border-dark mb-3" style="max-width: 18rem;">
             <div class="card-header"><span class="text-secondary"><?php echo $OneNews['date'];?></span></div>
-            <a href="helpers.php?noticiaId=<?php echo 1; ?>" id="">
+            <a href="News.php?noticiaId=<?php echo $OneNews['id']; ?>" id="">
             <div class="card-body ">            
               <h5 class="card-title"><?php echo $OneNews['title'];?></h5>
               <hr size="50" />
               <img class="card-img-top hoverImg" src="./Res/img/1.jpg" alt="Doraemon">              
             </div>
             </a> 
-          </div>
-          
-        </div> 
-          
-
+          </div>          
+        </div>
         <?php  } ?>    
   </main>
 
@@ -78,7 +75,7 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-    <script src="./Res/JS/Script.js"></script>
+  <script src="./Res/JS/Script.js"></script>
 </body>
 
 </html>

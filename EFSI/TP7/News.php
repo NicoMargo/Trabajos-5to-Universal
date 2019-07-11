@@ -1,5 +1,6 @@
 <?php 
           include('Nav.php');
+          require('Helpers.php');
 ?>
 <span class="ml-4 text-secondary">17/5/2019</span>
 <hr>
