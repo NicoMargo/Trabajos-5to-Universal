@@ -80,8 +80,7 @@ public class AsynchronicTask extends AsyncTask<Void,Void,Void> {
                     myJsonReader.endArray();
                 }
             }
-
-        }
+        }//Fin del try
         catch(Exception e){
 
         }
