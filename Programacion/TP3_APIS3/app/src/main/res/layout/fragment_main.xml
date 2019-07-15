@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Buscar Por:" />
+
+        <Button
+            android:id="@+id/btnByCat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Por Categoria"
+            tools:text="Por Categoria" />
+
+        <Button
+            android:id="@+id/btnByName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Por Nombre" />
+
+        <Button
+            android:id="@+id/btnByGeo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Por geolocalización" />
+    </LinearLayout>
+
+</FrameLayout>
