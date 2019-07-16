@@ -14,7 +14,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 
-public class byCatFragment extends Fragment {
+public class getCatFragment extends Fragment {
     ListView lvList;
     Button btnPrevious;
     Button btnNext;
@@ -24,7 +24,7 @@ public class byCatFragment extends Fragment {
     public static ArrayList listCat;
     public ArrayAdapter myAdapter;
 
-    public byCatFragment() {
+    public getCatFragment() {
         // Required empty public constructor
     }
     @Override
@@ -37,7 +37,7 @@ public class byCatFragment extends Fragment {
         myAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1, listCat);
         Log.d("API","API comienzo");
         AsyncGetCat myTask = new AsyncGetCat();
-        myTask.SetAdapterAndArray(myAdapter,lvList);
+        //myTask.SetAdapterAndArray(myAdapter,lvList);
         myTask.execute();
         return rootView;
     }
@@ -57,12 +57,13 @@ public class byCatFragment extends Fragment {
 
     private View.OnClickListener btnPrevious_Click= new View.OnClickListener() {
         public void onClick(View v) {
+            lvList.setAdapter(myAdapter);
         }
     };
 
     private View.OnClickListener btnNext_Click= new View.OnClickListener() {
          public void onClick(View v) {
-
+             lvList.setAdapter(myAdapter);
         }
     };
 

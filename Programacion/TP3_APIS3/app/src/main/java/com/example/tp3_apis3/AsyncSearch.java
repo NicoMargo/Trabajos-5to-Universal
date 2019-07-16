@@ -82,7 +82,7 @@ public class AsyncSearch extends AsyncTask<Void,Void,Void> {
                             if(objName.equals("nombre")){
                                 String CategoryName = myJsonReader.nextString();
                                 Log.d("API","Energia recuperada "+ CategoryName);
-                                byCatFragment.listCat.add(CategoryName);
+                                getCatFragment.listCat.add(CategoryName);
                             } else{
                                 myJsonReader.skipValue();
                             }

@@ -52,7 +52,7 @@ public class MainFragment extends Fragment {
         public void onClick(View v) {
             FragmentManager adminFragment;
             FragmentTransaction transacFragment;
-            byCatFragment fragmentByCat = new byCatFragment();
+            getCatFragment fragmentByCat = new getCatFragment();
 
             adminFragment   = getFragmentManager();
             transacFragment = adminFragment.beginTransaction();

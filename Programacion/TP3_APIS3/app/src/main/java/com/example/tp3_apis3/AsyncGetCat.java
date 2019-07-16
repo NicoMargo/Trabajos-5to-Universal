@@ -17,6 +17,7 @@ public class AsyncGetCat extends AsyncTask<Void,Void,Void> {
     ListView _lvList;
     String _action;
 
+
     public void SetAdapterAndArray(ArrayAdapter  myAdapter, ListView myListView){
         _myAdapter = myAdapter;
         _lvList = myListView;
@@ -58,23 +59,27 @@ public class AsyncGetCat extends AsyncTask<Void,Void,Void> {
         try{
             myJsonReader.beginObject();
             while(myJsonReader.hasNext()){
-                Log.d("API","Kamisama puede ser muy cruel");
                 String objName = myJsonReader.nextName();
-                if(objName.equals("cantidad_de_categorias")){
-                    int quantCategories = myJsonReader.nextInt();
-                }
-                else{
+                if(objName.equals("instancias")){
+                    //Beginning to read array Instancias
                     myJsonReader.beginArray();
                     while(myJsonReader.hasNext()){
+                        //Beginning to read object Instancia
                         myJsonReader.beginObject();
                         while(myJsonReader.hasNext()){
                             objName = myJsonReader.nextName();
-                            if(objName.equals("nombre")){
-                                String CategoryName = myJsonReader.nextString();
-                                Log.d("API","Energia recuperada "+ CategoryName);
-                                byCatFragment.listCat.add(CategoryName);
-                            } else{
-                                myJsonReader.skipValue();
+                            String CategoryName;
+                            switch(objName){
+                                case "nombre" :
+                                    CategoryName = myJsonReader.nextString();
+                                    //getCatFragment.listCat.add(CategoryName);
+                                    break;
+                                case "clase" :
+                                    CategoryName = myJsonReader.nextString();
+                                    //getCatFragment.listCat.add(CategoryName);
+                                    break;
+                                default:
+                                    myJsonReader.skipValue();
                             }
                         }
                         myJsonReader.endObject();
