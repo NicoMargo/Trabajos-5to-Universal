@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 11-07-2019 a las 13:47:57
+-- Tiempo de generación: 16-07-2019 a las 13:41:37
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -66,7 +66,14 @@ CREATE TABLE IF NOT EXISTS `noticias` (
   `Imagen` varchar(50) DEFAULT NULL,
   `fecha` date NOT NULL,
   PRIMARY KEY (`idNoticias`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `noticias`
+--
+
+INSERT INTO `noticias` (`idNoticias`, `Titulo`, `Copete`, `Cuerpo`, `Imagen`, `fecha`) VALUES
+(1, 'Anuncian la cuarta temporada de Attack on Titan', 'Wit anuncia la cuarta temporada de esta mítica serie animada.', 'lol', NULL, '2019-07-03');
 
 -- --------------------------------------------------------
 
