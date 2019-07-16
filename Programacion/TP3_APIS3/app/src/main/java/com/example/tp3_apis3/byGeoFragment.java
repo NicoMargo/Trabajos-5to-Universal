@@ -7,14 +7,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 
 
-public class byCatFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class byGeoFragment extends Fragment {
     ListView lvList;
     Button btnPrevious;
     Button btnNext;
@@ -24,7 +27,7 @@ public class byCatFragment extends Fragment {
     public static ArrayList listCat;
     public ArrayAdapter myAdapter;
 
-    public byCatFragment() {
+    public byGeoFragment() {
         // Required empty public constructor
     }
     @Override
@@ -33,9 +36,9 @@ public class byCatFragment extends Fragment {
         getReferences();
         setListeners();
         listCat = new ArrayList<>();
-        int top = listCat.size()/10>0? 10:listCat.size()%10;
         myAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1, listCat);
         Log.d("API","API comienzo");
+
         AsyncGetCat myTask = new AsyncGetCat();
         myTask.SetAdapterAndArray(myAdapter,lvList);
         myTask.execute();
@@ -49,27 +52,22 @@ public class byCatFragment extends Fragment {
     }
 
     private void setListeners(){
-        lvList.setOnItemClickListener(lvList_Item_Click);
+        //lvList.setOnItemClickListener();
         btnPrevious.setOnClickListener(btnPrevious_Click);
         btnNext.setOnClickListener(btnNext_Click);
     }
 
 
     private View.OnClickListener btnPrevious_Click= new View.OnClickListener() {
+
         public void onClick(View v) {
         }
     };
 
     private View.OnClickListener btnNext_Click= new View.OnClickListener() {
-         public void onClick(View v) {
 
-        }
-    };
+        public void onClick(View v) {
 
-    private ListView.OnItemClickListener lvList_Item_Click = new ListView.OnItemClickListener(){
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-            String strCat = lvList.getItemAtPosition(position).toString();
-            Log.d("xd",strCat);
         }
     };
 }

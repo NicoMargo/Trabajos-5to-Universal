@@ -49,7 +49,6 @@ public class MainFragment extends Fragment {
     }
 
     private View.OnClickListener btnCat_Click= new View.OnClickListener() {
-
         public void onClick(View v) {
             FragmentManager adminFragment;
             FragmentTransaction transacFragment;
@@ -63,16 +62,28 @@ public class MainFragment extends Fragment {
         }
     };
     private View.OnClickListener btnName_Click= new View.OnClickListener() {
-
         public void onClick(View v) {
+            FragmentManager adminFragment;
+            FragmentTransaction transacFragment;
+            byNameFragment nameFragment = new byNameFragment();
 
+            adminFragment   = getFragmentManager();
+            transacFragment = adminFragment.beginTransaction();
+            transacFragment.replace(R.id.lytMain, nameFragment);
+            transacFragment.commit();
         }
     };
 
     private View.OnClickListener btnGeo_Click= new View.OnClickListener() {
-
         public void onClick(View v) {
+            FragmentManager adminFragment;
+            FragmentTransaction transacFragment;
+            byGeoFragment geoFragment = new byGeoFragment();
 
+            adminFragment   = getFragmentManager();
+            transacFragment = adminFragment.beginTransaction();
+            transacFragment.replace(R.id.lytMain, geoFragment);
+            transacFragment.commit();
         }
     };
 
