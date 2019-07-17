@@ -2,6 +2,8 @@ package com.example.tp3_apis3;
 
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -70,7 +72,14 @@ public class getCatFragment extends Fragment {
     private ListView.OnItemClickListener lvList_Item_Click = new ListView.OnItemClickListener(){
         public void onItemClick(AdapterView<?> parent, View view, int position, long id){
             String strCat = lvList.getItemAtPosition(position).toString();
-            Log.d("xd",strCat);
+            FragmentManager adminFragment;
+            FragmentTransaction transacFragment;
+            Fragment fragmentResult = new ResultFragment();
+
+            adminFragment   = getFragmentManager();
+            transacFragment = adminFragment.beginTransaction();
+            transacFragment.replace(R.id.lytMain, fragmentResult);
+            transacFragment.commit();
         }
     };
 }
