@@ -44,8 +44,8 @@ public class MainFragment extends Fragment {
 
     private void setListeners(){
         btnByCat.setOnClickListener(btnCat_Click);
-        btnByName.setOnClickListener(btnGeo_Click);
-        btnByGeo.setOnClickListener(btnName_Click);
+        btnByName.setOnClickListener(btnName_Click);
+        btnByGeo.setOnClickListener(btnGeo_Click);
     }
 
     private View.OnClickListener btnCat_Click= new View.OnClickListener() {

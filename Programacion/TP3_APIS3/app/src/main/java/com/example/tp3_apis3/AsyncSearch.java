@@ -11,20 +11,24 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class AsyncSearch extends AsyncTask<Void,Void,Void> {
     ArrayAdapter  _myAdapter;
     ListView _lvList;
     String _action;
+    ArrayList<String> _locations;
 
-    public AsyncSearch(String action, String param, String value){
+    public AsyncSearch(ArrayList<String> locations,String action, String param, String value){
         super();
+        _locations = locations;
         _action = action +"/?"+param+"="+value;
     }
 
-    public AsyncSearch(String action, float x, float y ){
+    public AsyncSearch(ArrayList<String> locations, String action, float x, float y ){
         super();
-        _action = action +"/reverseGeocoderLugares/?x="+x+"y="+y;
+        _locations = locations;
+        _action = action +"/?x="+x+"&y="+y;
     }
 
     public void SetAdapterAndArray(ArrayAdapter  myAdapter, ListView myListView){
@@ -45,7 +49,6 @@ public class AsyncSearch extends AsyncTask<Void,Void,Void> {
                 ProcessJSON(responseReader);
             }
             else{
-                Log.d("AccesoApi","Alto Fail We xd!");
             }
             myConection.disconnect();
         }
@@ -63,33 +66,37 @@ public class AsyncSearch extends AsyncTask<Void,Void,Void> {
     }
 
 
+
     public void ProcessJSON(InputStreamReader ReadStream){//Read Past Tense :V
         JsonReader myJsonReader= new JsonReader(ReadStream);
         try{
             myJsonReader.beginObject();
             while(myJsonReader.hasNext()){
-                Log.d("API","Kamisama puede ser muy cruel");
-                String objName = myJsonReader.nextName();
-                if(objName.equals("cantidad_de_categorias")){
-                    int quantCategories = myJsonReader.nextInt();
-                }
-                else{
+                String objName;
+                try{ objName = myJsonReader.nextName();}
+                catch(Exception e){objName = "";}
+                if("instancias".equals(objName)){
+                    //Beginning to read array Instancias
                     myJsonReader.beginArray();
                     while(myJsonReader.hasNext()){
+                        //Beginning to read object Instancia
                         myJsonReader.beginObject();
                         while(myJsonReader.hasNext()){
                             objName = myJsonReader.nextName();
                             if(objName.equals("nombre")){
-                                String CategoryName = myJsonReader.nextString();
-                                Log.d("API","Energia recuperada "+ CategoryName);
-                                getCatFragment.listCat.add(CategoryName);
-                            } else{
+                                String LocationName = myJsonReader.nextString();
+                                _locations.add(LocationName);
+                            }
+                            else{
                                 myJsonReader.skipValue();
                             }
                         }
                         myJsonReader.endObject();
                     }
                     myJsonReader.endArray();
+                }
+                else{
+                    myJsonReader.skipValue();
                 }
             }
         }//Fin del try

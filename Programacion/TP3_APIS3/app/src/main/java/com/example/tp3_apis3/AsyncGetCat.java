@@ -15,8 +15,6 @@ import java.net.URL;
 public class AsyncGetCat extends AsyncTask<Void,Void,Void> {
     ArrayAdapter  _myAdapter;
     ListView _lvList;
-    String _action;
-
 
     public void SetAdapterAndArray(ArrayAdapter  myAdapter, ListView myListView){
         _myAdapter = myAdapter;
@@ -59,27 +57,23 @@ public class AsyncGetCat extends AsyncTask<Void,Void,Void> {
         try{
             myJsonReader.beginObject();
             while(myJsonReader.hasNext()){
+                Log.d("API","Kamisama puede ser muy cruel");
                 String objName = myJsonReader.nextName();
-                if(objName.equals("instancias")){
-                    //Beginning to read array Instancias
+                if(objName.equals("cantidad_de_categorias")){
+                    int quantCategories = myJsonReader.nextInt();
+                }
+                else{
                     myJsonReader.beginArray();
                     while(myJsonReader.hasNext()){
-                        //Beginning to read object Instancia
                         myJsonReader.beginObject();
                         while(myJsonReader.hasNext()){
                             objName = myJsonReader.nextName();
-                            String CategoryName;
-                            switch(objName){
-                                case "nombre" :
-                                    CategoryName = myJsonReader.nextString();
-                                    //getCatFragment.listCat.add(CategoryName);
-                                    break;
-                                case "clase" :
-                                    CategoryName = myJsonReader.nextString();
-                                    //getCatFragment.listCat.add(CategoryName);
-                                    break;
-                                default:
-                                    myJsonReader.skipValue();
+                            if(objName.equals("nombre")){
+                                String CategoryName = myJsonReader.nextString();
+                                Log.d("API","Energia recuperada "+ CategoryName);
+                                getCatFragment._elements.add(CategoryName);
+                            } else{
+                                myJsonReader.skipValue();
                             }
                         }
                         myJsonReader.endObject();
@@ -91,6 +85,5 @@ public class AsyncGetCat extends AsyncTask<Void,Void,Void> {
         catch(Exception e){
 
         }
-
     }
 }

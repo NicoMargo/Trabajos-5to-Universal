@@ -3,7 +3,6 @@ package com.example.tp3_apis3;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class byGeoFragment extends Fragment {
+public class byGeoFragment extends LocationsFragment {
     ListView lvList;
     Button btnPrevious;
     Button btnNext;
@@ -27,47 +26,23 @@ public class byGeoFragment extends Fragment {
     public static ArrayList listCat;
     public ArrayAdapter myAdapter;
 
+    float x;
+    float y;
+
     public byGeoFragment() {
         // Required empty public constructor
     }
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_list, container, false);
-        getReferences();
-        setListeners();
-        listCat = new ArrayList<>();
-        myAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1, listCat);
-        Log.d("API","API comienzo");
 
-        AsyncGetCat myTask = new AsyncGetCat();
-        myTask.SetAdapterAndArray(myAdapter,lvList);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        rootView = super.onCreateView(inflater, container, savedInstanceState);
+        AsyncSearch myTask = new AsyncSearch(_elements, "reverseGeocoderLugares", 1, 2);
+        myTask.SetAdapterAndArray(_myAdapter, lvList);
         myTask.execute();
         return rootView;
     }
 
-    private void getReferences(){
-        lvList = (ListView) rootView.findViewById(R.id._lvList);
-        btnPrevious = (Button)rootView.findViewById(R.id.btnPrevious);;
-        btnNext = (Button)rootView.findViewById(R.id.btnNext);;
+    protected void getReferences() {
+        super.getReferences();
     }
-
-    private void setListeners(){
-        //lvList.setOnItemClickListener();
-        btnPrevious.setOnClickListener(btnPrevious_Click);
-        btnNext.setOnClickListener(btnNext_Click);
-    }
-
-
-    private View.OnClickListener btnPrevious_Click= new View.OnClickListener() {
-
-        public void onClick(View v) {
-        }
-    };
-
-    private View.OnClickListener btnNext_Click= new View.OnClickListener() {
-
-        public void onClick(View v) {
-
-        }
-    };
 }

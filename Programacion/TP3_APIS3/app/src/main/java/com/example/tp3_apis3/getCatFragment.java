@@ -16,58 +16,27 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 
-public class getCatFragment extends Fragment {
-    ListView lvList;
-    Button btnPrevious;
-    Button btnNext;
-    View rootView;
+public class getCatFragment extends LocationsFragment {
     private int ElementPage = 0;
-
-    public static ArrayList listCat;
-    public ArrayAdapter myAdapter;
 
     public getCatFragment() {
         // Required empty public constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_list, container, false);
-        getReferences();
-        setListeners();
-        listCat = new ArrayList<>();
-        int top = listCat.size()/10>0? 10:listCat.size()%10;
-        myAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1, listCat);
-        Log.d("API","API comienzo");
+        rootView = super.onCreateView(inflater,container,savedInstanceState);
+        int top = _elements.size()/10>0? 10:_elements.size()%10;
         AsyncGetCat myTask = new AsyncGetCat();
-        //myTask.SetAdapterAndArray(myAdapter,lvList);
+        myTask.SetAdapterAndArray(_myAdapter,lvList);
         myTask.execute();
         return rootView;
     }
 
-    private void getReferences(){
-        lvList = (ListView) rootView.findViewById(R.id._lvList);
-        btnPrevious = (Button)rootView.findViewById(R.id.btnPrevious);;
-        btnNext = (Button)rootView.findViewById(R.id.btnNext);;
-    }
-
-    private void setListeners(){
+    @Override
+    protected void setListeners() {
+        super.setListeners();
         lvList.setOnItemClickListener(lvList_Item_Click);
-        btnPrevious.setOnClickListener(btnPrevious_Click);
-        btnNext.setOnClickListener(btnNext_Click);
     }
-
-
-    private View.OnClickListener btnPrevious_Click= new View.OnClickListener() {
-        public void onClick(View v) {
-            lvList.setAdapter(myAdapter);
-        }
-    };
-
-    private View.OnClickListener btnNext_Click= new View.OnClickListener() {
-         public void onClick(View v) {
-             lvList.setAdapter(myAdapter);
-        }
-    };
 
     private ListView.OnItemClickListener lvList_Item_Click = new ListView.OnItemClickListener(){
         public void onItemClick(AdapterView<?> parent, View view, int position, long id){
