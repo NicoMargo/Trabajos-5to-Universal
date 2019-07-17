@@ -1,5 +1,6 @@
 package com.example.tp3_apis3;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import java.util.ArrayList;
 
@@ -19,6 +21,9 @@ public class MainFragment extends Fragment {
     Button btnByGeo;
     ListView lvList;
     View rootView;
+    EditText edtName;
+    EditText edtX;
+    EditText edtY;
     public static ArrayList listCat;
     public ArrayAdapter myAdapter;
     public MainFragment() {
@@ -38,7 +43,10 @@ public class MainFragment extends Fragment {
 
     private void getReferences(){
         btnByCat = (Button) rootView.findViewById(R.id.btnByCat);
+        edtName = (EditText) rootView.findViewById(R.id.edtName);
         btnByName = (Button) rootView.findViewById(R.id.btnByName);
+        edtX = (EditText) rootView.findViewById(R.id.edtX);
+        edtY = (EditText) rootView.findViewById(R.id.edtY);
         btnByGeo = (Button) rootView.findViewById(R.id.btnByGeo);
     }
 
@@ -63,14 +71,9 @@ public class MainFragment extends Fragment {
     };
     private View.OnClickListener btnName_Click= new View.OnClickListener() {
         public void onClick(View v) {
-            FragmentManager adminFragment;
-            FragmentTransaction transacFragment;
-            byNameFragment nameFragment = new byNameFragment();
+            MainActivity Main = (MainActivity)getActivity();
+            Main.CambiarByName(edtName.getText().toString());
 
-            adminFragment   = getFragmentManager();
-            transacFragment = adminFragment.beginTransaction();
-            transacFragment.replace(R.id.lytMain, nameFragment);
-            transacFragment.commit();
         }
     };
 

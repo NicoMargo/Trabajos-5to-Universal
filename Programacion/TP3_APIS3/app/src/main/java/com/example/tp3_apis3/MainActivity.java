@@ -10,6 +10,7 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 
+    public static String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +26,16 @@ public class MainActivity extends Activity {
         transacFragment.commit();
     }
 
+    public void CambiarByName(String name){
+        FragmentManager adminFragment;
+        FragmentTransaction transacFragment;
 
+        Fragment nameFragment = new byNameFragment();
+        ((byNameFragment) nameFragment).setName(name);
 
-
-
+        adminFragment = getFragmentManager();
+        transacFragment = adminFragment.beginTransaction();
+        transacFragment.replace(R.id.lytMain, nameFragment);
+        transacFragment.commit();
+    }
 }

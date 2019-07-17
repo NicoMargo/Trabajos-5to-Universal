@@ -13,15 +13,21 @@ import android.view.ViewGroup;
  */
 public class byNameFragment extends LocationsFragment {
 
+    String name;
+    public void setName(String name){
+        this.name = name;
+    }
+
 
     public byNameFragment() {
         super();
         // Required empty public constructor
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         rootView = super.onCreateView(inflater,container,savedInstanceState);
-        AsyncSearch myTask = new AsyncSearch(_elements,"buscar","texto","comisaria");
+        AsyncSearch myTask = new AsyncSearch(_elements,"buscar","texto",name);
         myTask.SetAdapterAndArray(_myAdapter,lvList);
         myTask.execute();
         return rootView;

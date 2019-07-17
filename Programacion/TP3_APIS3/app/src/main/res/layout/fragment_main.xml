@@ -23,11 +23,35 @@
             android:text="Por Categoria"
             tools:text="Por Categoria" />
 
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
         <Button
             android:id="@+id/btnByName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Por Nombre" />
+
+        <EditText
+            android:id="@+id/edtX"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/edtY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
 
         <Button
             android:id="@+id/btnByGeo"
