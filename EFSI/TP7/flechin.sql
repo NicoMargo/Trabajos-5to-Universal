@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 18-07-2019 a las 12:20:54
+-- Tiempo de generación: 18-07-2019 a las 13:38:49
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -61,8 +61,8 @@ DROP TABLE IF EXISTS `noticias`;
 CREATE TABLE IF NOT EXISTS `noticias` (
   `idNoticias` int(11) NOT NULL AUTO_INCREMENT,
   `Titulo` varchar(50) DEFAULT NULL,
-  `Copete` varchar(100) NOT NULL,
-  `Cuerpo` varchar(300) DEFAULT NULL,
+  `Copete` varchar(200) NOT NULL,
+  `Cuerpo` varchar(400) DEFAULT NULL,
   `Imagen` varchar(50) DEFAULT NULL,
   `fecha` date NOT NULL,
   PRIMARY KEY (`idNoticias`)
@@ -73,10 +73,10 @@ CREATE TABLE IF NOT EXISTS `noticias` (
 --
 
 INSERT INTO `noticias` (`idNoticias`, `Titulo`, `Copete`, `Cuerpo`, `Imagen`, `fecha`) VALUES
-(1, 'Anuncian nueva temporada de attack on titan', 'Wit Studio, el estudio encargado de animar Attack on Titan, anunció la cuarta temporada para 2020', 'xd', 'lol', '0005-05-05'),
-(2, 'Netflix suma a Evangelion en su catálogo', 'La aclamada empresa de entretenimiento netflix adquirió una lisencia del famoso anime NeonGenesis Ev', 'xd', 'xddd', '0000-00-00'),
-(3, 'xd', 'xd', 'xd', 'xd', '0000-00-00'),
-(4, 'xd', 'xd', 'xd', 'xd', '0000-00-00'),
+(1, 'Anuncian nueva temporada de attack on titan', 'Wit Studio, el estudio encargado de animar Attack on Titan, anunció la cuarta temporada para 2020', 'xd', 'snkNew.jpg', '0005-05-05'),
+(2, 'Netflix suma a Evangelion en su catálogo', 'La aclamada empresa de entretenimiento netflix adquirió una lisencia del famoso anime Neon Genesis Evangelion.', 'xd', 'evaNew.jpg', '0000-00-00'),
+(3, 'Explosión en el estudio Nro1 de Kyoto Animation', 'El prestigioso estudio de animación Kyoto Animation, conocido por series animadas como la franquicia de Suzumiya Haruhi, K On, Violet Evergarden, entre otros, sufrió una tragedia en su estudio nro 1. ', 'Al menos 27 personas han fallecido y 40 han resultado heridas en un incendio provocado durante la mañana de este jueves. El incendio empezó a las 10.30 de la mañana hora local, , cuando un hombre cuya identidad no ha sido revelada entró en la sede de Kyoto Animation y, tras arrojar gasolina, prendió fuego al inmueble. n trabajador de una oficina cercana ha afirmado en declaraciones a NHK, la telev', 'kyoaniNew.jpg', '0000-00-00'),
+(4, 'Trigger anuncia un nuevo anime original BNA.', 'xd', 'xd', 'bna.jpg', '0000-00-00'),
 (5, 'xd', '45', '45', '456', '0004-04-04');
 
 -- --------------------------------------------------------
