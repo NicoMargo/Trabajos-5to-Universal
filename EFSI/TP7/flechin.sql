@@ -3,6 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 18-07-2019 a las 12:20:54
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -25,15 +26,14 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-DROP PROCEDURE IF EXISTS `IniciarSesion`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `IniciarSesion` (IN `Nombre` VARCHAR(20), IN `Clave` VARCHAR(20))  NO SQL
+DROP PROCEDURE IF EXISTS `Loguear`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Loguear` (IN `Nombre` VARCHAR(20), IN `Clave` VARCHAR(20))  NO SQL
 SELECT * from usuarios where Nombre = usuarios.Nombre and md5(Clave) = usuarios.Clave$$
 
 DROP PROCEDURE IF EXISTS `Registrar`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Registrar` (IN `Nombre` VARCHAR(20), IN `Clave` VARCHAR(20), IN `Correo` VARCHAR(30))  NO SQL
 if not EXISTS(SELECT idUsuarios from usuarios where usuarios.Nombre = Nombre)
 THEN
-
 	insert into usuarios(usuarios.Nombre,usuarios.Clave,usuarios.Correo) values(Nombre,MD5(Clave), Correo);
 	select 1;
     
@@ -43,7 +43,7 @@ end if$$
 
 DROP PROCEDURE IF EXISTS `TraerNoticias`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerNoticias` ()  NO SQL
-select * from noticias$$
+select noticias.idNoticias, noticias.Titulo, noticias.Imagen, noticias.fecha from noticias$$
 
 DROP PROCEDURE IF EXISTS `TraerUnaNoticia`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerUnaNoticia` (IN `id` INT(11))  NO SQL
@@ -61,17 +61,23 @@ DROP TABLE IF EXISTS `noticias`;
 CREATE TABLE IF NOT EXISTS `noticias` (
   `idNoticias` int(11) NOT NULL AUTO_INCREMENT,
   `Titulo` varchar(50) DEFAULT NULL,
+  `Copete` varchar(100) NOT NULL,
   `Cuerpo` varchar(300) DEFAULT NULL,
   `Imagen` varchar(50) DEFAULT NULL,
+  `fecha` date NOT NULL,
   PRIMARY KEY (`idNoticias`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `noticias`
 --
 
 INSERT INTO `noticias` (`idNoticias`, `Titulo`, `Copete`, `Cuerpo`, `Imagen`, `fecha`) VALUES
-(1, 'Anuncian la cuarta temporada de Attack on Titan', 'Wit anuncia la cuarta temporada de esta mítica serie animada.', 'lol', NULL, '2019-07-03');
+(1, 'Anuncian nueva temporada de attack on titan', 'Wit Studio, el estudio encargado de animar Attack on Titan, anunció la cuarta temporada para 2020', 'xd', 'lol', '0005-05-05'),
+(2, 'Netflix suma a Evangelion en su catálogo', 'La aclamada empresa de entretenimiento netflix adquirió una lisencia del famoso anime NeonGenesis Ev', 'xd', 'xddd', '0000-00-00'),
+(3, 'xd', 'xd', 'xd', 'xd', '0000-00-00'),
+(4, 'xd', 'xd', 'xd', 'xd', '0000-00-00'),
+(5, 'xd', '45', '45', '456', '0004-04-04');
 
 -- --------------------------------------------------------
 
