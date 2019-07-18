@@ -15,7 +15,7 @@
         if (!($resultado = $sqlConnection->query("call loguear('".$nombre."','".$clave."');"))) {
             echo "Falló SELECT: (" . $sqlConnection->errno . ") " . $sqlConnection->error;
         }
-        return $resultado->fetch_assoc();
+        return $resultado->fetch_object();
     }
 
     function registrar($nombre,$clave,$correo){
@@ -23,7 +23,7 @@
         if (!($resultado = $sqlConnection->query("call Registrar('".$nombre."','".$clave."','".$correo."');"))) {
             echo "Falló SELECT: (" . $sqlConnection->errno . ") " . $sqlConnection->error;
         }
-        return $resultado->fetch_row();
+        return $resultado->fetch_object();
     }
 
     function traerNoticias(){
@@ -48,14 +48,4 @@
         }
         return $resultado->fetch_object();
     }
-
-
-
-
-    $Usuario = login("Nombre","Contra");
-    echo $Usuario["idUsuarios"];
-    $registro = registrar("Nombre","Contra","Correo");
-    echo $registro[0];
-    echo var_dump(traerNoticias());
-    echo var_dump(traerUnaNoticia(1));
 ?>

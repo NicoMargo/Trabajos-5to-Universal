@@ -1,4 +1,5 @@
 <?php
     include('helpers.php');
-    login($_POST['username'],($_POST['password']);
+    $User = login($_POST['username'],$_POST['password']);
+    print_r($User) ;
 ?>
