@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    include('process.php');
+    ?>
 <!doctype html>
 <html lang="es">
 
@@ -22,7 +26,7 @@
       </div>
       <nav class="my-2 my-md-0 mr-md-3">
         <div class="bg-white rounded">
-        <a class="p-2  btn btn-outline-success" href="#">Noticias Gratis Restantes:</a>
+        <a class="p-2  btn btn-outline-success" href="#">Noticias Gratis Restantes: <?php if ($_SESSION['quant'] > 0){echo $_SESSION['quant']-1;} else {echo $_SESSION['quant'];} ?></a>
         </div>
       </nav>
 
