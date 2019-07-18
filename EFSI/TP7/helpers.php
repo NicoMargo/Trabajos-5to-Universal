@@ -28,16 +28,26 @@
 
     function traerNoticias(){
         $sqlConnection = conectar();
-        $noticia = null;
+        $noticias = array();
         if (!($resultado = $sqlConnection->query("call TraerNoticias();"))) {
             echo "Falló SELECT: (" . $sqlConnection->errno . ") " . $sqlConnection->error;
         }
         else{
-            //$noticia = new noticia();
+            while($n = $resultado->fetch_object()){
+               $noticias[] = $n;
+            }
         }
-        return $resultado->fetch_assoc();
+        return $noticias;
     }
 
+    function traerUnaNoticia($id){
+        $sqlConnection = conectar();
+        $noticia = null;
+        if (!($resultado = $sqlConnection->query("call TraerUnaNoticia($id);"))) {
+            echo "Falló SELECT: (" . $sqlConnection->errno . ") " . $sqlConnection->error;
+        }
+        return $resultado->fetch_object();
+    }
 
 
 
@@ -47,4 +57,5 @@
     $registro = registrar("Nombre","Contra","Correo");
     echo $registro[0];
     echo var_dump(traerNoticias());
+    echo var_dump(traerUnaNoticia(1));
 ?>
