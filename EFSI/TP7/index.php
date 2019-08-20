@@ -1,7 +1,7 @@
 
   <?php 
           include('Nav.php');
-          require("HelpersB.php");
+          require("HelpersB.php");          
           $AllNews = Allnews();
       ?>
   <section>

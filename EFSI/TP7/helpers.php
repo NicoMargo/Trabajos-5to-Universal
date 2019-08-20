@@ -13,7 +13,7 @@
     function login($nombre,$clave){
         $sqlConnection = conectar();
         if (!($resultado = $sqlConnection->query("call loguear('".$nombre."','".$clave."');"))) {
-            echo "Falló SELECT: (" . $sqlConnection->errno . ") " . $sqlConnection->error;
+            
         }
         return $resultado->fetch_object();
     }

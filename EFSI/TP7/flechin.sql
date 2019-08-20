@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 18-07-2019 a las 13:38:49
+-- Tiempo de generación: 06-08-2019 a las 12:03:52
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -41,13 +41,25 @@ THEN
     select 0;
 end if$$
 
+DROP PROCEDURE IF EXISTS `spModificarNoticia`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spModificarNoticia` (IN `pId` INT, IN `pTitulo` VARCHAR(50), IN `pCopete` VARCHAR(200), IN `pCuerpo` VARCHAR(400), IN `pImagen` VARCHAR(50), IN `pFecha` DATE)  BEGIN
+	if exists(select Noticias.idNoticias from Noticias where Noticias.IdNoticias = pId)
+    then
+
+		if not exists(select Noticias.idNoticias from Noticias where Noticias.Titulo = pTitulo)
+		then
+			insert into Noticias(Noticias.Titulo, Noticias.Copete, Noticias.Cuerpo, Noticias.Imagen, Noticias.Fecha) values(pTitulo,pCopete,pCuerpo,pImagen,pFecha);
+		end if;
+    end if;
+END$$
+
 DROP PROCEDURE IF EXISTS `TraerNoticias`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerNoticias` ()  NO SQL
 select noticias.idNoticias, noticias.Titulo, noticias.Imagen, noticias.fecha from noticias$$
 
 DROP PROCEDURE IF EXISTS `TraerUnaNoticia`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerUnaNoticia` (IN `id` INT(11))  NO SQL
-select * from noticias where noticias.idNoticias = id$$
+select Noticias.Titulo, Noticias.Copete, Noticias.Cuerpo, Noticias.Imagen, Noticias.Fecha from noticias where noticias.idNoticias = id$$
 
 DELIMITER ;
 
