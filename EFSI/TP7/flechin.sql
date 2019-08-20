@@ -3,6 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 06-08-2019 a las 12:03:52
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -25,15 +26,14 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-DROP PROCEDURE IF EXISTS `IniciarSesion`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `IniciarSesion` (IN `Nombre` VARCHAR(20), IN `Clave` VARCHAR(20))  NO SQL
+DROP PROCEDURE IF EXISTS `Loguear`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Loguear` (IN `Nombre` VARCHAR(20), IN `Clave` VARCHAR(20))  NO SQL
 SELECT * from usuarios where Nombre = usuarios.Nombre and md5(Clave) = usuarios.Clave$$
 
 DROP PROCEDURE IF EXISTS `Registrar`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Registrar` (IN `Nombre` VARCHAR(20), IN `Clave` VARCHAR(20), IN `Correo` VARCHAR(30))  NO SQL
 if not EXISTS(SELECT idUsuarios from usuarios where usuarios.Nombre = Nombre)
 THEN
-
 	insert into usuarios(usuarios.Nombre,usuarios.Clave,usuarios.Correo) values(Nombre,MD5(Clave), Correo);
 	select 1;
     
@@ -41,13 +41,25 @@ THEN
     select 0;
 end if$$
 
+DROP PROCEDURE IF EXISTS `spModificarNoticia`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spModificarNoticia` (IN `pId` INT, IN `pTitulo` VARCHAR(50), IN `pCopete` VARCHAR(200), IN `pCuerpo` VARCHAR(400), IN `pImagen` VARCHAR(50), IN `pFecha` DATE)  BEGIN
+	if exists(select Noticias.idNoticias from Noticias where Noticias.IdNoticias = pId)
+    then
+
+		if not exists(select Noticias.idNoticias from Noticias where Noticias.Titulo = pTitulo)
+		then
+			insert into Noticias(Noticias.Titulo, Noticias.Copete, Noticias.Cuerpo, Noticias.Imagen, Noticias.Fecha) values(pTitulo,pCopete,pCuerpo,pImagen,pFecha);
+		end if;
+    end if;
+END$$
+
 DROP PROCEDURE IF EXISTS `TraerNoticias`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerNoticias` ()  NO SQL
-select * from noticias$$
+select noticias.idNoticias, noticias.Titulo, noticias.Imagen, noticias.fecha from noticias$$
 
 DROP PROCEDURE IF EXISTS `TraerUnaNoticia`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerUnaNoticia` (IN `id` INT(11))  NO SQL
-select * from noticias where noticias.idNoticias = id$$
+select Noticias.Titulo, Noticias.Copete, Noticias.Cuerpo, Noticias.Imagen, Noticias.Fecha from noticias where noticias.idNoticias = id$$
 
 DELIMITER ;
 
@@ -61,17 +73,23 @@ DROP TABLE IF EXISTS `noticias`;
 CREATE TABLE IF NOT EXISTS `noticias` (
   `idNoticias` int(11) NOT NULL AUTO_INCREMENT,
   `Titulo` varchar(50) DEFAULT NULL,
-  `Cuerpo` varchar(300) DEFAULT NULL,
+  `Copete` varchar(200) NOT NULL,
+  `Cuerpo` varchar(400) DEFAULT NULL,
   `Imagen` varchar(50) DEFAULT NULL,
+  `fecha` date NOT NULL,
   PRIMARY KEY (`idNoticias`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `noticias`
 --
 
 INSERT INTO `noticias` (`idNoticias`, `Titulo`, `Copete`, `Cuerpo`, `Imagen`, `fecha`) VALUES
-(1, 'Anuncian la cuarta temporada de Attack on Titan', 'Wit anuncia la cuarta temporada de esta mítica serie animada.', 'lol', NULL, '2019-07-03');
+(1, 'Anuncian nueva temporada de attack on titan', 'Wit Studio, el estudio encargado de animar Attack on Titan, anunció la cuarta temporada para 2020', 'xd', 'snkNew.jpg', '0005-05-05'),
+(2, 'Netflix suma a Evangelion en su catálogo', 'La aclamada empresa de entretenimiento netflix adquirió una lisencia del famoso anime Neon Genesis Evangelion.', 'xd', 'evaNew.jpg', '0000-00-00'),
+(3, 'Explosión en el estudio Nro1 de Kyoto Animation', 'El prestigioso estudio de animación Kyoto Animation, conocido por series animadas como la franquicia de Suzumiya Haruhi, K On, Violet Evergarden, entre otros, sufrió una tragedia en su estudio nro 1. ', 'Al menos 27 personas han fallecido y 40 han resultado heridas en un incendio provocado durante la mañana de este jueves. El incendio empezó a las 10.30 de la mañana hora local, , cuando un hombre cuya identidad no ha sido revelada entró en la sede de Kyoto Animation y, tras arrojar gasolina, prendió fuego al inmueble. n trabajador de una oficina cercana ha afirmado en declaraciones a NHK, la telev', 'kyoaniNew.jpg', '0000-00-00'),
+(4, 'Trigger anuncia un nuevo anime original BNA.', 'xd', 'xd', 'bna.jpg', '0000-00-00'),
+(5, 'xd', '45', '45', '456', '0004-04-04');
 
 -- --------------------------------------------------------
 

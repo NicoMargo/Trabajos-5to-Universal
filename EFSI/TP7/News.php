@@ -1,6 +1,17 @@
 <?php 
           include('Nav.php');
-          require('Helpers.php');
+          require('HelpersB.php');
+          include('process.php');
+          if (!isset($_SESSION['username'])) {  
+            if($_SESSION['quant'] > 0){        
+                     $_SESSION['quant'] = $_SESSION['quant'] -1;  
+                }
+            }
+
+            if($_SESSION['quant'] <= 0){
+               header('location: index.php');
+            }
+
 ?>
 <span class="ml-4 text-secondary">17/5/2019</span>
 <hr>
