@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 06-08-2019 a las 12:03:52
+-- Tiempo de generación: 22-08-2019 a las 11:25:46
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -30,6 +30,51 @@ DROP PROCEDURE IF EXISTS `Loguear`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Loguear` (IN `Nombre` VARCHAR(20), IN `Clave` VARCHAR(20))  NO SQL
 SELECT * from usuarios where Nombre = usuarios.Nombre and md5(Clave) = usuarios.Clave$$
 
+DROP PROCEDURE IF EXISTS `NoticiasAgregar`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NoticiasAgregar` (IN `pTitulo` VARCHAR(50), IN `pCopete` VARCHAR(200), IN `pCuerpo` VARCHAR(400), IN `pImagen` VARCHAR(50), IN `pFecha` DATE)  BEGIN
+	if not exists( select idNoticias from noticias where Titulo = pTitulo)
+    then
+		insert into noticias(Titulo, Copete, Cuerpo, Imagen, Fecha) values(pTitulo, pCopete, pCuerpo, pImagen, pFecha);
+    end if;
+END$$
+
+DROP PROCEDURE IF EXISTS `NoticiasBorrar`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NoticiasBorrar` (IN `pId` INT)  BEGIN
+	delete from noticias where idNoticias = pId;
+END$$
+
+DROP PROCEDURE IF EXISTS `NoticiasModificar`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `NoticiasModificar` (IN `pId` INT, IN `pTitulo` VARCHAR(50), IN `pCopete` VARCHAR(200), IN `pCuerpo` VARCHAR(400), IN `pImagen` VARCHAR(50), IN `pFecha` DATE)  BEGIN
+	if exists(select Noticias.idNoticias from Noticias where Noticias.IdNoticias = pId)
+    then
+
+		if (not exists(select Noticias.idNoticias from Noticias where Noticias.Titulo = pTitulo) and pTitulo != "")
+		then
+			update noticias set Titulo = pTitulo where idNoticias = pId;
+		end if;
+        
+		if (pCopete != "")
+		then
+			update noticias set Copete = pCopete where idNoticias = pId;
+		end if;
+        
+		if (pCuerpo != "")
+		then
+			update noticias set Cuerpo = pCuerpo where idNoticias = pId;
+		end if;
+        
+		if (pImagen != "")
+		then
+			update noticias set Imagen = pImagen where idNoticias = pId;
+		end if;
+        
+        if (pFecha != 0)
+		then
+			update noticias set Fecha = pFecha where idNoticias = pId;
+		end if;
+    end if;
+END$$
+
 DROP PROCEDURE IF EXISTS `Registrar`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Registrar` (IN `Nombre` VARCHAR(20), IN `Clave` VARCHAR(20), IN `Correo` VARCHAR(30))  NO SQL
 if not EXISTS(SELECT idUsuarios from usuarios where usuarios.Nombre = Nombre)
@@ -40,18 +85,6 @@ THEN
     ELSE
     select 0;
 end if$$
-
-DROP PROCEDURE IF EXISTS `spModificarNoticia`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spModificarNoticia` (IN `pId` INT, IN `pTitulo` VARCHAR(50), IN `pCopete` VARCHAR(200), IN `pCuerpo` VARCHAR(400), IN `pImagen` VARCHAR(50), IN `pFecha` DATE)  BEGIN
-	if exists(select Noticias.idNoticias from Noticias where Noticias.IdNoticias = pId)
-    then
-
-		if not exists(select Noticias.idNoticias from Noticias where Noticias.Titulo = pTitulo)
-		then
-			insert into Noticias(Noticias.Titulo, Noticias.Copete, Noticias.Cuerpo, Noticias.Imagen, Noticias.Fecha) values(pTitulo,pCopete,pCuerpo,pImagen,pFecha);
-		end if;
-    end if;
-END$$
 
 DROP PROCEDURE IF EXISTS `TraerNoticias`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerNoticias` ()  NO SQL
@@ -78,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `noticias` (
   `Imagen` varchar(50) DEFAULT NULL,
   `fecha` date NOT NULL,
   PRIMARY KEY (`idNoticias`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `noticias`
