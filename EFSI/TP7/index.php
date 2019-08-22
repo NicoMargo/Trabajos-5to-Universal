@@ -1,8 +1,8 @@
 
   <?php 
           include('Nav.php');
-          require("HelpersB.php");          
-          $AllNews = Allnews();
+          require('helpers.php');        
+          $AllNews =traerNoticias();
       ?>
   <section>
       <div class="bd-example">
@@ -47,15 +47,15 @@
   <main>
     <div class="container">
       <div class="row">
-        <?php foreach($AllNews as $OneNews) { ?>
+        <?php foreach($AllNews as $OneNews) {?>
         <div class="col-md-4">        
-          <div class="card border-dark mb-3" style="max-width: 18rem;">
-            <div class="card-header"><span class="text-secondary"><?php echo $OneNews['date'];?></span></div>
-            <a href="News.php?noticiaId=<?php echo $OneNews['id']; ?>" id="">
+          <div class="cardheight card border-dark mb-3 " style="max-width: 18rem;">
+            <div class="card-header"><span class="text-secondary"><?php print $OneNews->fecha; ?></span></div>
+            <a href="News.php?noticiaId=<?php echo $OneNews->idNoticias; ?>">
             <div class="card-body ">            
-              <h5 class="card-title"><?php echo $OneNews['title'];?></h5>
+              <h5 class="card-title"><?php echo $OneNews->Titulo;?></h5>
               <hr size="50" />
-              <img class="card-img-top hoverImg" src="./Res/img/1.jpg" alt="Doraemon">              
+              <img class="card-img-top hoverImg" src="./Res/img/<?php echo $OneNews->Imagen;?>">              
             </div>
             </a> 
           </div>          

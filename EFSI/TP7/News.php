@@ -1,7 +1,6 @@
 <?php 
           include('Nav.php');
-          require('HelpersB.php');
-          include('process.php');
+          require('helpers.php');
           if (!isset($_SESSION['username'])) {  
             if($_SESSION['quant'] > 0){        
                      $_SESSION['quant'] = $_SESSION['quant'] -1;  
@@ -9,24 +8,24 @@
             }
 
             if($_SESSION['quant'] <= 0){
-               header('location: index.php');
-            }
-
+               header('location: LogIn.php');
+               $_SESSION['SaveNewsId'] = $_GET["noticiaId"];
+            }            
+            $news = traerUnaNoticia($_GET["noticiaId"]);  
 ?>
-<span class="ml-4 text-secondary">17/5/2019</span>
+<span class="ml-4 text-secondary"><?php print($news->Fecha) ?></span>
 <hr>
-<div class="margin-auto offset-md-4">
+<div class="col-md-8 offset-md-2">
     <h5 class="text-danger">Anime</h5>
-    <h1 >Este es mi super titulo!</h1>
+    <h1><?php print($news->Titulo) ?></h1>
 </div>
 <div class="col-md-8 offset-md-2">
-    <p class="mt-4 text-secondary">este es mi super copeteeste es mi super copeteeste es mi super copeteeste es mi super copeteeste es mi super copeteeste es mi super copeteeste es mi super copeteeste es mi super copeteeste es mi super copeteeste es mi super copeteeste es mi super copeteeste es mi super copete</p>
+    <p class="mt-4 text-secondary"><?php print($news->Copete) ?></p>
     <div class="mt-5">
-        <img class="w-100" src="./Res/img/1.jpg" alt="">
-        <p class="mt-5 bodysize">Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  Este es mi super body  </p>
+        <img class="w-100" src="./Res/img/<?php echo($news->Imagen) ?>">
+        <p class="mt-5 bodysize"><?php print($news->Cuerpo) ?></p>
     </div>
 </div>
-
 
 </form>
 <?php 

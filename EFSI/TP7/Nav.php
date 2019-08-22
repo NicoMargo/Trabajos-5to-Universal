@@ -39,7 +39,7 @@
                </div>
             </nav>    
             <div class="bg-white rounded mr-3">
-              <a class="btn btn-outline-primary" href="#">Sign Up</a>
+              <a class="btn btn-outline-primary" href="Signup.php">Sign Up</a>
             </div>
     
           <div class="bg-white rounded">
@@ -56,7 +56,7 @@
         </div>       
 
       <div class="bg-white rounded">
-          <a class="btn btn-outline-primary" href="#">'.$_SESSION["username"].'</a>
+          <a class="btn btn-outline-success" href="#">'.$_SESSION["username"].'</a>
       </div>
       <div class="bg-white rounded ml-3">
         <a class="btn btn-outline-primary" href="Logout.php">Log Out</a>

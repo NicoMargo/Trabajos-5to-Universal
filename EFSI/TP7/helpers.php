@@ -25,7 +25,10 @@
         }
         return $resultado->fetch_object();
     }
-
+    function OneNews(){
+        $noticiaId = $_GET['noticiaId'];
+        header('Location: news.php?noticiaId=' . $noticiaId);
+    }
     function traerNoticias(){
         $sqlConnection = conectar();
         $noticias = array();
