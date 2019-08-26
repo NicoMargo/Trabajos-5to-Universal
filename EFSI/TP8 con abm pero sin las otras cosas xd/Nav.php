@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    include('process.php');
     ?>
 <!doctype html>
 <html lang="es">
@@ -27,9 +28,18 @@
           <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-danger border-bottom shadow-sm">
             <div class="bg-white mr-md-auto my-0 rounded">
               <button id="buttonIndex" class=" btn btn-outline-danger">Animes L&M</button>
-            </div>            
+            </div>
+            <nav class="my-2 my-md-0 mr-md-3">
+              <div class="bg-white rounded">
+                <a class="p-2  btn btn-outline-success" href="#">Noticias Gratis Restantes:';            
+                  if ($_SESSION['quant'] > 0){echo $_SESSION['quant']-1;} else {echo $_SESSION['quant'];} 
+                   
+            echo 
+                '</a>
+               </div>
+            </nav>    
             <div class="bg-white rounded mr-3">
-              <a class="btn btn-outline-primary" href="Signup.php">Sign Up</a>
+              <a class="btn btn-outline-primary" href="#">Sign Up</a>
             </div>
     
           <div class="bg-white rounded">
@@ -44,12 +54,14 @@
         <div class="bg-white mr-md-auto my-0 rounded">
           <button id="buttonIndex" class=" btn btn-outline-danger">Animes L&M</button>
         </div>       
-
-      <div class="bg-white rounded">
+      <div class="bg-white rounded ml-3">
+          <a class="btn btn-outline-primary" href="BackOffice.php">BackOffice</a>
+      </div>
+      <div class="bg-white rounded ml-3">
           <a class="btn btn-outline-success" href="#">'.$_SESSION["username"].'</a>
       </div>
       <div class="bg-white rounded ml-3">
-        <a class="btn btn-outline-primary" href="Logout.php">Log Out</a>
+        <a class="btn btn-outline-danger" href="Logout.php">Log Out</a>
       </div>
       
     </div>
