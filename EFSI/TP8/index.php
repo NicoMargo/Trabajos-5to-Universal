@@ -60,7 +60,8 @@
             </a> 
           </div>          
         </div>
-        <?php  } ?>    
+        <?php  } ?> 
+        <img class="add1" src="./Res/Img/ads/add1.jpg" alt="add1">   
   </main>
 
   <?php 
