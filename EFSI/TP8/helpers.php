@@ -51,4 +51,12 @@
         }
         return $resultado->fetch_object();
     }
+
+    function eliminatNoticia($id){
+        $sqlConnection = conectar();
+        if (!($resultado = $sqlConnection->query("call EliminarNoticia('".$id."');"))) {
+            echo "Falló SELECT: (" . $sqlConnection->errno . ") " . $sqlConnection->error;
+        }
+        return $resultado->fetch_object();
+    }
 ?>

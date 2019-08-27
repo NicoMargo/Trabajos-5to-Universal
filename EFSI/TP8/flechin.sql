@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 06-08-2019 a las 12:03:52
+-- Tiempo de generación: 22-08-2019 a las 13:18:05
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -85,11 +85,9 @@ CREATE TABLE IF NOT EXISTS `noticias` (
 --
 
 INSERT INTO `noticias` (`idNoticias`, `Titulo`, `Copete`, `Cuerpo`, `Imagen`, `fecha`) VALUES
-(1, 'Anuncian nueva temporada de attack on titan', 'Wit Studio, el estudio encargado de animar Attack on Titan, anunció la cuarta temporada para 2020', 'xd', 'snkNew.jpg', '0005-05-05'),
-(2, 'Netflix suma a Evangelion en su catálogo', 'La aclamada empresa de entretenimiento netflix adquirió una lisencia del famoso anime Neon Genesis Evangelion.', 'xd', 'evaNew.jpg', '0000-00-00'),
-(3, 'Explosión en el estudio Nro1 de Kyoto Animation', 'El prestigioso estudio de animación Kyoto Animation, conocido por series animadas como la franquicia de Suzumiya Haruhi, K On, Violet Evergarden, entre otros, sufrió una tragedia en su estudio nro 1. ', 'Al menos 27 personas han fallecido y 40 han resultado heridas en un incendio provocado durante la mañana de este jueves. El incendio empezó a las 10.30 de la mañana hora local, , cuando un hombre cuya identidad no ha sido revelada entró en la sede de Kyoto Animation y, tras arrojar gasolina, prendió fuego al inmueble. n trabajador de una oficina cercana ha afirmado en declaraciones a NHK, la telev', 'kyoaniNew.jpg', '0000-00-00'),
-(4, 'Trigger anuncia un nuevo anime original BNA.', 'xd', 'xd', 'bna.jpg', '0000-00-00'),
-(5, 'xd', '45', '45', '456', '0004-04-04');
+(1, 'Anuncian nueva temporada de attack on titan', 'Wit Studio, el estudio encargado de animar Attack on Titan, anuncio la cuarta temporada para 2020', 'xd', 'snkNew.jpg', '0005-05-05'),
+(2, 'Netflix suma a Evangelion en su catalogo', 'La aclamada empresa de entretenimiento netflix adquirio una lisencia del famoso anime Neon Genesis Evangelion.', 'xd', 'evaNew.jpg', '0000-00-00'),
+(3, 'Explosion en el estudio Nro1 de Kyoto Animation', 'El prestigioso estudio de animacion Kyoto Animation, conocido por series animadas como la franquicia de Suzumiya Haruhi, K On, Violet Evergarden, entre otros, sufrio una tragedia en su estudio nro 1. ', 'Al menos 27 personas han fallecido y 40 han resultado heridas en un incendio provocado durante la maniana de este jueves. El incendio empezo a las 10.30 de la maniana hora local, , cuando un hombre cuya identidad no ha sido revelada entro en la sede de Kyoto Animation y, tras arrojar gasolina, prendio fuego al inmueble. n trabajador de una oficina cercana ha afirmado en declaraciones a NHK, la tel', 'kyoaniNew.jpg', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -104,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `Clave` varchar(100) NOT NULL,
   `Correo` varchar(30) NOT NULL,
   PRIMARY KEY (`idUsuarios`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -112,7 +110,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`idUsuarios`, `Nombre`, `Clave`, `Correo`) VALUES
 (3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin'),
-(2, 'Nombre', 'e2f804a152092eaadaf84613ea13bf7a', 'Mail');
+(2, 'Nombre', 'e2f804a152092eaadaf84613ea13bf7a', 'Mail'),
+(4, 'anush', '578ed5a4eecf5a15803abdc49f6152d6', 'hfasd'),
+(5, 'Chino', '33c98fed061261dd324ffd388204927b', 'chino@chino'),
+(6, 'SuperCool', '35bfc17979c9548d8d67503256026c64', 'supercool@ort');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
