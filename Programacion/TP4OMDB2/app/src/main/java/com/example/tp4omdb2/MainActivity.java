@@ -1,10 +1,11 @@
-package com.example.tp3_apis3;
+package com.example.tp4omdb2;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.app.Fragment;
 
 public class MainActivity extends Activity {
 
