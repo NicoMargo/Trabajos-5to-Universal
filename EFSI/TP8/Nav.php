@@ -44,14 +44,15 @@
         <div class="bg-white mr-md-auto my-0 rounded">
           <button id="buttonIndex" class=" btn btn-outline-danger">Animes L&M</button>
         </div>       
-
-      <div class="bg-white rounded">
+        <div class="bg-white rounded mr-3">
+          <a class="btn btn-outline-primary" href="BackOffice.php">BackOffice</a>
+        </div>
+        <div class="bg-white rounded">
           <a class="btn btn-outline-success" href="#">'.$_SESSION["username"].'</a>
-      </div>
-      <div class="bg-white rounded ml-3">
-        <a class="btn btn-outline-primary" href="Logout.php">Log Out</a>
-      </div>
-      
+        </div>
+        <div class="bg-white rounded ml-3">
+          <a class="btn btn-outline-primary" href="Logout.php">Log Out</a>
+        </div>      
     </div>
   </section>';
     }

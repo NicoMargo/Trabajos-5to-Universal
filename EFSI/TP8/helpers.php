@@ -51,4 +51,28 @@
         }
         return $resultado->fetch_object();
     }
+
+    function eliminarNoticia($id){
+        $sqlConnection = conectar();
+        if (!($resultado = $sqlConnection->query("call NoticiasBorrar('".$id."');"))) {
+            echo "Falló SELECT: (" . $sqlConnection->errno . ") " . $sqlConnection->error;
+        }
+        return $resultado->fetch_object();
+    }
+    
+    function agregarNoticia($titulo, $copete, $cuerpo, $imagen, $fecha){
+        $sqlConnection = conectar();
+        if (!($resultado = $sqlConnection->query("call NoticiasAgregar('".$titulo."','".$copete."','".$cuerpo."','".$imagen."','".$fecha."');"))) {
+            echo "Falló SELECT: (" . $sqlConnection->errno . ") " . $sqlConnection->error;
+        }
+        return $resultado->fetch_object();
+    }
+    
+    function modificarNoticia($id, $titulo, $copete, $cuerpo, $imagen, $fecha){
+        $sqlConnection = conectar();
+        if (!($resultado = $sqlConnection->query("call NoticiasModificar('".$id."','".$titulo."','".$copete."','".$cuerpo."','".$imagen."','".$fecha."');"))) {
+            echo "Falló SELECT: (" . $sqlConnection->errno . ") " . $sqlConnection->error;
+        }
+        return $resultado->fetch_object();
+    }
 ?>
