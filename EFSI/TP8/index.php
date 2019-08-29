@@ -45,22 +45,32 @@
         </div>
   </section> <br><br>
   <main>
-    <div class="container">
-      <div class="row">
+    <aside class="float-right height-100">
+    <img class="add2" src="./Res/Img/ads/add2.jpg" alt="add2">
+    <img class="add2" src="./Res/Img/ads/add3.jpg" alt="add2">
+
+    </aside>
+    <div class="ml-5 col-md-9">
+      <div class="row float-right">
         <?php foreach($AllNews as $OneNews) {?>
-        <div class="col-md-4">        
-          <div class="cardheight card border-dark mb-3 " style="max-width: 18rem;">
-            <div class="card-header"><span class="text-secondary"><?php print $OneNews->fecha; ?></span></div>
-            <a href="News.php?noticiaId=<?php echo $OneNews->idNoticias; ?>">
-            <div class="card-body ">            
-              <h5 class="card-title"><?php echo $OneNews->Titulo;?></h5>
-              <hr size="50" />
-              <img class="card-img-top hoverImg" src="./Res/img/<?php echo $OneNews->Imagen;?>">              
+          <div class="col-md-4">        
+            <div class="cardheight card border-dark mb-3 " style="max-width: 18rem;">
+              <div class="card-header"><span class="text-secondary"><?php print $OneNews->fecha; ?></span></div>
+                <a href="News.php?noticiaId=<?php echo $OneNews->idNoticias; ?>">
+                  <div class="card-body ">            
+                    <h5 class="card-title"><?php echo $OneNews->Titulo;?></h5>
+                    <hr size="50" />
+                    <img class="card-img-top hoverImg" src="./Res/img/<?php echo $OneNews->Imagen;?>">              
+                  </div>
+                </a> 
+              </div>   
             </div>
-            </a> 
-          </div>          
-        </div>
-        <?php  } ?>    
+          <?php  } ?>            
+        </div>        
+        
+      </div>
+      
+        <img class="add1 w-5" src="./Res/Img/ads/add1.jpg" alt="add1">   
   </main>
 
   <?php 
