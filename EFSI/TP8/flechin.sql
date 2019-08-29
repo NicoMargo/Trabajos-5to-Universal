@@ -3,11 +3,6 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
-<<<<<<< HEAD
--- Tiempo de generación: 22-08-2019 a las 13:18:05
-=======
--- Tiempo de generación: 27-08-2019 a las 13:44:30
->>>>>>> chino
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -122,16 +117,11 @@ CREATE TABLE IF NOT EXISTS `noticias` (
 --
 
 INSERT INTO `noticias` (`idNoticias`, `Titulo`, `Copete`, `Cuerpo`, `Imagen`, `fecha`) VALUES
-<<<<<<< HEAD
-(1, 'Anuncian nueva temporada de attack on titan', 'Wit Studio, el estudio encargado de animar Attack on Titan, anuncio la cuarta temporada para 2020', 'xd', 'snkNew.jpg', '0005-05-05'),
-(2, 'Netflix suma a Evangelion en su catalogo', 'La aclamada empresa de entretenimiento netflix adquirio una lisencia del famoso anime Neon Genesis Evangelion.', 'xd', 'evaNew.jpg', '0000-00-00'),
-(3, 'Explosion en el estudio Nro1 de Kyoto Animation', 'El prestigioso estudio de animacion Kyoto Animation, conocido por series animadas como la franquicia de Suzumiya Haruhi, K On, Violet Evergarden, entre otros, sufrio una tragedia en su estudio nro 1. ', 'Al menos 27 personas han fallecido y 40 han resultado heridas en un incendio provocado durante la maniana de este jueves. El incendio empezo a las 10.30 de la maniana hora local, , cuando un hombre cuya identidad no ha sido revelada entro en la sede de Kyoto Animation y, tras arrojar gasolina, prendio fuego al inmueble. n trabajador de una oficina cercana ha afirmado en declaraciones a NHK, la tel', 'kyoaniNew.jpg', '0000-00-00');
-=======
 (1, 'Anuncian nueva temporada de attack on titan', 'Wit Studio, el estudio encargado de animar Attack on Titan, anunció la cuarta temporada para 2020', 'xd', 'snkNew.jpg', '0005-05-05'),
 (2, 'Netflix suma a Evangelion en su catálogo', 'La aclamada empresa de entretenimiento netflix adquirió una lisencia del famoso anime Neon Genesis Evangelion.', 'xd', 'evaNew.jpg', '0000-00-00'),
 (3, 'Explosión en el estudio Nro1 de Kyoto Animation', 'El prestigioso estudio de animación Kyoto Animation, conocido por series animadas como la franquicia de Suzumiya Haruhi, K On, Violet Evergarden, entre otros, sufrió una tragedia en su estudio nro 1. ', 'Al menos 27 personas han fallecido y 40 han resultado heridas en un incendio provocado durante la mañana de este jueves. El incendio empezó a las 10.30 de la mañana hora local, , cuando un hombre cuya identidad no ha sido revelada entró en la sede de Kyoto Animation y, tras arrojar gasolina, prendió fuego al inmueble. n trabajador de una oficina cercana ha afirmado en declaraciones a NHK, la telev', 'kyoaniNew.jpg', '0000-00-00'),
 (4, 'Trigger anuncia un nuevo anime original BNA.', 'xd', 'xd', 'bna.jpg', '0000-00-00');
->>>>>>> chino
+
 
 -- --------------------------------------------------------
 

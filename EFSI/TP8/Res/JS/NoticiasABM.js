@@ -1,17 +1,18 @@
 $(document).ready(function () {
+    var Index;
     $(".btnModificar").click(function () {
-        let Index = $(this).attr("position");
+        Index = $(this).attr("position");
         $.ajax({
             type: "POST",
             url: "./TraerUnaNoticia.php",
-            data: { pos: Index },
+            data: { id: Index },
             success: function (DataJsonClient) {
                 var Data = JSON.parse(DataJsonClient);
-                $("#mdfTitulo").val(Data.Surname);
-                $("#mdfCopete").val(Data.Name);
-                $("#mdfCuerpo").val(validInt(Data.Dni));
-                $("#mdfImagen").val(Data.Email);
-                $("#mdfFecha").val(validInt(Data.Telephone));
+                $("#mdfTitulo").val(Data.Titulo);
+                $("#mdfCopete").val(Data.Copete);
+                $("#mdfCuerpo").val(Data.Cuerpo);
+                $("#mdfImagen").val(Data.Imagen);
+                $("#mdfFecha").val(Data.Fecha);
             },
             error: function () {
                 alert("ERROR");
@@ -19,23 +20,20 @@ $(document).ready(function () {
         });
     });
 
-    $("#createClient").click(function () {
-    });
-
     $("#SubirModificacion").click(function () {
         $.ajax({
             type: "POST",
-            url: "/ModificarNoticia.php",
+            url: "./ModificarNoticia.php",
             data: {
-                Titulo: $("#mdfTitulo").val(),
-                Copete: $("#mdfCopete").val(),
-                Cuerpo: $("#mdfCuerpo").val(),
-                Imagen: $("#mdfImagen").val(),
-                Fecha: $("#mdfFecha").val()
+                id: Index,
+                titulo: $("#mdfTitulo").val(),
+                copete: $("#mdfCopete").val(),
+                cuerpo: $("#mdfCuerpo").val(),
+                imagen: $("#mdfImagen").val(),
+                fecha: $("#mdfFecha").val()
             },
             success: function () {
                 location.reload();
-                $("#modificarNoticia").modal("toggle");
             },
             error: function () {
                 alert("ERROR");
@@ -66,15 +64,14 @@ $(document).ready(function () {
             type: "POST",
             url: "./AgregarNoticia.php",
             data: {
-                Titulo: $("#crtTitulo").val(),
-                Copete: $("#crtCopete").val(),
-                Cuerpo: $("#crtCuerpo").val(),
-                Imagen: $("#crtImagen").val(),
-                Fecha: $("#crtFecha").val()
+                titulo: $("#crtTitulo").val(),
+                copete: $("#crtCopete").val(),
+                cuerpo: $("#crtCuerpo").val(),
+                imagen: $("#crtImagen").val(),
+                fecha: $("#crtFecha").val()
             },
             success: function () {
                 location.reload();
-                $("#crearNoticia").modal("toggle");
             },
             error: function () {
                 alert("ERROR");
