@@ -58,6 +58,7 @@ public class MainFragment extends Fragment {
         adminFragment   = getFragmentManager();
         transacFragment = adminFragment.beginTransaction();
         transacFragment.replace(R.id.lytMain, fragmentResults);
+        Log.d("Main Fragment 2","Main Fragment 2");
         transacFragment.commit();
     }
 

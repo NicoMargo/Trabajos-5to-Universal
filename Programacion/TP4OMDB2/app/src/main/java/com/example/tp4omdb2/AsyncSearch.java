@@ -34,10 +34,10 @@ public class AsyncSearch extends AsyncTask<Void,Void,Void> {
     @Override
     protected Void doInBackground(Void ... voids){
         try{
+            Log.d("AccesoApi","1");
             URL myRoute = new URL("http://www.omdbapi.com"+ _action);
             HttpURLConnection myConection =(HttpURLConnection) myRoute.openConnection();
             Log.d("AccesoApi","Primer Conectando...");
-            Log.d("AccesoAPI", "" + myConection.getResponseCode());
             if(myConection.getResponseCode() ==200){
                 Log.d("AccesoApi","OK!");
                 InputStream bodyResponse = myConection.getInputStream();
@@ -63,7 +63,7 @@ public class AsyncSearch extends AsyncTask<Void,Void,Void> {
 
 
 
-    public void ProcessJSON(InputStreamReader ReadStream){//Read Past Tense :V
+    public void ProcessJSON(InputStreamReader ReadStream) {//Read Past Tense :V
 
         JsonParser MyJsonParser;
         MyJsonParser = new JsonParser();
@@ -71,8 +71,9 @@ public class AsyncSearch extends AsyncTask<Void,Void,Void> {
         objJson = MyJsonParser.parse(ReadStream).getAsJsonObject();
         JsonArray arrMovies;
         arrMovies = objJson.get("Search").getAsJsonArray();
+    }}/*
 
-
+        //while(arrMovies.)
 
        /* JsonReader myJsonReader= new JsonReader(ReadStream);
         try{
@@ -92,23 +93,7 @@ public class AsyncSearch extends AsyncTask<Void,Void,Void> {
                             if(objName.equals("nombre")){
                                 String LocationName = myJsonReader.nextString();
                                 //_movies.add(LocationName);
-                            }
-                            else{
-                                myJsonReader.skipValue();
-                            }
-                        }
-                        myJsonReader.endObject();
-                    }
-                    myJsonReader.endArray();
-                }
-                else{
-                    myJsonReader.skipValue();
-                }
-            }
-        }//Fin del try
-        catch(Exception e){
-
-        }*/
 
     }
 }
+*/
