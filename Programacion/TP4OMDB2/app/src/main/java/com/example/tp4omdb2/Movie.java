@@ -76,8 +76,12 @@ public class Movie {
         this._type = _type;
     }
 
-    public Movie(String title){
+    public Movie(String title, int year,String id, String type, String poster){
         _title = title;
+        _year = year;
+        _id = id;
+        _type = type;
+        _poster = poster;
     }
 
 }

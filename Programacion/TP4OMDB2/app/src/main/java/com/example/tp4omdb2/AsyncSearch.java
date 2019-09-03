@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class AsyncSearch extends AsyncTask<Void,Void,Void> {
-    ArrayAdapter  _myAdapter;
+    MovieAdapter  _myAdapter;
     ListView _lvList;
     String _action;
     ArrayList<Movie> _movies;
@@ -27,7 +27,7 @@ public class AsyncSearch extends AsyncTask<Void,Void,Void> {
         _action = "/?apikey=bf466bc4&"+param+"="+value;
     }
 
-    public void SetAdapterAndArray(ArrayAdapter  myAdapter, ListView myListView){
+    public void SetAdapterAndArray(MovieAdapter myAdapter, ListView myListView){
         _myAdapter = myAdapter;
         _lvList = myListView;
     }
@@ -64,36 +64,19 @@ public class AsyncSearch extends AsyncTask<Void,Void,Void> {
 
 
     public void ProcessJSON(InputStreamReader ReadStream) {//Read Past Tense :V
-
+        _movies.clear();
         JsonParser MyJsonParser;
         MyJsonParser = new JsonParser();
         JsonObject objJson;
         objJson = MyJsonParser.parse(ReadStream).getAsJsonObject();
         JsonArray arrMovies;
         arrMovies = objJson.get("Search").getAsJsonArray();
-    }}/*
-
-        //while(arrMovies.)
-
-       /* JsonReader myJsonReader= new JsonReader(ReadStream);
-        try{
-            myJsonReader.beginObject();
-            while(myJsonReader.hasNext()){
-                String objName;
-                try{ objName = myJsonReader.nextName();}
-                catch(Exception e){objName = "";}
-                if("instancias".equals(objName)){
-                    //Beginning to read array Instancias
-                    myJsonReader.beginArray();
-                    while(myJsonReader.hasNext()){
-                        //Beginning to read object Instancia
-                        myJsonReader.beginObject();
-                        while(myJsonReader.hasNext()){
-                            objName = myJsonReader.nextName();
-                            if(objName.equals("nombre")){
-                                String LocationName = myJsonReader.nextString();
-                                //_movies.add(LocationName);
+        for(int i=0; i<arrMovies.size();i++){
+            JsonObject jsonObj;
+            jsonObj = arrMovies.get(i).getAsJsonObject();
+            Movie thisMovie = new Movie(jsonObj.get("Title").getAsString(),jsonObj.get("Year").getAsInt(),jsonObj.get("imdbID").getAsString(),jsonObj.get("Type").getAsString(),jsonObj.get("Poster").getAsString());
+            _movies.add(thisMovie);
+        }
 
     }
 }
-*/

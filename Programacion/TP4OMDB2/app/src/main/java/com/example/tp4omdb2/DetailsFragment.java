@@ -17,18 +17,15 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetailsFragment extends LocationsFragment {
+public class DetailsFragment extends Fragment {
     ListView lvList;
     Button btnPrevious;
     Button btnNext;
     View rootView;
     private int ElementPage = 0;
 
-    public static ArrayList listCat;
-    public ArrayAdapter myAdapter;
-
-    float x;
-    float y;
+    public static ArrayList _elements;
+    public MovieAdapter _myAdapter;
 
     public DetailsFragment() {
         // Required empty public constructor
@@ -45,6 +42,8 @@ public class DetailsFragment extends LocationsFragment {
     }
 
     protected void getReferences() {
-        super.getReferences();
+        lvList = (ListView) rootView.findViewById(R.id._lvList);
+        btnPrevious = (Button)rootView.findViewById(R.id.btnPrevious);;
+        btnNext = (Button)rootView.findViewById(R.id.btnNext);;
     }
 }

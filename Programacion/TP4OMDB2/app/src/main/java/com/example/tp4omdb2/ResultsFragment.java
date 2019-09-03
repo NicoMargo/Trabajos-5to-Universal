@@ -21,14 +21,15 @@ public class ResultsFragment extends Fragment {
     View rootView;
 
     public static ArrayList<Movie> _movies;
-    public ArrayAdapter _myAdapter;
+    public MovieAdapter _myAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_list, container, false);
         getReferences();
         setListeners();
-
+        _movies = new ArrayList<Movie>();
+        _myAdapter = new MovieAdapter(_movies,this.getContext());
         AsyncSearch myTask = new AsyncSearch(_movies,"s",MainActivity.getSearchString());
         myTask.SetAdapterAndArray(_myAdapter,lvList);
         myTask.execute();
