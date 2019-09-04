@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -38,8 +39,11 @@ public class MovieAdapter extends BaseAdapter {
         View viewToReturn;
         viewToReturn = null;
 
+
         LayoutInflater inflater = (LayoutInflater)_myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        viewToReturn = inflater.inflate(R.layout.fragment_list,group,false);
+        viewToReturn = inflater.inflate(R.layout.listviewitem_movie,group,false);
+        TextView txtTitle = viewToReturn.findViewById(R.id.txtTitle);
+        txtTitle.setText();
 
         return viewToReturn;
     }
