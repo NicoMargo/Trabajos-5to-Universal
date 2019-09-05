@@ -12,25 +12,35 @@
               <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="./Res/img/B1.jpg" class="d-block w-100" alt="Fullmetal alchemist Brotherhood">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Fullmetal alchemist Brotherhood</h5>                  
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img src="./Res/img/B2.png" class="d-block w-100" alt="Tokyo ghoul">   
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Tokyo Ghoul</h5>                  
-                  </div>             
-              </div>
-              <div class="carousel-item">
-                <img src="./Res/img/B3.png" class="d-block w-100" alt="Shingeki no kyojin">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Ultima temporada de Ataque a los Titanes</h5>
-                  <p>Se estrenara en japon en el oroño del 2020!</p>
-                </div>
-              </div>
+              <?php
+                $i = 0;
+                  if(count($AllNews)>0){
+                  echo'
+                  <div class="carousel-item active">
+                    <a href="News.php?noticiaId='.$AllNews[$i]->idNoticias.'">
+                      <img src="'.$AllNews[$i]->Imagen.'" class="d-block carousel-image"/>
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>'.$AllNews[$i]->Titulo.'</h5>                  
+                      </div>
+                    </a>
+                  </div>
+                  ';
+                  $i++;
+                }
+                while($i<count($AllNews) && $i<3){
+                  echo'
+                  <div class="carousel-item">
+                    <a href="News.php?noticiaId='.$AllNews[$i]->idNoticias.'">
+                      <img src="'.$AllNews[$i]->Imagen.'" class="d-block carousel-image"/>
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>'.$AllNews[$i]->Titulo.'</h5>                  
+                      </div>
+                    </a>
+                  </div>
+                  ';
+                  $i++;
+                }
+              ?>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -46,8 +56,11 @@
   <main>
     <aside class="float-right height-100">
     <img class="add2" src="./Res/Img/ads/add2.jpg" alt="add2">
-    <img class="add2" src="./Res/Img/ads/add3.jpg" alt="add2">
-
+    <?php
+      if(count($AllNews)>6){
+      echo '<img class="add2" src="./Res/Img/ads/add3.jpg" alt="add2">';
+      }
+    ?>
     </aside>
     <div class="ml-5 col-md-9">
       <div class="row float-right">
@@ -59,7 +72,7 @@
                   <div class="card-body ">            
                     <h5 class="card-title"><?php echo $OneNews->Titulo;?></h5>
                     <hr size="50" />
-                    <img class="card-img-top hoverImg" src="./Res/img/<?php echo $OneNews->Imagen;?>">              
+                    <img class="card-img-top hoverImg" src="<?php echo $OneNews->Imagen;?>">              
                   </div>
                 </a> 
               </div>   

@@ -9,8 +9,6 @@ if (!isset($_SESSION['username'])) {
 
 ?>
     <link rel="stylesheet" href="./Res/CSS/Table.css">
-    
-
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="card">
@@ -24,8 +22,8 @@ if (!isset($_SESSION['username'])) {
 
                     <table id="myTable">
                         <tr class="header">
-                            <th style="width:25%;">Titulo</th>
-                            <th style="width:35%;">Imagen</th>
+                            <th style="width:40%;">Titulo</th>
+                            <th style="width:20%;">Imagen</th>
                             <th style="width:20%;">Fecha</th>
                             <th style="width:10%;">Modificar</th>
                             <th style="width:10%;">Eliminar</th>
@@ -34,10 +32,10 @@ if (!isset($_SESSION['username'])) {
                             $noticias = traerNoticias();    
                             for ($i = 0; $i < count(traerNoticias()); $i++)
                             {
-                                echo
+                                echo    
                                 '<tr>
                                     <td>'.$noticias[$i]->Titulo.'</td>
-                                    <td><img style="height: 100px;" src="./Res/img/'.$noticias[$i]->Imagen.'"/></td>
+                                    <td><img style="height: 100px;" src="'.$noticias[$i]->Imagen.'" /></td>
                                     <td>'.strval($noticias[$i]->fecha).'</td>
                                     <td><a data-toggle="modal" data-target="#modificarNoticia"><img position="'.$noticias[$i]->idNoticias.'" class="btnModificar" src="./Res/img/edit.png" style="width: 30%" /></a></td>
                                     <td><a data-toggle="modal" data-target="#confirmationModal"><deleteButton position="'.$noticias[$i]->idNoticias.'"><img class="w-50" src="./Res/img/delete.png" style="width: 30%" /></deleteButton></a></td>
@@ -85,7 +83,7 @@ if (!isset($_SESSION['username'])) {
                             <div class="">
                                 <strong><span>Título</span></strong>
                             </div>
-                            <input id="crtTitulo" class="form-control text-center" type="text">
+                            <input id="crtTitulo" class="form-control text-center" style="width:400px" type="text">
                             <!--<div class="validation_msg hidden text-center" id="msgCreateSurname">Ingrese un apellido válido</div>-->
                         </div>                        
                     </div>
@@ -94,7 +92,7 @@ if (!isset($_SESSION['username'])) {
                             <div class="">
                                 <strong><span>Ruta de Imagen</span></strong>
                             </div>
-                            <input id="crtImagen" class="form-control text-center" type="text">
+                            <input id="crtImagen" class="form-control" style="width:400px" type="text">
                             <!--<div class="validation_msg hidden text-center" id="msgCreateSurname">Ingrese un apellido válido</div>-->
                         </div>                        
                     </div>
@@ -149,7 +147,7 @@ if (!isset($_SESSION['username'])) {
                             <div class="">
                                 <strong><span>Título</span></strong>
                             </div>
-                            <input id="mdfTitulo" class="form-control text-center" type="text">
+                            <input id="mdfTitulo" class="form-control" style="width:400px" type="text">
                             <!--<div class="validation_msg hidden text-center" id="msgCreateSurname">Ingrese un apellido válido</div>-->
                         </div>                        
                     </div>
@@ -158,7 +156,7 @@ if (!isset($_SESSION['username'])) {
                             <div class="">
                                 <strong><span>Ruta de Imagen</span></strong>
                             </div>
-                            <input id="mdfImagen" class="form-control text-center" type="text">
+                            <input id="mdfImagen" class="form-control" style="width:400px" type="text">
                             <!--<div class="validation_msg hidden text-center" id="msgCreateSurname">Ingrese un apellido válido</div>-->
                         </div>                        
                     </div>

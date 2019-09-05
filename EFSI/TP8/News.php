@@ -12,7 +12,7 @@
 <div class="col-md-8 offset-md-2">
     <p class="mt-4 text-secondary"><?php print($news->Copete) ?></p>
     <div class="mt-5">
-        <img class="w-100" src="./Res/img/<?php echo($news->Imagen) ?>">
+        <img class="w-100" src="<?php echo($news->Imagen) ?>">
         <p class="mt-5 bodysize"><?php print($news->Cuerpo) ?></p>
     </div>
 </div>
