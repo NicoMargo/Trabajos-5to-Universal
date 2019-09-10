@@ -1,89 +1,61 @@
 package com.example.tp4omdb2;
+import android.app.PendingIntent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.os.AsyncTask;
 import android.util.JsonReader;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
-import java.io.IOException;
+import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class AsyncGetImage extends AsyncTask<Void,Void,Void> {
-    ArrayAdapter  _myAdapter;
-    ListView _lvList;
-
-    public void SetAdapterAndArray(ArrayAdapter  myAdapter, ListView myListView){
-        _myAdapter = myAdapter;
-        _lvList = myListView;
+public class AsyncGetImage extends AsyncTask<String,Void,Bitmap> {
+    IOnFinishListener _event;
+    private ImageView _imgPoster;
+    public AsyncGetImage(ImageView imgPoster){
+        _imgPoster = imgPoster;
     }
-    @Override
-    protected Void doInBackground(Void ... voids){
+
+    public void set_onFinishListener(IOnFinishListener onFinishListener){
+        _event = onFinishListener;
+    }
+    protected Bitmap doInBackground(String ... url){
+        Bitmap bitmapImage = null;
         try{
-            URL myRoute = new URL("http://epok.buenosaires.gob.ar/getCategorias");
-            HttpURLConnection myConection =(HttpURLConnection) myRoute.openConnection();
-            Log.d("AccesoApi","Primer Conectando...");
-            Log.d("AccesoAPI", "" + myConection.getResponseCode());
-            if(myConection.getResponseCode() ==200){
-                Log.d("AccesoApi","OK!");
-                InputStream bodyResponse = myConection.getInputStream();
-                InputStreamReader responseReader = new InputStreamReader(bodyResponse,"UTF-8");
-                ProcessJSON(responseReader);
+            URL myUrl;
+            myUrl = new URL(url[0]);
+            HttpURLConnection conectionUrl;
+            conectionUrl = (HttpURLConnection) myUrl.openConnection();
+            if (conectionUrl.getResponseCode() == 200){
+                InputStream dataBody=conectionUrl.getInputStream();
+                BufferedInputStream inputLector = new BufferedInputStream(dataBody);
+                bitmapImage = BitmapFactory.decodeStream(inputLector);
+                conectionUrl.disconnect();
+            }else{
+                Log.d("error response code",conectionUrl.getResponseCode() +"");
             }
-            else{
-                Log.d("AccesoApi","Alto Fail We xd!");
-            }
-            myConection.disconnect();
+        }catch(Exception error){
+            Log.d("Error xd", "Error:"+error.getMessage().toString());
         }
-        catch(MalformedURLException error){
-            Log.d("AccesoAPI","Url incorrecta");
-        } catch (IOException error) {
-            Log.d("AccesoAPI","IO");
-        }
-        return null;
-    }
-    @Override
-    protected void onPostExecute(Void aVoid){
-        super.onPostExecute(aVoid);
-        _lvList.setAdapter(_myAdapter);
+        return bitmapImage;
     }
 
 
-    public void ProcessJSON(InputStreamReader ReadStream){//Read Past Tense :V
-        JsonReader myJsonReader= new JsonReader(ReadStream);
-        try{
-            myJsonReader.beginObject();
-            while(myJsonReader.hasNext()){
-                Log.d("API","Kamisama puede ser muy cruel");
-                String objName = myJsonReader.nextName();
-                if(objName.equals("cantidad_de_categorias")){
-                    int quantCategories = myJsonReader.nextInt();
-                }
-                else{
-                    myJsonReader.beginArray();
-                    while(myJsonReader.hasNext()){
-                        myJsonReader.beginObject();
-                        while(myJsonReader.hasNext()){
-                            objName = myJsonReader.nextName();
-                            if(objName.equals("nombre")){
-                                String CategoryName = myJsonReader.nextString();
-                                Log.d("API","Energia recuperada "+ CategoryName);
-                                //getCatFragment._elements.add(CategoryName);
-                            } else{
-                                myJsonReader.skipValue();
-                            }
-                        }
-                        myJsonReader.endObject();
-                    }
-                    myJsonReader.endArray();
-                }
-            }
-        }//Fin del try
-        catch(Exception e){
-
-        }
+    protected void onPostExecute(Bitmap bitmapImage){
+        if(bitmapImage != null)
+            _event.onFinish(bitmapImage, _imgPoster);
     }
+
+    public interface IOnFinishListener{
+        void onFinish(Bitmap bitmapImage, ImageView imgPoster);
+    }
+
 }

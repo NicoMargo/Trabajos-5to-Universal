@@ -1,12 +1,13 @@
 package com.example.tp4omdb2;
+
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -15,13 +16,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class AsyncSearch extends AsyncTask<Void,Void,Void> {
+public class AsyncDetails extends AsyncTask<Void,Void,Void> {
     MovieAdapter  _myAdapter;
     ListView _lvList;
     String _action;
     ArrayList<Movie> _movies;
 
-    public AsyncSearch(ArrayList<Movie> movies, String param, String value){
+    public AsyncDetails(ArrayList<Movie> movies, String param, String value){
         super();
         _movies = movies;
         _action = "/?apikey=bf466bc4&"+param+"="+value;
@@ -70,14 +71,13 @@ public class AsyncSearch extends AsyncTask<Void,Void,Void> {
         JsonObject objJson;
         objJson = MyJsonParser.parse(ReadStream).getAsJsonObject();
         JsonArray arrMovies;
-        if(objJson.has("Search")){
-            arrMovies = objJson.get("Search").getAsJsonArray();
-            for (int i = 0; i < arrMovies.size(); i++) {
-                JsonObject jsonObj;
-                jsonObj = arrMovies.get(i).getAsJsonObject();
-                Movie thisMovie = new Movie(jsonObj.get("Title").getAsString(), jsonObj.get("Year").getAsString(), jsonObj.get("imdbID").getAsString(), jsonObj.get("Type").getAsString(), jsonObj.get("Poster").getAsString());
-                _movies.add(thisMovie);
-            }
+        arrMovies = objJson.get("Search").getAsJsonArray();
+        for(int i=0; i<arrMovies.size();i++){
+            JsonObject jsonObj;
+            jsonObj = arrMovies.get(i).getAsJsonObject();
+            Movie thisMovie = new Movie(jsonObj.get("Title").getAsString(),jsonObj.get("Year").getAsString(),jsonObj.get("imdbID").getAsString(),jsonObj.get("Type").getAsString(),jsonObj.get("Poster").getAsString());
+            _movies.add(thisMovie);
         }
+
     }
 }

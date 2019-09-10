@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -20,9 +21,9 @@ public class ResultsFragment extends Fragment {
     ListView lvList;
     View rootView;
 
-    public static ArrayList<Movie> _movies;
-    public MovieAdapter _myAdapter;
-
+    private static ArrayList<Movie> _movies;
+    private MovieAdapter _myAdapter;
+    public TextView txtResult;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_list, container, false);
@@ -39,6 +40,7 @@ public class ResultsFragment extends Fragment {
 
     private void getReferences(){
         lvList = (ListView) rootView.findViewById(R.id._lvList);
+        txtResult = (TextView) rootView.findViewById(R.id.txtResult);
     }
 
     public void setListeners(){ lvList.setOnItemClickListener(lvList_Item_Click);};

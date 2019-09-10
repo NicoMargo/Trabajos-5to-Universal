@@ -12,7 +12,7 @@ public class Movie {
     //Basic Info
     private String _id;
     private String _title;
-    private int _year;
+    private String _year;
     private String _poster;
     private String _type;
     //Details
@@ -52,11 +52,11 @@ public class Movie {
         this._title = _title;
     }
 
-    public int get_year() {
+    public String get_year() {
         return _year;
     }
 
-    public void set_year(int _year) {
+    public void set_year(String _year) {
         this._year = _year;
     }
 
@@ -76,7 +76,7 @@ public class Movie {
         this._type = _type;
     }
 
-    public Movie(String title, int year,String id, String type, String poster){
+    public Movie(String title, String year,String id, String type, String poster){
         _title = title;
         _year = year;
         _id = id;
