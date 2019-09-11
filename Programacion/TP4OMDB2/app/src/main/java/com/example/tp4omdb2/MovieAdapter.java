@@ -30,9 +30,13 @@ public class MovieAdapter extends BaseAdapter {
         _convertedImage = convertedImage;
     }
 
-    public MovieAdapter(ArrayList<Movie> movies, Context myContext){
-        _movies = movies;
+    public MovieAdapter(/*ArrayList<Movie> movies,*/ Context myContext){
+        //_movies = movies;
         _myContext = myContext;
+    }
+
+    public void setMoviesList( ArrayList<Movie> movies){
+        _movies = movies;
     }
 
     public int getCount(){
@@ -51,13 +55,6 @@ public class MovieAdapter extends BaseAdapter {
         else return -1;
     }
 
-    private void getViewReferences(View view){
-        txtTitle = (TextView) view.findViewById(R.id.txtTitle);
-        txtYear = (TextView) view.findViewById(R.id.txtYear);
-        txtType = (TextView) view.findViewById(R.id.txtType);
-        imgPoster = (ImageView) view.findViewById(R.id.imgPoster);
-    }
-
     public View getView(int pos, View view, ViewGroup group){
         LayoutInflater inflater = (LayoutInflater)_myContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View viewToReturn = inflater.inflate(R.layout.listviewitem_movie,group,false);
@@ -68,9 +65,20 @@ public class MovieAdapter extends BaseAdapter {
             txtType.setText("Type: "+_movies.get(pos).get_type());
             AsyncGetImage async = new AsyncGetImage(imgPoster);
             async.execute(_movies.get(pos).get_poster());
-            async.set_onFinishListener(async_finish);
+            setListeners(async);
         }
         return viewToReturn;
+    }
+
+    private void getViewReferences(View view){
+        txtTitle = (TextView) view.findViewById(R.id.txtTitle);
+        txtYear = (TextView) view.findViewById(R.id.txtYear);
+        txtType = (TextView) view.findViewById(R.id.txtType);
+        imgPoster = (ImageView) view.findViewById(R.id.imgPoster);
+    }
+
+    private void setListeners(AsyncGetImage async){
+        async.set_onFinishListener(async_finish);
     }
 
     AsyncGetImage.IOnFinishListener async_finish = new AsyncGetImage.IOnFinishListener() {

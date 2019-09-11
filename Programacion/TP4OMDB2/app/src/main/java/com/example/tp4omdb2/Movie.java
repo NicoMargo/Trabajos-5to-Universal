@@ -18,7 +18,7 @@ public class Movie {
     //Details
     private Map<String,String> _details = new HashMap<String,String>();
 
-    private String[] MapKeys = {
+    private static final String[] MapKeys = {
         "Rated",
         "Released",
         "Runtime",
@@ -35,6 +35,18 @@ public class Movie {
         "Production",
         "Website"
     };
+
+    public static final String[] getMapKeys(){
+        return MapKeys;
+    }
+
+    public void addDetail(String key, String value){
+        _details.put(key,value);
+    }
+
+    public void resetDetails(){
+        _details.clear();
+    }
 
     public String get_id() {
         return _id;
@@ -84,4 +96,7 @@ public class Movie {
         _poster = poster;
     }
 
+    public Movie(String id){
+        _id = id;
+    }
 }

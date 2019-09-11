@@ -18,12 +18,12 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class AsyncGetImage extends AsyncTask<String,Void,Bitmap> {
-    IOnFinishListener _event;
     private ImageView _imgPoster;
     public AsyncGetImage(ImageView imgPoster){
         _imgPoster = imgPoster;
     }
 
+    IOnFinishListener _event;
     public void set_onFinishListener(IOnFinishListener onFinishListener){
         _event = onFinishListener;
     }
