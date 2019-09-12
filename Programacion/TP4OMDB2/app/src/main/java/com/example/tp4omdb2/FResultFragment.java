@@ -18,16 +18,17 @@ import java.util.ArrayList;
 
 public class FResultFragment extends Fragment {
 
-    ListView lvList;
-    View rootView;
+    private ListView lvList;
+    private View rootView;
+    private TextView txtResult;
+    private Button btnPrev;
+    private Button btnNext;
+    private Button btnMain;
 
     private static ArrayList<Movie> _movies;
     private MovieAdapter _myAdapter;
     private int _pagePosition = 0;
-    public static final int ITEMS_PER_PAGE = 5;
-    public TextView txtResult;
-    private Button btnPrev;
-    private Button btnNext;
+    public static final int ITEMS_PER_PAGE = 4;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
@@ -48,28 +49,33 @@ public class FResultFragment extends Fragment {
         txtResult = (TextView) rootView.findViewById(R.id.txtResult);
         btnPrev = rootView.findViewById(R.id.btnPrevious);
         btnNext = rootView.findViewById(R.id.btnNext);
+        btnMain = rootView.findViewById(R.id.btnMain);
     }
 
     public void setListeners(){
         lvList.setOnItemClickListener(lvList_Item_Click);
         btnNext.setOnClickListener(btnNext_Click);
         btnPrev.setOnClickListener(btnPrevious_Click);
+        btnMain.setOnClickListener(btnMain_Click);
     }
 
     private ListView.OnItemClickListener lvList_Item_Click = new ListView.OnItemClickListener(){
         public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-            String strCat = lvList.getItemAtPosition(position).toString();
-            FragmentManager adminFragment;
-            FragmentTransaction transacFragment;
-            Fragment fragmentDetails = new FDetailsFragment();
-            ((FDetailsFragment) fragmentDetails).setMovie(_movies.get(position));
-
-            adminFragment   = getFragmentManager();
-            transacFragment = adminFragment.beginTransaction();
-            transacFragment.replace(R.id.lytMain, fragmentDetails);
-            transacFragment.commit();
+            StartDetailFragment(position);
         }
     };
+
+    private void StartDetailFragment(int position){
+        FragmentManager adminFragment;
+        FragmentTransaction transacFragment;
+        Fragment fragmentDetails = new FDetailsFragment();
+        ((FDetailsFragment) fragmentDetails).setMovie(_movies.get(position));
+
+        adminFragment   = getFragmentManager();
+        transacFragment = adminFragment.beginTransaction();
+        transacFragment.replace(R.id.lytMain, fragmentDetails);
+        transacFragment.commit();
+    }
 
     private View.OnClickListener btnPrevious_Click= new View.OnClickListener() {
         public void onClick(View v) {
@@ -90,6 +96,23 @@ public class FResultFragment extends Fragment {
             }
         }
     };
+
+    private View.OnClickListener btnMain_Click= new View.OnClickListener() {
+        public void onClick(View v) {
+            StartMainFragment();
+        }
+    };
+
+    private void StartMainFragment(){
+        FragmentManager adminFragment;
+        FragmentTransaction transacFragment;
+        FMainFragment fragmentMain = new FMainFragment();
+
+        adminFragment   = getFragmentManager();
+        transacFragment = adminFragment.beginTransaction();
+        transacFragment.replace(R.id.lytMain, fragmentMain);
+        transacFragment.commit();
+    }
 
     public void setResultText(String result){
         txtResult.setText(result);

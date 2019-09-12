@@ -48,6 +48,10 @@ public class Movie {
         _details.clear();
     }
 
+    public Map<String,String> get_details(){
+        return _details;
+    }
+
     public String get_id() {
         return _id;
     }

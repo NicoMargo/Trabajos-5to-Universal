@@ -55,7 +55,7 @@ public class AsyncGetImage extends AsyncTask<String,Void,Bitmap> {
     }
 
     public interface IOnFinishListener{
-        void onFinish(Bitmap bitmapImage, ImageView imgPoster);
+        void onFinish(Bitmap bitmapImage, ImageView imgvPoster);
     }
 
 }

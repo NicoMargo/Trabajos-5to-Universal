@@ -2,9 +2,6 @@ package com.example.tp4omdb2;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.text.Layout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.BufferedInputStream;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class MovieAdapter extends BaseAdapter {
@@ -24,7 +17,7 @@ public class MovieAdapter extends BaseAdapter {
     private TextView txtTitle;
     private TextView txtYear;
     private TextView txtType;
-    private ImageView imgPoster;
+    private ImageView imgvPoster;
     private Bitmap _convertedImage;
     public void setConvertedImage(Bitmap convertedImage){
         _convertedImage = convertedImage;
@@ -63,7 +56,7 @@ public class MovieAdapter extends BaseAdapter {
             txtTitle.setText("Title: "+_movies.get(pos).get_title());
             txtYear.setText("Year: "+(_movies.get(pos).get_year()).toString());
             txtType.setText("Type: "+_movies.get(pos).get_type());
-            AsyncGetImage async = new AsyncGetImage(imgPoster);
+            AsyncGetImage async = new AsyncGetImage(imgvPoster);
             async.execute(_movies.get(pos).get_poster());
             setListeners(async);
         }
@@ -74,7 +67,7 @@ public class MovieAdapter extends BaseAdapter {
         txtTitle = (TextView) view.findViewById(R.id.txtTitle);
         txtYear = (TextView) view.findViewById(R.id.txtYear);
         txtType = (TextView) view.findViewById(R.id.txtType);
-        imgPoster = (ImageView) view.findViewById(R.id.imgPoster);
+        imgvPoster = (ImageView) view.findViewById(R.id.imgPoster);
     }
 
     private void setListeners(AsyncGetImage async){
@@ -83,9 +76,9 @@ public class MovieAdapter extends BaseAdapter {
 
     AsyncGetImage.IOnFinishListener async_finish = new AsyncGetImage.IOnFinishListener() {
         @Override
-        public void onFinish(Bitmap bitmapImage, ImageView imgPoster) {
-            if(imgPoster!=null)
-                imgPoster.setImageBitmap(bitmapImage);
+        public void onFinish(Bitmap bitmapImage, ImageView imgvPoster) {
+            if(imgvPoster!=null)
+                imgvPoster.setImageBitmap(bitmapImage);
         }
     };
 }
