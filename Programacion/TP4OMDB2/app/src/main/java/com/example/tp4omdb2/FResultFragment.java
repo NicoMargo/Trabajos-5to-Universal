@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.lang.Math;
 import java.util.ArrayList;
 
@@ -84,6 +86,9 @@ public class FResultFragment extends Fragment {
                 _myAdapter.setMoviesList(Helpers.getSubListMovies(_movies, _pagePosition, ITEMS_PER_PAGE));
                 lvList.setAdapter(_myAdapter);
             }
+            else{
+                Toast.makeText(rootView.getContext(), "First page reached", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 
@@ -93,6 +98,9 @@ public class FResultFragment extends Fragment {
                 _pagePosition++;
                 _myAdapter.setMoviesList(Helpers.getSubListMovies(_movies, _pagePosition, ITEMS_PER_PAGE));
                 lvList.setAdapter(_myAdapter);
+            }
+            else{
+                Toast.makeText(rootView.getContext(), "Last page reached", Toast.LENGTH_SHORT).show();
             }
         }
     };

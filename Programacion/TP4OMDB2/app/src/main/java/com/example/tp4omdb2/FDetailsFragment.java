@@ -27,6 +27,8 @@ public class FDetailsFragment extends Fragment {
     private View rootView;
     private ListView lvList;
     private TextView txtTitle;
+    private TextView txtYear;
+    private TextView txtType;
     private ImageView imgvPoster;
     private Button btnMain;
 
@@ -49,7 +51,7 @@ public class FDetailsFragment extends Fragment {
         getReferences();
         _details = new ArrayList<String>();
         _myAdapter = new ArrayAdapter<>(rootView.getContext(), android.R.layout.simple_list_item_1,_details);
-        _asyncGetDetails = new AsyncGetDetails("tt1905041", _movie);
+        _asyncGetDetails = new AsyncGetDetails(_movie.get_id(), _movie);
         _asyncGetImage = new AsyncGetImage(imgvPoster);
         setListeners();
         //_myTask.setAdapterAndArray(_myAdapter,lvList);
@@ -60,8 +62,10 @@ public class FDetailsFragment extends Fragment {
     protected void getReferences() {
         lvList = (ListView) rootView.findViewById(R.id.lvDetails);
         txtTitle = (TextView) rootView.findViewById(R.id.txtTitle);
+        txtYear = (TextView) rootView.findViewById(R.id.txtYear);
+        txtType = (TextView) rootView.findViewById(R.id.txtType);
         imgvPoster = (ImageView) rootView.findViewById(R.id.imgPoster);
-        btnMain = rootView.findViewById(R.id.btnMain);
+        btnMain = (Button) rootView.findViewById(R.id.btnMain);
     }
 
     protected void setListeners() {
@@ -73,11 +77,11 @@ public class FDetailsFragment extends Fragment {
     AsyncGetDetails.IOnFinishListener asyncGetDetails_onFinish = new AsyncGetDetails.IOnFinishListener() {
         @Override
         public void onFinish(Movie movie) {
-            txtTitle.setText(movie.get_title());
+            txtTitle.setText("Title: "+movie.get_title());
+            txtYear.setText("Year: "+movie.get_year());
+            txtType.setText("Type: "+movie.get_type());
             _details.clear();
             _asyncGetImage.execute(movie.get_poster());
-            _details.add("Year: "+movie.get_year());
-            _details.add("Type: "+movie.get_type());
             for ( String key: movie.get_details().keySet()) {
                 _details.add(key+": "+ movie.get_details().get(key));
             }

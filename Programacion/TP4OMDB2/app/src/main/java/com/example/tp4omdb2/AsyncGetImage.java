@@ -17,6 +17,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+
+//the asynchronous task that get an image in bitmap format
 public class AsyncGetImage extends AsyncTask<String,Void,Bitmap> {
     private ImageView _imgPoster;
     public AsyncGetImage(ImageView imgPoster){
@@ -54,6 +56,7 @@ public class AsyncGetImage extends AsyncTask<String,Void,Bitmap> {
             _event.onFinish(bitmapImage, _imgPoster);
     }
 
+    //event called when onPostExecute finishes
     public interface IOnFinishListener{
         void onFinish(Bitmap bitmapImage, ImageView imgvPoster);
     }

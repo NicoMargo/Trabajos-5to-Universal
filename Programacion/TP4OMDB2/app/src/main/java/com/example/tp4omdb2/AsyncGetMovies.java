@@ -1,6 +1,7 @@
 package com.example.tp4omdb2;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -13,6 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+//the asynchronous task that get a list of movies from an Api
 public class AsyncGetMovies extends AsyncSearch {
     MovieAdapter  _myAdapter;
     ListView _lvList;
@@ -29,11 +31,13 @@ public class AsyncGetMovies extends AsyncSearch {
     }
 
     @Override
-    protected void onPostExecute(Void aVoid){
+    protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        if(_movies.size()>0) {
+        if (_movies.size() > 0) {
             _myAdapter.setMoviesList(Helpers.getSubListMovies(_movies, 0, FResultFragment.ITEMS_PER_PAGE));
             _lvList.setAdapter(_myAdapter);
+        } else {
+            Toast.makeText(_lvList.getContext(), "results", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -20,24 +20,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+//the asynchronous task that get the details of an specified movie
 public class AsyncGetDetails extends AsyncSearch {
-    //ArrayAdapter _myAdapter;
-    //ArrayList<String> _details;
-    //ListView _lvList;
+    //Selected movie instance
     Movie _movie;
-
 
     public AsyncGetDetails( String value, Movie movie){
         super("i",value);
         _movie = movie;
 
     }
-/*
-    public void setAdapterAndArray(ArrayAdapter myAdapter, ListView myListView){
-        _myAdapter = myAdapter;
-        _lvList = myListView;
-    }
-*/
+
     AsyncGetDetails.IOnFinishListener _event;
     public void set_onFinishListener(AsyncGetDetails.IOnFinishListener onFinishListener){
         _event = onFinishListener;
@@ -73,8 +66,7 @@ public class AsyncGetDetails extends AsyncSearch {
         _event.onFinish(_movie);
     }
 
-
-
+    //process the json to the details of selected movie
     public void ProcessJSON(InputStreamReader ReadStream) {//Read Past Tense :V
         JsonParser MyJsonParser;
         MyJsonParser = new JsonParser();
@@ -82,11 +74,13 @@ public class AsyncGetDetails extends AsyncSearch {
         objJson = MyJsonParser.parse(ReadStream).getAsJsonObject();
         _movie.resetDetails();
         for (String key:Movie.getMapKeys() ) {
+            try{
             _movie.addDetail(key,objJson.get(key).getAsString());
+            }catch (Exception e){}
         }
     }
 
-
+    //event called when postExecute finishes
     public interface IOnFinishListener{
         void onFinish(Movie movie);
     }

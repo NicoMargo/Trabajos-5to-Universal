@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class FMainFragment extends Fragment {
@@ -45,8 +47,13 @@ public class FMainFragment extends Fragment {
 
     private View.OnClickListener btnSearch_Click= new View.OnClickListener() {
         public void onClick(View v) {
-            MainActivity.setSearchString(edtSearch.getText().toString());
-            StartResultsFragment();
+            String strValue = edtSearch.getText().toString();
+            if (strValue.trim().equals("")) {
+                Toast.makeText(rootView.getContext(), "You shall submit a value", Toast.LENGTH_SHORT).show();
+            } else {
+                MainActivity.setSearchString(strValue);
+                StartResultsFragment();
+            }
         }
     };
 
