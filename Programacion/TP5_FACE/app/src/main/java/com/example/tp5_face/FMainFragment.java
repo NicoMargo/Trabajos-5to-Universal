@@ -1,10 +1,16 @@
 package com.example.tp5_face;
 
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +28,7 @@ public class FMainFragment extends Fragment {
 
     private final int CODE_CAMERA_ACTIVITY = 1;
     private final int CODE_STORAGE_ACTIVITY = 2;
+    private final int CODE_PERMISSION_REQUEST = 3;
 
     public FMainFragment() {
         // Required empty public constructor
@@ -33,8 +40,32 @@ public class FMainFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_fmain, container, false);
         getReferences();
         setListeners();
+        checkPermissions();
         // Inflate the layout for this fragment
         return rootView;
+    }
+
+    void checkPermissions(){
+        if(ContextCompat.checkSelfPermission(rootView.getContext(), Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
+            btnCamera.setEnabled(false);
+            ActivityCompat.requestPermissions( this.getActivity() ,new String[]{Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE},CODE_PERMISSION_REQUEST);
+        }else{
+            btnCamera.setEnabled(true);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
+        if(requestCode == CODE_PERMISSION_REQUEST);
+        boolean boolPermissionsGranted = true;
+        int i = 0;
+        while(i < permissions.length && boolPermissionsGranted){
+            boolPermissionsGranted &= (grantResults[i] != PackageManager.PERMISSION_GRANTED);
+            i++;
+        }
+        if(boolPermissionsGranted){
+            btnCamera.setEnabled(true);
+        }
     }
 
     private void getReferences(){
@@ -49,13 +80,13 @@ public class FMainFragment extends Fragment {
 
     public View.OnClickListener btnCamera_Click = new View.OnClickListener(){
         public void onClick(View v){
-
+            startCameraActivity();
         }
     };
 
     public View.OnClickListener btnStorage_Click = new View.OnClickListener(){
         public void onClick(View v){
-
+            startStorageActivity();
         }
     };
 
