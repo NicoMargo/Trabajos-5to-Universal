@@ -1,6 +1,6 @@
 /*Pc-ordenador Laptops*/
 
-@media screen and (min-width:1224px){
+@media screen and (min-width:800px){
 	body{
 		clear:left;
 		background-color:#E2F8FF;
@@ -277,7 +277,7 @@
 	.PalabraDestacados{
 		color:rgb(1, 95, 236);	
 		font-size: 60px;
-		font-family: k26toyblocks123regular;
+		font-family: Verdana, Geneva, Tahoma, sans-serif;
 		text-align: center;
 		border: rgb(0, 132, 255) solid 2px;
 	

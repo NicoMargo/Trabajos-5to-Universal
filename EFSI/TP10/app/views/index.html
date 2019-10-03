@@ -7,16 +7,16 @@
 
 	<title>Jugueteria Alex</title>
 
-	<script type="text/javascript" src="../res//JS//Index.js"></script>	
+	
 	<link rel="stylesheet" type="text/css" href="../res/CSS/Normalize.css">
 	<link rel="stylesheet" type="text/css" href="../res/CSS/Index.css">	
 	<link rel="stylesheet" type="text/css" href="../res/bootstrap/bootstrap css/bootstrap.css">
 
-	
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="../res/bootstrap/bootstrap js/bootstrap.js"></script>
+
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js" asp-fallback-src="~/lib/jquery/dist/jquery.min.js"	asp-fallback-test="window.jQuery" crossorigin="anonymous"integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		
 
 
 </head>
@@ -94,71 +94,8 @@
 			<hr>
 	
 			<section class="container mt-1 pt-2">
-        <div class="card-group">
-            <div class="card mr-3">
-              <img class="card-img-top" src="../res/img/tren.jpg" alt="Card image cap">
-              <div class="card-body">
-                <div class="d-flex">
-                  <h5 class="card-title mr-auto">Trencito</h5>
-                  <div class="text-success font-weight-bold">$70</div>
-                </div>
-								<p class="card-text">Descripción del producto.</p>
-								<div class="d-flex justify-content-between">
-										<a class="btn btn-primary" href="#" role="button">Comprar</a>
-										<img src="../res/img/corazon2.svg" class="corazon" width="14%" height="14%" alt="favorito">
-								</div>
-  
-                </div>
-            </div>      
-
-            <div class="card mr-3">
-                <img class="card-img-top" src="../res/img/tren.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <div class="d-flex">
-                    <h5 class="card-title mr-auto">Trencito</h5>
-                    <div class="text-success font-weight-bold">$70</div>
-                  </div>
-                  <p class="card-text">Descripción del producto.</p>
-                  <div class="d-flex justify-content-between">
-											<a class="btn btn-primary" href="#" role="button">Comprar</a>
-											<img src="../res/img/corazon2.svg" class="corazon" width="14%" height="14%" alt="favorito">
-									</div>
-    
-                  </div>
-              </div> 
-            
-              <div class="card mr-3">
-                <img class="card-img-top" src="../res/img/tren.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <div class="d-flex">
-                    <h5 class="card-title mr-auto">Trencito</h5>
-                    <div class="text-success font-weight-bold">$70</div>
-                  </div>
-                  <p class="card-text">Descripción del producto.</p>
-                  <div class="d-flex justify-content-between">
-											<a class="btn btn-primary" href="#" role="button">Comprar</a>
-											<img src="../res/img/corazon2.svg" class="corazon" width="14%" height="14%" alt="favorito">
-									</div>
-    
-                  </div>
-              </div> 
-
-              <div class="card">
-                <img class="card-img-top" src="../res/img/tren.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <div class="d-flex">
-                    <h5 class="card-title mr-auto">Trencito</h5>
-                    <div class="text-success font-weight-bold">$70</div>
-                  </div>
-                  <p class="card-text">Descripción del producto.</p>
-                  <div class="d-flex justify-content-between">
-											<a class="btn btn-primary" href="#" role="button">Comprar</a>
-											<img src="../res/img/corazon2.svg" class="corazon" width="14%" height="14%" alt="favorito">
-									</div>
-    
-                  </div>
-              </div> 
-             
+        <div  class="card-group">    
+			<div id="cardGroup" class="row offset-md-2"></div>
         </div> 
 		</main>			
 		<br>	
@@ -189,5 +126,172 @@
 		  </div>
 		</div>
 	  </div>
-</body>
+	  
+
+
+
+	  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">			  
+				<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Crear Cliente</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+		
+						<div class="modal-body">
+							<div class="row">
+								<div class="offset-md-1 col-md-2">
+									<div class="text-center">
+										<strong><span>Apellido</span></strong>
+									</div>
+									<div class="crtInput notEmpty" id="crtSurname">
+										<input class="form-control text-center" type="text">
+										<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
+									</div>
+								</div>
+								<div class="offset-md-1 col-md-3">
+									<div class="text-center">
+										<strong><span>Nombre</span></strong>
+									</div>
+									<div class="crtInput notEmpty" id="crtName">
+										<input class="form-control text-center" type="text">
+										<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
+									</div>
+								</div>
+								<div class="offset-md-1 col-md-2">
+									<div class="text-center">
+										<strong><span>DNI/CUIT/CUIL</span></strong>
+									</div>
+									<div class="crtInput notEmpty validPositive" id="crtDni">
+										<input class="form-control text-center" type="number" min="0" step="1">
+										<div class="validation_msg hidden text-center">Ingrese valor válido</div>
+									</div>
+								</div>
+							</div>
+							<div class="row mt-4">
+								<div class="offset-md-1 col-md-2">
+									<div class="text-center">
+										<strong><span>Nro. Teléfono</span></strong>
+									</div>
+									<div class="crtInput validPositive" id="crtTelephone">
+										<input class="form-control text-center" type="number" min="0">
+										<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
+									</div>
+								</div>
+								<div class="offset-md-1 col-md-3">
+									<div class="text-center">
+										<strong><span>Nro. Celular</span></strong>
+									</div>
+									<div class="crtInput validPositive" id="crtCellphone">
+										<input class="form-control text-center" type="number" min="0">
+										<div class="validation_msg hidden text-center" >Ingrese un valor válido</div>
+									</div>
+								</div>
+								<div class="offset-md-1 col-md-2">
+									<div class="text-center">
+										<strong><span>Email</span></strong>
+									</div>
+									<div class="crtInput" id="crtEmail">
+										<input class="form-control text-center" type="email">
+										<div class="validation_msg hidden text-center">Ingrese un email válido</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secundary" id="crtCancel" data-dismiss="modal">Cerrar</button>
+							<button class="btn btn-primary" id="add">Crear</button>
+						</div>
+						
+			  </div>
+			</div>
+		  </div>
+
+    <!-- Extra large modal Create-->
+    <div class="modal fade bd-example-modal-xl" id="modalCrt" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Crear Cliente</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+	
+					<div class="modal-body">
+						<div class="row">
+							<div class="offset-md-1 col-md-2">
+								<div class="text-center">
+									<strong><span>Apellido</span></strong>
+								</div>
+								<div class="crtInput notEmpty" id="crtSurname">
+									<input class="form-control text-center" type="text">
+									<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
+								</div>
+							</div>
+							<div class="offset-md-1 col-md-3">
+								<div class="text-center">
+									<strong><span>Nombre</span></strong>
+								</div>
+								<div class="crtInput notEmpty" id="crtName">
+									<input class="form-control text-center" type="text">
+									<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
+								</div>
+							</div>
+							<div class="offset-md-1 col-md-2">
+								<div class="text-center">
+									<strong><span>DNI/CUIT/CUIL</span></strong>
+								</div>
+								<div class="crtInput notEmpty validPositive" id="crtDni">
+									<input class="form-control text-center" type="number" min="0" step="1">
+									<div class="validation_msg hidden text-center">Ingrese valor válido</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-4">
+							<div class="offset-md-1 col-md-2">
+								<div class="text-center">
+									<strong><span>Nro. Teléfono</span></strong>
+								</div>
+								<div class="crtInput validPositive" id="crtTelephone">
+									<input class="form-control text-center" type="number" min="0">
+									<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
+								</div>
+							</div>
+							<div class="offset-md-1 col-md-3">
+								<div class="text-center">
+									<strong><span>Nro. Celular</span></strong>
+								</div>
+								<div class="crtInput validPositive" id="crtCellphone">
+									<input class="form-control text-center" type="number" min="0">
+									<div class="validation_msg hidden text-center" >Ingrese un valor válido</div>
+								</div>
+							</div>
+							<div class="offset-md-1 col-md-2">
+								<div class="text-center">
+									<strong><span>Email</span></strong>
+								</div>
+								<div class="crtInput" id="crtEmail">
+									<input class="form-control text-center" type="email">
+									<div class="validation_msg hidden text-center">Ingrese un email válido</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secundary" id="crtCancel" data-dismiss="modal">Cerrar</button>
+						<button class="btn btn-primary" id="add">Crear</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal Create END-->
+
+	</body>
+
+
+
+	<script type="text/javascript" src="../res//JS//Index.js"></script>	
 </html>
