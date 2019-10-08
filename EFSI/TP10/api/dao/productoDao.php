@@ -10,19 +10,15 @@ class ProductoDao{
     }
     public static function Agregar($producto){
         $pdo = DB::Conectar();
-        $resultado = $pdo->query("call spTraerJuguetes();");
-        $productos = $resultado->fetchAll(PDO::FETCH_CLASS, 'Producto');        
-        return $productos;
+        $resultado = $pdo->query("call spAgregarJuguete('$producto->nombre','$producto->descripcion',$producto->precio,'$producto->foto');");
     }
     public static function Borrar($id){
         $pdo = DB::Conectar();
-        $resultado = $pdo->query("call spBorrarJuguete('$id');"); //falta hacer sp
+        $resultado = $pdo->query("call spBorrarJuguete($id);"); //falta hacer sp
     }
     public static function Modificar($producto){
         $pdo = DB::Conectar();
-        $resultado = $pdo->query("call spModificarUnJuguetes();");
-        $productos = $resultado->fetchAll(PDO::FETCH_CLASS, 'Producto');        
-        return $productos;
+        $resultado = $pdo->query("call spModificarJuguete($producto->id,'$producto->nombre','$producto->descripcion',$producto->precio,'$producto->foto');");
     }
 
 };

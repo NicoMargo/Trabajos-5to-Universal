@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 03-10-2019 a las 13:40:21
+-- Tiempo de generación: 08-10-2019 a las 13:47:59
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -26,12 +26,31 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-DROP PROCEDURE IF EXISTS `spModificarUnJuguete`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spModificarUnJuguete` (IN `pid` INT(11), IN `pnombre` VARCHAR(320), IN `pdes` VARCHAR(320), IN `pprecio` FLOAT, IN `pfoto` VARCHAR(320))  NO SQL
+DROP PROCEDURE IF EXISTS `spAgregarJuguete`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spAgregarJuguete` (IN `pNombre` VARCHAR(100), IN `pPrecio` FLOAT(10,2), IN `pDescripcion` VARCHAR(200), IN `pFoto` VARCHAR(320))  NO SQL
+if(pPrecio>0 and pNombre !="")
+THEN
+	INSERT into productos(nombre,precio,descripcion,foto) values(pNombre,pPrecio,pDescripcion,pFoto);
+end IF$$
+
+DROP PROCEDURE IF EXISTS `spBorrarJuguete`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarJuguete` (IN `pId` INT(11))  NO SQL
+delete from productos where id = pId$$
+
+DROP PROCEDURE IF EXISTS `spModificarJuguete`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spModificarJuguete` (IN `pId` INT(11), IN `pNombre` VARCHAR(320), IN `pDes` VARCHAR(320), IN `pPrecio` FLOAT, IN `pFoto` VARCHAR(320))  NO SQL
 BEGIN
-if EXISTS(SELECT id from productos where id = pid)
+if EXISTS(SELECT id from productos where id = pId)
 then
-	UPDATE productos set nombre = pnombre,descripcion = pdes,precio = pprecio,foto = pfoto where id = pid;
+	if(pNombre != "")
+    THEN
+    	update productos set nombre = pNombre where id = pId;
+    end if;
+	UPDATE productos set descripcion = pDes,foto = pFoto where id = pId;
+    if(pPrecio>0)
+    THEN
+    	update productos set precio = pPrecio where id = pId;
+    end if;
 end if;
 END$$
 
@@ -62,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `descripcion` varchar(200) DEFAULT NULL,
   `foto` varchar(320) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `productos`
