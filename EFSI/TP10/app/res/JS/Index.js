@@ -1,3 +1,4 @@
+var modelId;
 $(document).ready(function () {
 	$.ajax({
 		type: "GET",
@@ -16,17 +17,76 @@ $(document).ready(function () {
 						'<div class="text-success font-weight-bold">$'+Producto[i].precio+'</div>'+
 					'</div>'+
 						'<div class="d-flex justify-content-between">'+
-							'<modificar><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Modificar</button></modificar>'+
-							'<borrar><button type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target=".bd-example-modal-lg">Borrar</button></borrar>'+
+							'<button action="modificar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifModal" modelId="'+Producto[i].id +'">Modificar</button>'+
+							'<button action="borrar" type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#borrarModal" modelId="'+Producto[i].id +'">Borrar</button>'+
 						'</div>'+
 					'</div>'+
 				'</div>'
 				);	
 			}			
+			
+			$("[action='modificar']").click(
+				function(){
+					$.ajax({
+						type: "POST",
+						url: "../../../../TP10/api/controller/productoController.php",
+						data: { 
+							action: "Bjuguete",
+							id: modelId 
+						},
+						success: function () {
+							location.reload();
+						},
+						error: function () {
+							CreateModal("Error", "Hubo un error al eliminar al producto");
+						}
+					});
+				}
+			);
+			$("[action='borrar']").click(
+				function(){
+				modelId = $(this).attr("modelId");
+			});
 		},
 		error: function () {
 			alert("ERROR");
 		}
 	});
-
+	$("#confirm").click(function () {
+		$.ajax({
+			type: "POST",
+			url: "../../../../TP10/api/controller/productoController.php",
+			data: { 
+				action: "Bjuguete",
+				id: modelId 
+			},
+			success: function () {
+				location.reload();
+			},
+			error: function () {
+				CreateModal("Error", "Hubo un error al eliminar al producto");
+			}
+		});
+	});
+	$("#add").click(function () {
+		$.ajax({
+			type: "POST",
+			url: "../../../../TP10/api/controller/productoController.php",
+			data: { 
+				action: "Ajuguete",
+				producto: {
+					nombre:"a",
+					descripcion:"a",
+					precio: 1,
+					foto: "a"
+				} 
+			},
+			success: function () {
+				location.reload();
+			},
+			error: function () {
+				CreateModal("Error", "Hubo un error al eliminar al producto");
+			}
+		});
+	});
 });

@@ -24,274 +24,234 @@
 		<!--Header Dinamico-->
 	<div class="sticky-top">
 		<nav class="navbar navbar-dark encabezado navbar-expand-sm ">	  		  
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-				  <div class="navbar-nav ml-auto mr-auto text-center">
-						<img src="../res/img/Logo Alex.png" width="100" height="40" class="mx-auto" alt="Logo Alex">
-				  </div>
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+				<div class="navbar-nav ml-auto mr-auto text-center">
+					<img src="../res/img/Logo Alex.png" width="100" height="40" class="mx-auto" alt="Logo Alex">
 				</div>
-			 </nav>
+			</div>
+		</nav>
 			 
 		 <!--Navbar Estatico-->
 		 <nav class="navbar navbar-dark navegadorEncabezado navbar-expand-sm ">		  
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-				  <div class="navbar-nav ml-auto mr-auto text-center">
-					  <a class="navegador active ml-5 pl-5" href="index.html">Inicio</a>											
-					  <a class="navegador" href="#juguetes">Juguetes</a>
-					  <a class="navegador" href="Contacto.html">Contacto</a>
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+				<div class="navbar-nav ml-auto mr-auto text-center">
+					<a class="navegador active ml-5 pl-5" href="index.html">Inicio</a>											
+					<a class="navegador" href="#juguetes">Juguetes</a>
+					<a class="navegador" href="Contacto.html">Contacto</a>
 				</div>	
-			 </div>
+			</div>
 		</nav>
 	</div>
-
-
-		<main role="main">
+	<main role="main">
 
 		<!--Carrusel--> 
 
-		 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    
-				<ol class="carousel-indicators">
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
 				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-				</ol>
-
-				<div class="carousel-inner" style="height: 100%">
-					<div class="carousel-item active" style="height: 100%">
-						<img class="d-block w-100" src="../res/img/banner6.jpg" alt="First slide">
-							<div class="carousel-caption d-none d-md-block">
-							</div>
-					</div>
-				<div class="carousel-item" style="height: 100%">
-					<img class="d-block w-100" src="../res/img/banner5.JPG" alt="Second slide">
-						<div class="carousel-caption d-none d-md-block">
-					</div>
-				</div>
-					<div class="carousel-item" style="height: 100%">
-						<img class="d-block w-100" src="../res/img/banner4.JPG" alt="Third slide">
+			</ol>
+			<div class="carousel-inner" style="height: 100%">
+				<div class="carousel-item active" style="height: 100%">
+					<img class="d-block w-100" src="../res/img/banner6.jpg" alt="First slide">
 						<div class="carousel-caption d-none d-md-block">
 						</div>
 					</div>
 				</div>
-		
-				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			</div>
+			<div class="carousel-item" style="height: 100%">
+				<img class="d-block w-100" src="../res/img/banner5.JPG" alt="Second slide">
+					<div class="carousel-caption d-none d-md-block">
+				</div>
+			</div>
+				<div class="carousel-item" style="height: 100%">
+					<img class="d-block w-100" src="../res/img/banner4.JPG" alt="Third slide">
+					<div class="carousel-caption d-none d-md-block">
+					</div>
+				</div>
+			</div>
+	
+			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="sr-only">Anterior</span>
-				</a>
-				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="sr-only">Después</span>
-				</a>    
+			</a>    
+		</div>
+			<!--Fotos para los juguetes destacados-->
+			<div id="juguetes" class="mb-5"></div>
+			<div  style="width: 100%;"></div>			
+			<p class="PalabraDestacados">.</p>
+			<div class="col-4 mx-auto mt-5">
+				<h3 class="text-uppercase text-center">Juguetes</h3><br>
 			</div>
-				<!--Fotos para los juguetes destacados-->
-				<div id="juguetes" class="mb-5"></div>
-				<div  style="width: 100%;"></div>			
-				<p class="PalabraDestacados">.</p>
-				<div class="col-4 mx-auto mt-5">
-					<h3 class="text-uppercase text-center">Juguetes</h3>
-					<br>
-			</div>
-			<hr>
-	
-			<section class="container mt-1 pt-2">
-        <div  class="card-group">    
-			<div id="cardGroup" class="row offset-md-2"></div>
-        </div> 
-		</main>			
-		<br>	
- 	 <div class="jumbotron mt-12 bg-primary bg-primary text-white rounded-0" style="clear:left;">
+		<hr>
+
+		<section class="container mt-1 pt-2">	
+			<div  class="card-group">    
+				<button action="agregar"class="btn btn-success offset-md-2 col-md-8 mb-2" data-toggle="modal" data-target="#agregModal">Agregar Juguete</button><br/>
+				<div id="cardGroup" class="row offset-md-2"></div>
+			</div> 
+		</section>
+	</main>			
+	<br>	
+ 	<div class="jumbotron mt-12 bg-primary bg-primary text-white rounded-0" style="clear:left;">
 		<div class="container">
 
 			<div>
-			<p class="lead">Marcas con las que trabajamos:</p> 
-			<img src="../res/img/Marca Rondi.png" width="100px" class="mr-2" alt="Rondi">
-			<img src="../res/img/Marca Ruibal.jpg" width="85" class="mr-2" alt="Ruibal">
-			<img src="../res/img/Marca HotWheels.png" width="100px" class="mr-2" alt="HotWheels">
-			<img src="../res/img/Marca Barbie.png" width="100px" class="mr-2" alt="Barbie">
-			<img src="../res/img/Welly_b.png" width="100px" class="mr-2" alt="Welly">			
-			<img src="../res/img/Marca Mattel.png" width="85" class="mr-2" alt="Mattel">
-			<img src="../res/img/Marca Hasbro.png"  width="85px" class="mr-2" alt="Hasbro">
-			<img src="../res/img/Marca Kinsmart.png" width="100px" class="mr-2" alt="Kinsmart">
-			<img src="../res/img/Marca Playmobil.png" width="100px" class="mr-2" alt="Playmobil">
-			<img src="../res/img/Marca Juliana.png" width="100px" class="mr-2" alt="Juliana">
+				<p class="lead">Marcas con las que trabajamos:</p> 
+				<img src="../res/img/Marca Rondi.png" width="100px" class="mr-2" alt="Rondi">
+				<img src="../res/img/Marca Ruibal.jpg" width="85" class="mr-2" alt="Ruibal">
+				<img src="../res/img/Marca HotWheels.png" width="100px" class="mr-2" alt="HotWheels">
+				<img src="../res/img/Marca Barbie.png" width="100px" class="mr-2" alt="Barbie">
+				<img src="../res/img/Welly_b.png" width="100px" class="mr-2" alt="Welly">			
+				<img src="../res/img/Marca Mattel.png" width="85" class="mr-2" alt="Mattel">
+				<img src="../res/img/Marca Hasbro.png"  width="85px" class="mr-2" alt="Hasbro">
+				<img src="../res/img/Marca Kinsmart.png" width="100px" class="mr-2" alt="Kinsmart">
+				<img src="../res/img/Marca Playmobil.png" width="100px" class="mr-2" alt="Playmobil">
+				<img src="../res/img/Marca Juliana.png" width="100px" class="mr-2" alt="Juliana">
 			</div>
 
 		  <hr class="my-4">
 
-		  <div class="d-flex justify-content-between align-items-center">
-			<p>© 2018 Alex Todos los derechos reservados</p>
-			<p>Sarmiento 2401</p>
-			<p>(011) 4951-9648</p>
-			<a  href="https://www.facebook.com/jugueteriaalexx/"><img src="../res/img/facebook.svg" height="40" width="40" alt="Facebook"></a>  
-		  </div>
-		</div>
-	  </div>
-	  
-
-
-
-	  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg">			  
-				<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Crear Cliente</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-		
-						<div class="modal-body">
-							<div class="row">
-								<div class="offset-md-1 col-md-2">
-									<div class="text-center">
-										<strong><span>Apellido</span></strong>
-									</div>
-									<div class="crtInput notEmpty" id="crtSurname">
-										<input class="form-control text-center" type="text">
-										<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
-									</div>
-								</div>
-								<div class="offset-md-1 col-md-3">
-									<div class="text-center">
-										<strong><span>Nombre</span></strong>
-									</div>
-									<div class="crtInput notEmpty" id="crtName">
-										<input class="form-control text-center" type="text">
-										<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
-									</div>
-								</div>
-								<div class="offset-md-1 col-md-2">
-									<div class="text-center">
-										<strong><span>DNI/CUIT/CUIL</span></strong>
-									</div>
-									<div class="crtInput notEmpty validPositive" id="crtDni">
-										<input class="form-control text-center" type="number" min="0" step="1">
-										<div class="validation_msg hidden text-center">Ingrese valor válido</div>
-									</div>
-								</div>
-							</div>
-							<div class="row mt-4">
-								<div class="offset-md-1 col-md-2">
-									<div class="text-center">
-										<strong><span>Nro. Teléfono</span></strong>
-									</div>
-									<div class="crtInput validPositive" id="crtTelephone">
-										<input class="form-control text-center" type="number" min="0">
-										<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
-									</div>
-								</div>
-								<div class="offset-md-1 col-md-3">
-									<div class="text-center">
-										<strong><span>Nro. Celular</span></strong>
-									</div>
-									<div class="crtInput validPositive" id="crtCellphone">
-										<input class="form-control text-center" type="number" min="0">
-										<div class="validation_msg hidden text-center" >Ingrese un valor válido</div>
-									</div>
-								</div>
-								<div class="offset-md-1 col-md-2">
-									<div class="text-center">
-										<strong><span>Email</span></strong>
-									</div>
-									<div class="crtInput" id="crtEmail">
-										<input class="form-control text-center" type="email">
-										<div class="validation_msg hidden text-center">Ingrese un email válido</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secundary" id="crtCancel" data-dismiss="modal">Cerrar</button>
-							<button class="btn btn-primary" id="add">Crear</button>
-						</div>
-						
-			  </div>
+			<div class="d-flex justify-content-between align-items-center">
+				<p>© 2018 Alex Todos los derechos reservados</p>
+				<p>Sarmiento 2401</p>
+				<p>(011) 4951-9648</p>
+				<a  href="https://www.facebook.com/jugueteriaalexx/"><img src="../res/img/facebook.svg" height="40" width="40" alt="Facebook"></a>  
 			</div>
-		  </div>
+		</div>
+	</div>
+	<div id="agregModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">			  
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Agregar Juguete</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
 
-    <!-- Extra large modal Create-->
-    <div class="modal fade bd-example-modal-xl" id="modalCrt" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-xl">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Crear Cliente</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-	
-					<div class="modal-body">
-						<div class="row">
-							<div class="offset-md-1 col-md-2">
-								<div class="text-center">
-									<strong><span>Apellido</span></strong>
-								</div>
-								<div class="crtInput notEmpty" id="crtSurname">
-									<input class="form-control text-center" type="text">
-									<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
-								</div>
-							</div>
-							<div class="offset-md-1 col-md-3">
-								<div class="text-center">
-									<strong><span>Nombre</span></strong>
-								</div>
-								<div class="crtInput notEmpty" id="crtName">
-									<input class="form-control text-center" type="text">
-									<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
-								</div>
-							</div>
-							<div class="offset-md-1 col-md-2">
-								<div class="text-center">
-									<strong><span>DNI/CUIT/CUIL</span></strong>
-								</div>
-								<div class="crtInput notEmpty validPositive" id="crtDni">
-									<input class="form-control text-center" type="number" min="0" step="1">
-									<div class="validation_msg hidden text-center">Ingrese valor válido</div>
-								</div>
-							</div>
+				<div class="modal-body">
+					<div class="offset-md-1 col-md-2">
+						<div class="text-center">
+							<strong><span>Nombre</span></strong>
 						</div>
-						<div class="row mt-4">
-							<div class="offset-md-1 col-md-2">
-								<div class="text-center">
-									<strong><span>Nro. Teléfono</span></strong>
-								</div>
-								<div class="crtInput validPositive" id="crtTelephone">
-									<input class="form-control text-center" type="number" min="0">
-									<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
-								</div>
-							</div>
-							<div class="offset-md-1 col-md-3">
-								<div class="text-center">
-									<strong><span>Nro. Celular</span></strong>
-								</div>
-								<div class="crtInput validPositive" id="crtCellphone">
-									<input class="form-control text-center" type="number" min="0">
-									<div class="validation_msg hidden text-center" >Ingrese un valor válido</div>
-								</div>
-							</div>
-							<div class="offset-md-1 col-md-2">
-								<div class="text-center">
-									<strong><span>Email</span></strong>
-								</div>
-								<div class="crtInput" id="crtEmail">
-									<input class="form-control text-center" type="email">
-									<div class="validation_msg hidden text-center">Ingrese un email válido</div>
-								</div>
-							</div>
+						<div class="agregInput notEmpty" id="agregNombre">
+							<input class="form-control text-center" type="text">
+							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
 						</div>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secundary" id="crtCancel" data-dismiss="modal">Cerrar</button>
-						<button class="btn btn-primary" id="add">Crear</button>
+					<div class="offset-md-1 col-md-3">
+						<div class="text-center">
+							<strong><span>Descripción</span></strong>
+						</div>
+						<div class="agregInput notEmpty" id="agregDesc">
+							<input class="form-control text-center" type="text">
+							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
+						</div>
 					</div>
+					<div class="offset-md-1 col-md-2">
+						<div class="text-center">
+							<strong><span>Precio</span></strong>
+						</div>
+						<div class="agregInput notEmpty validPositive" id="agregPrecio">
+							<input class="form-control text-center" type="number" min="0" step="0.01">
+							<div class="validation_msg hidden text-center">Ingrese valor válido</div>
+						</div>
+					</div>
+					<div class="offset-md-1 col-md-2">
+						<div class="text-center">
+							<strong><span>Foto</span></strong>
+						</div>
+						<div class="agregInput validPositive" id="agregFoto">
+							<input class="form-control text-center" type="text">
+							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secundary" id="agregCancel" data-dismiss="modal">Cerrar</button>
+					<button class="btn btn-primary" id="add">Crear</button>
 				</div>
 			</div>
 		</div>
-		<!-- Modal Create END-->
+	</div>
 
-	</body>
+    <!-- Extra large modal Create-->
+    <div class="modal fade bd-example-modal-xl" id="modifModal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modificar Juguete</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
 
+				<div class="modal-body">
+					<div class="offset-md-1 col-md-8">
+						<div class="text-center">
+							<strong><span>Nombre</span></strong>
+						</div>
+						<div class="modifInput notEmpty" id="modifNombre">
+							<input class="form-control text-center" type="text">
+							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
+						</div>
+					</div>
+					<div class="offset-md-1 col-md-3">
+						<div class="text-center">
+							<strong><span>Descripción</span></strong>
+						</div>
+						<div class="modifInput notEmpty" id="modifDesc">
+							<input class="form-control text-center" type="text">
+							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
+						</div>
+					</div>
+					<div class="offset-md-1 col-md-2">
+						<div class="text-center">
+							<strong><span>Precio</span></strong>
+						</div>
+						<div class="modifInput notEmpty validPositive" id="modifPrecio">
+							<input class="form-control text-center" type="number" min="0" step="0.01">
+							<div class="validation_msg hidden text-center">Ingrese valor válido</div>
+						</div>
+					</div>
+					<div class="offset-md-1 col-md-2">
+						<div class="text-center">
+							<strong><span>Foto</span></strong>
+						</div>
+						<div class="modifInput validPositive" id="modifFoto">
+							<input class="form-control text-center" type="text">
+							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secundary" id="modifCancel" data-dismiss="modal">Cerrar</button>
+					<button class="btn btn-primary" id="add">Crear</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal fade" id="borrarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="modal-title">Esta seguro que quiere eliminar el producto?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="confirm" class="btn btn-primary">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
 
-
-	<script type="text/javascript" src="../res//JS//Index.js"></script>	
+<script type="text/javascript" src="../res//JS//Index.js"></script>	
 </html>

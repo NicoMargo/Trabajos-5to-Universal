@@ -14,6 +14,7 @@ class ProductoDao{
     }
     public static function Borrar($id){
         $pdo = DB::Conectar();
+        echo $id;
         $resultado = $pdo->query("call spBorrarJuguete($id);"); //falta hacer sp
     }
     public static function Modificar($producto){

@@ -11,13 +11,13 @@ switch($action){
         ProductoDao::Modificar($producto);
         break;
     case 'Ajuguete':
-        $producto = $_POST['producto'];
+        $producto = json_decode($_POST['producto']);
         ProductoDao::Agregar($producto);
         break;
     case 'Bjuguete':
+        echo "borrar";
         $id = $_POST['id'];
         ProductoDao::Borrar($id);
-         break;
-        //http://localhost/TP10/api/controller/personController.php?action=new
+        break;
 }
 ?>
