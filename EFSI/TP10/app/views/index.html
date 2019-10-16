@@ -10,6 +10,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="../res/CSS/Normalize.css">
 	<link rel="stylesheet" type="text/css" href="../res/CSS/Index.css">	
+	<link rel="stylesheet" type="text/css" href="../res/CSS/mySiteCSS.css">	
 	<link rel="stylesheet" type="text/css" href="../res/bootstrap/bootstrap css/bootstrap.css">
 
 
@@ -136,7 +137,7 @@
 				</div>
 
 				<div class="modal-body">
-					<div class="offset-md-1 col-md-2">
+					<div class="offset-md-1 col-md-10">
 						<div class="text-center">
 							<strong><span>Nombre</span></strong>
 						</div>
@@ -145,16 +146,16 @@
 							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
 						</div>
 					</div>
-					<div class="offset-md-1 col-md-3">
+					<div class="offset-md-1 col-md-10">
 						<div class="text-center">
 							<strong><span>Descripción</span></strong>
 						</div>
 						<div class="agregInput notEmpty" id="agregDesc">
-							<input class="form-control text-center" type="text">
+							<textArea class="form-control" rows="3" cols="70"></textArea>
 							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
 						</div>
 					</div>
-					<div class="offset-md-1 col-md-2">
+					<div class="offset-md-1 col-md-5">
 						<div class="text-center">
 							<strong><span>Precio</span></strong>
 						</div>
@@ -163,11 +164,20 @@
 							<div class="validation_msg hidden text-center">Ingrese valor válido</div>
 						</div>
 					</div>
-					<div class="offset-md-1 col-md-2">
+					<div class="offset-md-1 col-md-5">
+						<div class="text-center">
+							<strong><span>Stock</span></strong>
+						</div>
+						<div class="agregInput notEmpty validPositive" id="agregPrecio">
+							<input class="form-control text-center" type="number" min="0" step="1">
+							<div class="validation_msg hidden text-center">Ingrese valor válido</div>
+						</div>
+					</div>
+					<div class="offset-md-1 col-md-10">
 						<div class="text-center">
 							<strong><span>Foto</span></strong>
 						</div>
-						<div class="agregInput validPositive" id="agregFoto">
+						<div class="agregInput notEmpty" id="agregFoto">
 							<input class="form-control text-center" type="text">
 							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
 						</div>
@@ -193,7 +203,7 @@
 				</div>
 
 				<div class="modal-body">
-					<div class="offset-md-1 col-md-8">
+					<div class="offset-md-1 col-md-10">
 						<div class="text-center">
 							<strong><span>Nombre</span></strong>
 						</div>
@@ -202,16 +212,16 @@
 							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
 						</div>
 					</div>
-					<div class="offset-md-1 col-md-3">
+					<div class="offset-md-1 col-md-10">
 						<div class="text-center">
 							<strong><span>Descripción</span></strong>
 						</div>
 						<div class="modifInput notEmpty" id="modifDesc">
-							<input class="form-control text-center" type="text">
+							<textArea class="form-control" rows="3" cols="70"></textArea>
 							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
 						</div>
 					</div>
-					<div class="offset-md-1 col-md-2">
+					<div class="offset-md-1 col-md-5">
 						<div class="text-center">
 							<strong><span>Precio</span></strong>
 						</div>
@@ -220,11 +230,20 @@
 							<div class="validation_msg hidden text-center">Ingrese valor válido</div>
 						</div>
 					</div>
-					<div class="offset-md-1 col-md-2">
+					<div class="offset-md-1 col-md-5">
+						<div class="text-center">
+							<strong><span>Stock</span></strong>
+						</div>
+						<div class="modifInput notEmpty validPositive" id="modifPrecio">
+							<input class="form-control text-center" type="number" min="0" step="1">
+							<div class="validation_msg hidden text-center">Ingrese valor válido</div>
+						</div>
+					</div>
+					<div class="offset-md-1 col-md-10">
 						<div class="text-center">
 							<strong><span>Foto</span></strong>
 						</div>
-						<div class="modifInput validPositive" id="modifFoto">
+						<div class="modifInput notEmpty" id="modifFoto">
 							<input class="form-control text-center" type="text">
 							<div class="validation_msg hidden text-center">Ingrese un valor válido</div>
 						</div>

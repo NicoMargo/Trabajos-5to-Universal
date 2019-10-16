@@ -10,7 +10,7 @@ class ProductoDao{
     }
     public static function Agregar($producto){
         $pdo = DB::Conectar();
-        $resultado = $pdo->query("call spAgregarJuguete('$producto->nombre','$producto->descripcion',$producto->precio,'$producto->foto');");
+        $resultado = $pdo->query("call spAgregarJuguete('$producto->nombre','$producto->descripcion',$producto->precio,$producto->stock,'$producto->foto');");
     }
     public static function Borrar($id){
         $pdo = DB::Conectar();
@@ -19,7 +19,7 @@ class ProductoDao{
     }
     public static function Modificar($producto){
         $pdo = DB::Conectar();
-        $resultado = $pdo->query("call spModificarJuguete($producto->id,'$producto->nombre','$producto->descripcion',$producto->precio,'$producto->foto');");
+        $resultado = $pdo->query("call spModificarJuguete($producto->id,'$producto->nombre','$producto->descripcion',$producto->precio,$producto->stock,'$producto->foto');");
     }
 
 };

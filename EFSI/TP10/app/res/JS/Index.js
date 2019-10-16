@@ -85,7 +85,7 @@ $(document).ready(function () {
 				location.reload();
 			},
 			error: function () {
-				CreateModal("Error", "Hubo un error al eliminar al producto");
+				alert("Error", "Hubo un error al eliminar al producto");
 			}
 		});
 	});

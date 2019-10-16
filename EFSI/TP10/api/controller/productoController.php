@@ -1,5 +1,6 @@
 <?php
 include_once('../dao/productoDao.php');
+include_once('../model/producto.php');
 $action = isset($_POST['action']) ? $_POST['action'] : $_GET['action'];
 switch($action){
     case 'todos':
@@ -11,7 +12,8 @@ switch($action){
         ProductoDao::Modificar($producto);
         break;
     case 'Ajuguete':
-        $producto = json_decode($_POST['producto']);
+        //$producto = json_decode($_POST['producto']);
+        $producto = new Producto(1,"a","a",1,1,"a");
         ProductoDao::Agregar($producto);
         break;
     case 'Bjuguete':
