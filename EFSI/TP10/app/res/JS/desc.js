@@ -75,12 +75,12 @@ $(document).ready(function () {
 			data: { 
 				action: "Ajuguete",
 				producto: {
-					id:0,
-					nombre:$("#agregNombre").find("input").val(),
-					descripcion:$("#agregDesc").find("input").val(),
-					precio: $("#agregPrecio").find("input").val(),
-					foto: $("#agregFoto").find("input").val(),
-					stock: $("#agregStock").find("input").val()
+					id:9,
+					nombre:"a",
+					descripcion:"a",
+					precio: 1,
+					foto: "a",
+					stock: 1
 				} 
 			},
 			success: function () {

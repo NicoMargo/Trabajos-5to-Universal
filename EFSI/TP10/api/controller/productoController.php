@@ -12,8 +12,8 @@ switch($action){
         ProductoDao::Modificar($producto);
         break;
     case 'Ajuguete':
-        //$producto = json_decode($_POST['producto']);
-        $producto = new Producto(1,"a","a",1,1,"a");
+        $producto = (object)$_POST['producto'];
+        var_dump($producto);
         ProductoDao::Agregar($producto);
         break;
     case 'Bjuguete':
