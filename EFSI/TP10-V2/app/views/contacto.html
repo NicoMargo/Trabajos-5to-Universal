@@ -4,71 +4,46 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="description" content="Jugueteria mayorista Alex">
-	<meta name="keywords" content="Jugueteria Alex, mayorista, juguetes, Alex jugueteria, telefono, direccion, ubicacion, Contacto, mapa, jugueteria once, Alex"> 
+	<meta name="keywords" content="Jugueteria Alex, mayorista, juguetes, Alex jugueteria, once, juguetes para niños, juguetes para niñas, juegos de mesa, juguetes primera infancia"> 
+
 	<title>Jugueteria Alex</title>
 
+	
 	<link rel="stylesheet" type="text/css" href="../res/CSS/Normalize.css">
 	<link rel="stylesheet" type="text/css" href="../res/CSS/Index.css">	
+	<link rel="stylesheet" type="text/css" href="../res/CSS/mySiteCSS.css">	
 	<link rel="stylesheet" type="text/css" href="../res/bootstrap/bootstrap css/bootstrap.css">
+
+
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js" asp-fallback-src="~/lib/jquery/dist/jquery.min.js"	asp-fallback-test="window.jQuery" crossorigin="anonymous"integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		
+
 
 </head>
 <body>
-	
-			<!--Header Dinamico-->
-			<div class="sticky-top">
-				<nav class="navbar navbar-dark encabezado navbar-expand-sm ">	  		  
-						<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-							<div class="navbar-nav ml-auto mr-auto text-center">
-								<img src="img/Logo Alex.png" width="100" height="40" class="d-inline-block align-top mr-4" alt="Logo Alex">
-		
-								<div><input class="search ml-5" name="search" type="search" placeholder="¿Qué estas buscando?"value=""></div>
-							</div>
-					
-							<div class="d-flex flex-row justify-content-center">
-								<div class="Telefono mr-4">(011) 4951-9648</div>
-							</div>
-					
-						</div>
-					 </nav>
-					 
-				 <!--Navbar Estatico-->
-				 <nav class="navbar navbar-dark navegadorEncabezado navbar-expand-sm ">
-					
-						<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-							<div class="navbar-nav ml-auto mr-auto text-center">
-								<a class="navegador active ml-5 pl-5" href="index.html">Inicio</a>
-								<a class="navegador" href="#">Juguetes</a>
-		
-								<div class="dropdown">
-									<a class="navegador " id="dropdownMenuEnlace" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false" href="index.html#Categorias" role="button">Categorías</a>
-		
-									<div class="dropdown-menu" aria-labelledby="drowndownMenuEnlace">
-									<a href="nenesnenas.html" class="dropdown-item">Nenes/Nenas</a>
-									<a href="bebes.html" class="dropdown-item">Bebes</a>
-		
-									</div>
-							</div>					
-								<a class="navegador" href="#Destacados">Destacados</a>
-								<a class=" navegador" href="Marcas.html">Marcas</a>
-								<a class="navegador" href="Contacto.html">Contacto</a>
-						</div>		 
-						
-						<div class="d-flex flex-row justify-content-center">
-							<img onclick="Acarrito()" src="img/carrito.svg" class="carrito mr-3 mt-1" width="38px" height="18%" class="mr-3" alt="carro">
-							<!--<a class="nav-item nav-link mr-4 btn btn-primary" role="button" href="login.html">Mi Sesión</a>-->
-							<img onclick="Alogin()" src="img/user1.png" style="opacity: 0.7;" width="45px" height="45px" alt="">
-						</div>
-		
-					 </div>
-				</nav>
+		<!--Header Dinamico-->
+	<div class="sticky-top">
+		<nav class="navbar navbar-dark encabezado navbar-expand-sm ">	  		  
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+				<div class="navbar-nav ml-auto mr-auto text-center">
+					<img src="../res/img/Logo Alex.png" width="100" height="40" class="mx-auto" alt="Logo Alex">
+				</div>
 			</div>
-		
-	<div class="col-4 mx-auto mt-5">
-			<h3 class="text-uppercase text-center">CONTACTO</h3>
-			<br>
+		</nav>
+			 
+		 <!--Navbar Estatico-->
+		 <nav class="navbar navbar-dark navegadorEncabezado navbar-expand-sm ">		  
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+				<div class="navbar-nav ml-auto mr-auto text-center">
+					<a class="navegador active ml-5 pl-5" href="index.html">Inicio</a>											
+					<a class="navegador" href="index.html#juguetes">Juguetes</a>
+					<a class="navegador" href="Contacto.html">Contacto</a>
+				</div>	
+			</div>
+		</nav>
 	</div>
-
 <main role="main">
 	<section class="container mt-5 mb-5 mb-10">
 
@@ -91,10 +66,19 @@
 							<p>Lineas 68, 152, 15</p>
 						</td>
 						<td style="margin:auto;">
-							<p class="font-weight-bold text-center">Subtes</p>
-							<img class="DIB" style="margin-left: 42%;" src="../res/img/a.jpg" alt="Subte A" > <p class="DIB">Pasco</p> <br>
-							<img class="DIB" style="margin-left: 42%;" src="../res/img/a.jpg" alt="Subte A" > <p class="DIB">Alberti</p><br>
-							<img class="DIB" style="margin-left: 42%;" src="../res/img/b.jpg" alt="Subte B" > <p class="DIB">Pasteur</p><br>
+                            <p class="font-weight-bold text-center">Subtes</p>
+                            <div class="row"style="margin-left: 39%;">
+                                <div class="col-md-1"><img class="DIB"  src="../res/img/a.jpg" alt="Subte A" ></div>
+                                <div><p class="DIB ml-2">Pasco</p> <br></div>
+                            </div>
+                            <div class="row"style="margin-left: 39%;">
+                                <div class="col-md-1"><img class="DIB"  src="../res/img/a.jpg" alt="Subte A" ></div>
+                                <div><p class="DIB ml-2">Alberti</p> <br></div>
+                            </div>
+                            <div class="row"style="margin-left: 39%;">
+                                <div class="col-md-1"><img class="DIB"  src="../res/img/b.jpg" alt="Subte A" ></div>
+                                <div><p class="DIB ml-2">Pasteur</p> <br></div>
+                            </div>
 						</td>
 					</tr>
 					</tbody>

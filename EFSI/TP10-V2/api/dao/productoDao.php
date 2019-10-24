@@ -19,7 +19,7 @@ class ProductoDao{
     }
     public static function Modificar($producto){
         $pdo = DB::Conectar();
-        $resultado = $pdo->query("call spModificarJuguete($producto->id,'$producto->nombre','$producto->descripcion',$producto->precio,$producto->stock,'$producto->foto');");
+        $resultado = $pdo->query("call spModificarJuguete($producto->id,'$producto->nombre','$producto->descripcion',$producto->precio,'$producto->foto',$producto->stock);");
     }
 
 };

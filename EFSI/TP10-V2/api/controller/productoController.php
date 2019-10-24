@@ -8,12 +8,12 @@ switch($action){
         print(json_encode($productos));
         break;    
     case 'Mjuguete':
-        $producto = $_POST['producto'];
+        $producto = (object)$_POST['producto'];
         ProductoDao::Modificar($producto);
         break;
     case 'Ajuguete':
         $producto = (object)$_POST['producto'];
-        var_dump($producto);
+        
         ProductoDao::Agregar($producto);
         break;
     case 'Bjuguete':

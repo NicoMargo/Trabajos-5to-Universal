@@ -4,7 +4,7 @@
 }
 
 .validation_error {
-    border-color: red;
+    border-color: red !important;
 }
 
 .hidden {
