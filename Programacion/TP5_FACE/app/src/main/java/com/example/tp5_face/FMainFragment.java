@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.microsoft.projectoxford.face.FaceServiceRestClient;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +47,7 @@ public class FMainFragment extends Fragment {
         getReferences();
         setListeners();
         checkPermissions();
+
         // Inflate the layout for this fragment
         return rootView;
     }
