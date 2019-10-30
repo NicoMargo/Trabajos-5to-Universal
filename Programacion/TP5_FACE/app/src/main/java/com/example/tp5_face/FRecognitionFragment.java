@@ -1,11 +1,9 @@
 package com.example.tp5_face;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
+import android.app.Fragment;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.renderscript.ScriptGroup;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,6 @@ import com.microsoft.projectoxford.face.FaceServiceRestClient;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 
 public class FRecognitionFragment extends Fragment {
 
@@ -25,10 +22,14 @@ public class FRecognitionFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
-
+    private Bitmap _img;
+    public void setImg(Bitmap img){
+        _img = img;
+    }
     public FRecognitionFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +42,7 @@ public class FRecognitionFragment extends Fragment {
         String strApiEndPoint = "https://brazilsouth.api.cognitive.microsoft.com/";
         String strSubscriptionKey = "ac23ad7228cc4b6fa251703fe91ded44";
         ImageProcessor = new FaceServiceRestClient(strApiEndPoint,strSubscriptionKey);
-
+        processImage();
 
         return rootView;
     }
@@ -52,9 +53,9 @@ public class FRecognitionFragment extends Fragment {
     private void setListeners() {
     }
 
-    private void processImage(final Bitmap image){
+    private void processImage(){
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG,100,outputStream);
+        _img.compress(Bitmap.CompressFormat.JPEG,100,outputStream);
         ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
 
         AsyncProcessImage async = new AsyncProcessImage(ImageProcessor);

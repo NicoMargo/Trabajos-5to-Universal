@@ -2,7 +2,7 @@ package com.example.tp5_face;
 
 
 import android.Manifest;
-import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,18 +20,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.microsoft.projectoxford.face.FaceServiceRestClient;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FMainFragment extends Fragment {
 
+
     View rootView;
+    Button btnAnalyze;
     Button btnCamera;
     Button btnStorage;
     ImageView imgResult;
+    Bitmap imageResult;
 
     private final int CODE_CAMERA_ACTIVITY = 1;
     private final int CODE_STORAGE_ACTIVITY = 2;
@@ -47,7 +49,6 @@ public class FMainFragment extends Fragment {
         getReferences();
         setListeners();
         checkPermissions();
-
         // Inflate the layout for this fragment
         return rootView;
     }
@@ -65,11 +66,13 @@ public class FMainFragment extends Fragment {
         btnCamera = rootView.findViewById(R.id.btnCamera);
         btnStorage = rootView.findViewById(R.id.btnStorage);
         imgResult = rootView.findViewById(R.id.imgResult);
+        btnAnalyze = rootView.findViewById(R.id.btnAnalize);
     }
 
     private void setListeners(){
         btnCamera.setOnClickListener(btnCamera_Click);
         btnStorage.setOnClickListener(btnStorage_Click);
+        btnAnalyze.setOnClickListener(btnAnalyze_Click);
     }
 
     @Override
@@ -94,7 +97,20 @@ public class FMainFragment extends Fragment {
             startCameraActivity();
         }
     };
+    public View.OnClickListener btnAnalyze_Click = new View.OnClickListener(){
+        public void onClick(View v){
+            FragmentManager adminFragment;
+            FragmentTransaction transacFragment;
+            FRecognitionFragment fragmentResults = new FRecognitionFragment();
+            ((FRecognitionFragment) fragmentResults).setImg(imageResult);
+            adminFragment   = getFragmentManager();
+            transacFragment = adminFragment.beginTransaction();
+            transacFragment.replace(R.id.lytMain, fragmentResults);
+            Log.d("Main Fragment 2","Main Fragment 2");
+            transacFragment.commit();
 
+        }
+    };
     public View.OnClickListener btnStorage_Click = new View.OnClickListener(){
         public void onClick(View v){
             startStorageActivity();
@@ -116,7 +132,7 @@ public class FMainFragment extends Fragment {
     public void onActivityResult(int requestCode,int resultCode, Intent intent ){
         super.onActivityResult( requestCode, resultCode, intent);
         if(requestCode == CODE_CAMERA_ACTIVITY){
-            Bitmap imageResult = (Bitmap) intent.getExtras().get("data");
+            imageResult = (Bitmap) intent.getExtras().get("data");
             imgResult.setImageBitmap(imageResult);
         }
 

@@ -24,4 +24,10 @@
         android:layout_width="match_parent"
         android:layout_height="410dp"
         tools:src="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btnAnalize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 </LinearLayout>
