@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.microsoft.projectoxford.face.FaceServiceRestClient;
 
@@ -15,14 +17,15 @@ import java.io.ByteArrayOutputStream;
 
 public class FRecognitionFragment extends Fragment {
 
+    public static TextView txtResult;
     private View rootView;
     private FaceServiceRestClient ImageProcessor;
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
-    private Bitmap _img;
+    public static ImageView imgResultAzure;
+    public static Bitmap _img;
     public void setImg(Bitmap img){
         _img = img;
     }
@@ -48,6 +51,8 @@ public class FRecognitionFragment extends Fragment {
     }
 
     private void getReferences() {
+        txtResult = rootView.findViewById(R.id.txtResult);
+        imgResultAzure = rootView.findViewById(R.id.imgViewA);
     }
 
     private void setListeners() {
