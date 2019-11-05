@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -41,7 +42,6 @@ public class FMainFragment extends Fragment {
     private final int CODE_CAMERA_ACTIVITY = 1;
     private final int CODE_STORAGE_ACTIVITY = 2;
     private final int CODE_PERMISSION_REQUEST = 3;
-
     public FMainFragment() {
         // Required empty public constructor
     }
@@ -113,6 +113,8 @@ public class FMainFragment extends Fragment {
                 transacFragment.replace(R.id.lytMain, fragmentResults);
                 Log.d("Main Fragment 2", "Main Fragment 2");
                 transacFragment.commit();
+            }else{
+                Toast.makeText(rootView.getContext(), "Seleccione una foto", Toast.LENGTH_LONG).show();
             }
         }
     };
