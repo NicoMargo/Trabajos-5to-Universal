@@ -1,14 +1,24 @@
 package com.example.tp6_light2;
 
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import android.content.Context;
 import android.content.pm.PackageManager;
-import android.support.v7.app.AppCompatActivity;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Toast;
+import android.widget.CheckBox;
 import android.widget.SeekBar;
-import android.hardware.Camera;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,17 +26,26 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgFlashlight;
     CheckBox chkClock;
     SeekBar skbSeekBar;
-    Camera camera;
+    private final int CAMERA_REQUEST = 50;
     private boolean state = false;
-    private boolean hasFlash;
+    private boolean hasFlashCamara;
+    private static Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        hasFlash = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
-        getReference();
-        setListeners();
+        //ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.CAMERA}, CAMERA_REQUEST);
+        hasFlashCamara = getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+        PackageManager pm = this.getApplicationContext().getPackageManager();
+        hasFlashCamara &= pm.hasSystemFeature(PackageManager.FEATURE_CAMERA);
+        if (hasFlashCamara) {
+            getReference();
+            setListeners();
+        } else {
+            Toast.makeText(MainActivity.this, "No hay flash xdd",
+                    Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -39,25 +58,60 @@ public class MainActivity extends AppCompatActivity {
     private void setListeners(){
         btnPower.setOnClickListener(btnPower_Click);
         skbSeekBar.setOnClickListener(skbSeekBar_click);
+        chkClock.setOnCheckedChangeListener(chkClock_click);
     }
 
+    public void MyTimer(final boolean isChecked) {
+        TimerTask task;
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                if(isChecked){
+                    if(state) {
+                        turnOffLight();
+                        state = false;
+                    }else{
+                        turnOnLight();
+                        state = true;
+                    }
+                }else{
+                    cancel();
+                }
+            }
+
+        };
+        timer.schedule(task, 0,500);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void turnOnLight(){
-        camera = Camera.open();
-        Camera.Parameters parameters = camera.getParameters();
-        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-        camera.setParameters(parameters);
-        camera.startPreview();
+        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+        try {
+            String cameraId = cameraManager.getCameraIdList()[0];
+            cameraManager.setTorchMode(cameraId, true);
+        } catch (CameraAccessException e) {
+        }
     }
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void turnOffLight(){
-        camera = Camera.open();
-        Camera.Parameters parameters = camera.getParameters();
-        parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-        camera.setParameters(parameters);
-        camera.stopPreview();
-        camera.release();
+        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+
+        try {
+            String cameraId = cameraManager.getCameraIdList()[0];
+            cameraManager.setTorchMode(cameraId, false);
+        } catch (CameraAccessException e) {
+        }
     }
+
+    private CheckBox.OnCheckedChangeListener chkClock_click = new CheckBox.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            MyTimer(isChecked);
+        }
+    };
 
     private View.OnClickListener  btnPower_Click = new View.OnClickListener() {
+        @RequiresApi(api = Build.VERSION_CODES.M)
         @Override
         public void onClick(View v) {
             if (!state){
@@ -80,9 +134,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
-
-
-
 
 
 }
