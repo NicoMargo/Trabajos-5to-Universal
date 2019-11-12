@@ -81,12 +81,13 @@ var modelId, productos;
 $(document).ready(function () {
 	$.ajax({
 		type: "GET",
-		url: "http://localhost:5075/api/EComerce/GetProducts/1",
+		dataType: "JSON",
+		url: "http://localhost:53581/api/Ecomerce/getproducts/1",
 		success: function (productos) {
 			for (var i = 0; i < productos.length; i++) {
 				$("#cardGroup").append(
 					'<div class="card mb-3 mr-3 col-md-3"><div style="height: 250px;">' +
-					'<img class="card-img-top" src="'+productos[i].foto +'" alt="Card image cap">' +
+					'<img class="card-img-top" src="'+productos[i].image +'" alt="Card image cap">' +
 					'</div>' +
 					'<div class="card-body">' +
 					'<div class="d-flex">' +
@@ -94,8 +95,8 @@ $(document).ready(function () {
 					'<div class="text-success font-weight-bold">$' + productos[i].price + '</div>' +
 					'</div>' +
 					'<div class="d-flex justify-content-between">' +
-					'<button action="modificar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifModal" pos="' + i + '" modelId="' + productos[i].id + '">Modificar</button>' +
-					'<button action="borrar" type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#borrarModal" modelId="' + productos[i].id + '">Borrar</button>' +
+					'<button action="modificar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modifModal" pos="' + i + '" modelId="' + Producto[i].id + '">Modificar</button>' +
+					'<button action="borrar" type="button" class="btn btn-danger ml-3" data-toggle="modal" data-target="#borrarModal" modelId="' + Producto[i].id + '">Borrar</button>' +
 					'</div>' +
 					'</div>' +
 					'</div>'
