@@ -4,9 +4,11 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean state = false;
     private boolean hasFlashCamara;
     private static Timer timer = new Timer();
+    private SharedPreferences myPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +56,16 @@ public class MainActivity extends AppCompatActivity {
         btnPower = findViewById(R.id.btnPower);
         imgFlashlight = findViewById(R.id.imgFlashlight);
         chkClock = findViewById(R.id.chkClock);
+        boolean checked = myPreferences.getBoolean("checked",false);
+        chkClock.setChecked(checked);
         skbSeekBar = findViewById(R.id.skbSeekBar);
+        int time = myPreferences.getInt("time",1);
+        skbSeekBar.setProgress(time);
+        skbSeekBar.incrementProgressBy(1);
+        skbSeekBar.setMax(10);
     }
     private void setListeners(){
         btnPower.setOnClickListener(btnPower_Click);
-        skbSeekBar.setOnClickListener(skbSeekBar_click);
         chkClock.setOnCheckedChangeListener(chkClock_click);
     }
 
@@ -80,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
         };
-        timer.schedule(task, 0,500);
+        timer.schedule(task, myPreferences.getInt("time",1)*500);
     }
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void turnOnLight(){
@@ -89,8 +98,16 @@ public class MainActivity extends AppCompatActivity {
         try {
             String cameraId = cameraManager.getCameraIdList()[0];
             cameraManager.setTorchMode(cameraId, true);
+            MediaPlayer mp = MediaPlayer.create(this, R.raw.ora);
+            mp.start();
         } catch (CameraAccessException e) {
         }
+    }
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        SharedPreferences.Editor editor;
+        editor = myPreferences.edit();
+        editor.putInt("time", progress);
+        editor.commit();
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void turnOffLight(){
@@ -106,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox.OnCheckedChangeListener chkClock_click = new CheckBox.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            SharedPreferences.Editor editor;
+            editor = myPreferences.edit();
+            editor.putBoolean("checked", isChecked);
+            editor.commit();
             MyTimer(isChecked);
         }
     };
@@ -127,13 +148,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-
-    private View.OnClickListener  skbSeekBar_click = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-        }
-    };
-
 
 }
