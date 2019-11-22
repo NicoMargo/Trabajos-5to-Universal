@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imgFlashlight"
         android:layout_width="match_parent"
-        android:layout_height="335dp"
+        android:layout_height="300dp"
         app:srcCompat="@drawable/lightoff" />
 
     <LinearLayout

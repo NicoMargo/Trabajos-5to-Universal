@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         chkClock = findViewById(R.id.chkClock);
         boolean checked = myPreferences.getBoolean("checked",false);
         chkClock.setChecked(checked);
+        chkClock_click.onCheckedChanged(chkClock,chkClock.isChecked());
         skbSeekBar = findViewById(R.id.skbSeekBar);
         int time = myPreferences.getInt("time",1);
         skbSeekBar.setProgress(time);
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private void setListeners(){
         btnPower.setOnClickListener(btnPower_Click);
         chkClock.setOnCheckedChangeListener(chkClock_click);
+        skbSeekBar.setOnSeekBarChangeListener(skbSeekBar_onChange);
     }
 
     public void MyTimer() {
@@ -77,8 +79,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(chkClock.isChecked()){
-                    if(tics % myPreferences.getInt("time",1)==0) {
-                        btnPower.callOnClick();
+                    if(tics % myPreferences.getInt("time",1) ==0 && tics>0) {
+                        if (!state){
+                            imgFlashlight.setImageResource(R.drawable.lighton);
+                            turnOnLight();
+                            state = true;
+                        }else{
+                            imgFlashlight.setImageResource(R.drawable.lightoff);
+                            turnOffLight();
+                            state = false;
+                        }
                         tics = 0;
                     }else{
                         tics++;
@@ -121,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             SharedPreferences.Editor editor;
             editor = myPreferences.edit();
-            editor.putInt("time", progress);
+            editor.putInt("time", progress+1);
             editor.commit();
         }
     };
@@ -132,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             editor = myPreferences.edit();
             editor.putBoolean("checked", isChecked);
             editor.commit();
-            MyTimer();
+            if(isChecked){MyTimer();}
         }
     };
 
@@ -141,13 +151,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if (!state){
-                //btnPower.setBackgroundResource(R.drawable.btnon);
                 imgFlashlight.setImageResource(R.drawable.lighton);
+                btnPower.setBackgroundResource(R.drawable.btnon);
                 turnOnLight();
                 state = true;
             }else{
                 imgFlashlight.setImageResource(R.drawable.lightoff);
-                //btnPower.setBackgroundResource(R.drawable.btnoff);
+                btnPower.setBackgroundResource(R.drawable.btnoff);
                 turnOffLight();
                 state = false;
             }
